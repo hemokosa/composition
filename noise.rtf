@@ -1,0 +1,75 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf230
+{\fonttbl\f0\fnil\fcharset77 Monaco;}
+{\colortbl;\red255\green255\blue255;\red191\green0\blue0;\red0\green0\blue0;\red0\green0\blue191;
+}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs24 \cf2 //\cf3 \
+\cf2 // noise composition\cf3 \
+\cf2 //\cf3 \
+\
+\cf2 // proxies\cf3 \
+\
+~noise.ar(2);\
+~freq.ar(2);\
+~amp.ar(2);\
+~param.ar(2);\
+~density.ar(2);\
+\
+\
+\cf2 // noise and chaos dictionary\cf3 \
+\
+~amp = 0.3;\
+~noise.play;\
+\
+~noise = \{ \cf4 WhiteNoise\cf3 .ar(~amp.ar) ! 2\};\
+~noise = \{ \cf4 PinkNoise\cf3 .ar(~amp.ar) ! 2\};\
+~noise = \{ \cf4 BrownNoise\cf3 .ar(~amp.ar) ! 2\};\
+~noise = \{ \cf4 GrayNoise\cf3 .ar(~amp.ar) ! 2\};\
+~noise = \{ \cf4 ClipNoise\cf3 .ar(~amp.ar) ! 2\};\
+\
+~param = \{ \cf4 WhiteNoise\cf3 .ar(1.0, 1.0) \};\
+~param = \{ \cf4 Crackle\cf3 .ar(2.0, 1.0, 1.0) \};\
+~noise = \{ \cf4 Crackle\cf3 .ar(~param.ar, ~amp.ar) ! 2\};\
+\
+~density = \{ \cf4 WhiteNoise\cf3 .ar(10.0, 10.0) \};\
+~noise = \{ \cf4 Dust2\cf3 .ar(~density.ar, ~amp.ar) ! 2\};\
+\
+~freq = \{ \cf4 WhiteNoise\cf3 .ar(10.0, 100.0) \};\
+~noise = \{ \cf4 LFNoise2\cf3 .ar(~freq.ar, ~amp.ar) ! 2\};\
+~noise = \{ \cf4 LFDNoise1\cf3 .ar(~freq.ar, ~amp.ar) ! 2\};\
+~noise = \{ \cf4 LFClipNoise\cf3 .ar(~freq.ar, ~amp.ar) ! 2\};\
+~noise = \{ \cf4 LFDClipNoise\cf3 .ar(~freq.ar, ~amp.ar) ! 2\};\
+\
+~amp = \{ \cf4 SinOsc\cf3 .ar(5000, 0, 0.1) \};\
+~amp = \{ \cf4 Pulse\cf3 .ar(5000, 0.5, 0.1) \};\
+~amp = \{ \cf4 Saw\cf3 .ar(5000, 0.1) \};\
+~amp = \{ \cf4 SinOsc\cf3 .ar(5000, 0, 0.1) \};\
+\
+~freq = \{ \cf4 LFNoise2\cf3 .ar(10000, 500, 1000)\};\
+~freq = \{ \cf4 WhiteNoise\cf3 .ar(5000, 10000)\};\
+~out = \{ \cf4 Ringz\cf3 .ar(~noise.ar, ~freq.ar, 0.1, 0.2) ! 2\};\
+\
+~noise.stop;\
+~out.play;\
+\
+~noise = \{ \cf4 HenonC\cf3 .ar(~freq.ar, 1.4, 0.3, 0, 0, 0.1) \};\
+~noise = \{ \cf4 HenonC\cf3 .ar(~freq.ar, 0.2, 1.01, 0, 0, 0.1) \};\
+~noise = \{ \cf4 HenonC\cf3 .ar(~freq.ar, 0.2, 0.9991, 0, 0, 0.1) \};\
+~noise = \{ \cf4 HenonC\cf3 .ar(~freq.ar, 0.2, -0.9999, 0.5, 0.5, 0.2) \};\
+\
+~amp = \{ \cf4 HenonC\cf3 .ar(~freq.ar, 1.4, 0.3, 0, 0, 0.1) \};\
+\
+\cf2 // feedback sine wave\cf3 \
+\
+~out = \{\cf4 FBSineC\cf3 .ar(44100, -1.2, -1.1, -1.1, 0.1, 0, 0, 0.2) ! 2\};\
+\
+\
+\
+\
+\
+\
+\
+\pard\pardeftab720\ql\qnatural
+\cf3 \
+}

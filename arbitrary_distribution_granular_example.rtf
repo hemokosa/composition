@@ -1,0 +1,238 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf230
+{\fonttbl\f0\fnil\fcharset77 Monaco;}
+{\colortbl;\red255\green255\blue255;\red191\green0\blue0;\red0\green0\blue0;\red0\green0\blue191;
+\red0\green115\blue0;\red0\green0\blue191;\red0\green115\blue0;\red96\green96\blue96;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs24 \cf2 //\cf3 \
+\cf2 // arbitrary distribution granular composition\cf3 \
+\cf2 //\cf3 \
+\
+\cf2 // grains\cf3 \
+(\
+\cf4 SynthDef\cf3 (\cf5 \\gpoints\cf3 , \{\cf4 arg\cf3  amp=0.5, freq=100, pan=0, sustain=0.01;	\cf4 var\cf3  env;\
+	env = \cf4 Env\cf3 .sine(sustain, amp);\
+	\cf4 Out\cf3 .ar(0, \
+		\cf4 Pan2\cf3 .ar(\
+		\cf4 Impulse\cf3 .ar(freq) * \cf4 EnvGen\cf3 .ar(env, doneAction:2),\
+		pan))\
+	\}).store;\
+\
+\cf4 SynthDef\cf3 (\cf5 \\gline\cf3 , \{\cf4 arg\cf3  amp=0.5, freq=441, pan=0, sustain=0.01;	\cf4 var\cf3  env;\
+	env = \cf4 Env\cf3 .sine(sustain, amp);\
+	\cf4 Out\cf3 .ar(0, \
+		\cf4 Pan2\cf3 .ar(\
+		\cf4 SinOsc\cf3 .ar(freq) * \cf4 EnvGen\cf3 .ar(env, doneAction:2),\
+		pan))\
+	\}).store;\
+\
+\cf4 SynthDef\cf3 (\cf5 \\gplane\cf3 , \{\cf4 arg\cf3  amp=0.5, pan=0, sustain=0.01;	\cf4 var\cf3  env;\
+	env = \cf4 Env\cf3 .sine(sustain, amp);\
+	\cf4 Out\cf3 .ar(0, \
+		\cf4 Pan2\cf3 .ar(\
+		\cf4 WhiteNoise\cf3 .ar * \cf4 EnvGen\cf3 .ar(env, doneAction:2),\
+		pan))\
+	\}).store;\
+)\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf3 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 // bandpass noise\cf3 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+\cf3 (\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf4 SynthDef\cf3 (\cf5 \\bpplane\cf3 , \{\cf4 arg\cf3  amp=0.1, freq=441.0, pan=0, sustain=10.0, rq=0.001;\
+	\cf4 var\cf3  env = \cf4 Env\cf3 .sine(sustain, amp);\
+	\cf4 Out\cf3 .ar(0,\
+		\cf4 BPF\cf3 .ar(\
+			\cf4 Pan2\cf3 .ar(\cf4 WhiteNoise\cf3 .ar(1) * \cf4 EnvGen\cf3 .ar(env, doneAction:2), pan), freq, rq, 10))\
+	\}).store;\
+\cf6 \
+SynthDef\cf0 (\cf7 \\resoplane\cf0 , \{\cf6 arg\cf0  amp=0.1, freq=441.0, pan=0, sustain=10.0, rq=0.001;\
+	\cf6 var\cf0  env = \cf6 Env\cf0 .sine(sustain, amp);\
+	\cf6 Out\cf0 .ar(0,\
+		\cf6 Resonz\cf0 .ar(\
+			\cf6 Pan2\cf0 .ar(\cf6 WhiteNoise\cf0 .ar(1) * \cf6 EnvGen\cf0 .ar(env, doneAction:2), pan), freq, rq, 10))\
+	\}).store;\
+\cf3 )\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf3 \
+\cf2 // taskproxy\cf3 \
+\cf4 Tdef\cf3 (\cf5 \\x\cf3 ).play;\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 // set distribution\cf3 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+\cf3 (\
+\cf4 var\cf3  distribution, size=200;\
+distribution = \cf4 Array\cf3 .fill(size,	\{ \cf4 arg\cf3  i; (i/size * 50).sin.max(0) * (i / size) \});\
+distribution.plot(\cf8 "distribution function"\cf3 );\
+r = distribution.asRandomTable;\
+)\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf3 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 // random noise harmony\cf3 \
+~grain = \cf5 \\gpoints\cf3 ;\
+~grain = \cf5 \\gline\cf3 ;\
+~grain = \cf5 \\\cf7 bpplane\cf3 ;\
+~grain = \cf5 \\resoplane\cf3 ;\
+~grain.play;\
+~grain.scope;\
+(\
+\cf4 var\cf3  d, p;\
+\cf4 var\cf3  amp, freq, pan, sustain, duration;\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf4 Tdef\cf3 (\cf5 \\x\cf3 , \{\
+	loop (\{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf3 		amp = rrand(0.05, 0.1).postln;\
+		freq = r.tableRand.linexp(0, 1, 6300, 14700).postln;\
+		pan = 1.0.rand2.postln;\
+		sustain = rrand(10.0, 60.0).postln;\
+		duration = rrand(1.0, 5.0).postln;\
+		~grain.spawn([\cf5 \\amp\cf3 , amp, \cf5 \\freq\cf3 , freq, \cf5 \\pan\cf3 , pan, \cf5 \\sustain\cf3 , sustain]);\
+		duration.wait;\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf3 	\});\
+\})\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf3 )\
+\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf4 Tdef\cf3 (\cf5 \\x\cf3 ).stop;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf3 \
+\
+\cf4 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+\cf3 \
+\
+tableRand 						arbitrary random distributions\
+asRandomTable\
+\
+\
+\
+\cf2 // keep z and c as a global random table\cf3 \
+\cf2 // using the "l" key (when th plot view is in focus) you can unlock the plot view \cf3 \
+\cf2 // and draw into the array.\cf3 \
+\cf2 // have a look at the mapping table: it changes only a very little, but this change has \cf3 \
+\cf2 // a distinct effect on the distribution\cf3 \
+\
+\
+(\
+\cf4 var\cf3  v, env, size=180; \cf2 // keep w, z, d global\cf3 \
+\
+env = \cf4 Env\cf3 ([0, 1, 0, 0, 1, 0], [0.3, 1, 1, 1, 0.2].normalizeSum, [-0.4,8, \cf5 'step'\cf3 , \cf5 'lin'\cf3 ]);\
+c = \cf4 Array\cf3 .fill(size, \{ \cf4 arg\cf3  i; env[i / size] \});\
+\
+\
+z = c.asRandomTable;\
+\
+\
+\cf2 // views:\cf3 \
+\
+v = z.plot(\cf8 "mapping table"\cf3 );\
+w = c.plot(\cf8 "distribution function"\cf3 );\
+\
+\cf2 // now this produces values of the desired distribution:\cf3 \
+\
+f = \{ z = c.asRandomTable; d.value = z;  \};\
+\
+d = v.view.children[1].children[0]; \cf2 // dig for multislider view.\cf3 \
+w.view.children[1].children[0].mouseUpAction = \{ f.value \};\
+\
+)\
+\
+\
+(\
+\cf4 SynthDef\cf3 (\cf5 \\pgrain\cf3 , \
+	\{ \cf4 arg\cf3  out = 0, freq=800, sustain=0.001, amp=0.5, pan = 0;\
+		\cf4 var\cf3  window;\
+		window = \cf4 Env\cf3 .sine(sustain, amp);\
+		\cf4 Out\cf3 .ar(out, \
+			\cf4 Pan2\cf3 .ar(\
+				\cf4 SinOsc\cf3 .ar(freq),\
+				pan\
+			) * \cf4 EnvGen\cf3 .ar(window, doneAction:2)\
+		)\
+	\}\
+).store;\
+)\
+\
+\cf4 Tdef\cf3 (\cf5 \\x\cf3 ).play;\
+\
+\
+(\
+\cf4 Tdef\cf3 (\cf5 \\x\cf3 , \{\
+	loop \{\
+		s.sendBundle(0.2, \
+			[\cf8 "/s_new"\cf3 , \cf5 \\pgrain\cf3 , -1, 1, 1, \cf5 \\freq\cf3 , z.tableRand.linexp(0,1,200, 18000)]\
+		);\
+		0.03.wait;\
+	\}\
+\
+\});\
+)\
+\
+\
+\
+\cf2 // tuning randomness on the server with the above created randmoTable\cf3 \
+\cf2 // using waveshaping, the same method can be done on an audio signal:\cf3 \
+\
+\
+\
+\cf2 // allocate a buffer and write the random table into them\cf3 \
+s.sendBundle(\cf4 nil\cf3 , [\cf8 "/b_alloc"\cf3 , 144, 1, z.size, [\cf8 "/b_setn"\cf3 , 144, 0, z.size] ++ z]);\
+\
+\
+\cf2 // play a placeholder proxy\cf3 \
+\cf4 Ndef\cf3 (\cf5 \\x\cf3 ).play;\
+\
+\
+\cf2 // use the random values for sine frequency distribution\cf3 \
+(\
+\cf4 Ndef\cf3 (\cf5 \\x\cf3 , \{\
+	\cf4 var\cf3  inRand, outRand, bufSize;\
+	bufSize = \cf4 BufSamples\cf3 .kr(144);\
+	inRand = \cf4 TRand\cf3 .kr(0, 1.0, \cf4 Impulse\cf3 .kr(\cf4 MouseY\cf3 .kr(0.2, 400, 1)));\
+	outRand = \cf4 Shaper\cf3 .kr(144, inRand);\
+	\cf4 SinOsc\cf3 .ar(\
+		\cf4 LinExp\cf3 .kr(outRand, 0, 1, 300, 7000)\
+	) * 0.1\
+\
+\});\
+)\
+\
+\cf2 // or for colored noise:\cf3 \
+\
+(\
+\cf4 Ndef\cf3 (\cf5 \\x\cf3 , \{\
+	\cf4 var\cf3  inRand, outRand, bufSize;\
+	bufSize = \cf4 BufSamples\cf3 .kr(144);\
+	inRand = \cf4 WhiteNoise\cf3 .ar;\
+	outRand = \cf4 Shaper\cf3 .ar(144, inRand);\
+\})\
+)\
+\
+\
+\
+\
+\cf2 // to continue editing the distribution with the GUI left from above, use this function:\cf3 \
+(\
+f = \{ \
+	z = c.asRandomTable; \
+	d.value = z; \
+	s.sendBundle(\cf4 nil\cf3 , [\cf8 "/b_setn"\cf3 , 144, 1, z.size] ++ z);\
+\
+\};\
+)\
+\
+\
+\
+\cf2 // end, clear variables\cf3 \
+d = z = w = \cf4 nil\cf3 ;\
+\cf4 Ndef\cf3 (\cf5 \\x\cf3 ).clear;\
+\
+\
+}

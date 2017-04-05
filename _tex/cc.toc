@@ -1,0 +1,57 @@
+\contentsline {chapter}{\numberline {第0章}はじめに}{3}
+\contentsline {chapter}{\numberline {第1章}素材 (material)}{4}
+\contentsline {section}{\numberline {1.1}3つの基本素材}{4}
+\contentsline {subsection}{\numberline {1.1.1}準備}{4}
+\contentsline {section}{\numberline {1.2}素材の可視化}{5}
+\contentsline {section}{\numberline {1.3}素材の定義}{5}
+\contentsline {subsection}{\numberline {1.3.1}定常パラメータ}{5}
+\contentsline {subsection}{\numberline {1.3.2}パラメータの時間変化}{6}
+\contentsline {subsection}{\numberline {1.3.3}定義した\texttt {SynthDef}を確認する}{7}
+\contentsline {chapter}{\numberline {第2章}聴取 (listening)}{8}
+\contentsline {section}{\numberline {2.1}点}{8}
+\contentsline {section}{\numberline {2.2}点列}{8}
+\contentsline {subsection}{\numberline {2.2.1}点列を聴く}{8}
+\contentsline {section}{\numberline {2.3}線}{8}
+\contentsline {subsection}{\numberline {2.3.1}線を聴く}{9}
+\contentsline {section}{\numberline {2.4}面}{9}
+\contentsline {subsection}{\numberline {2.4.1}面を聴く}{9}
+\contentsline {subsection}{\numberline {2.4.2}1.3\relax 節で定義した\texttt {SynthDef}を用いて素材を聴く}{9}
+\contentsline {section}{\numberline {2.5}絶対値と相対値}{11}
+\contentsline {subsection}{\numberline {2.5.1}マウスモニター}{11}
+\contentsline {chapter}{\numberline {第3章}調律 (tuning)}{14}
+\contentsline {section}{\numberline {3.1}$44100 = (2\times 3\times 5\times 7)^2$}{14}
+\contentsline {subsection}{\numberline {3.1.1}44100の約数による音階}{14}
+\contentsline {section}{\numberline {3.2}デジタル純正律}{15}
+\contentsline {subsection}{\numberline {3.2.1}純正律の点列}{15}
+\contentsline {chapter}{\numberline {第4章}記憶 (memory)}{17}
+\contentsline {section}{\numberline {4.1}3つの時間領域}{17}
+\contentsline {subsection}{\numberline {4.1.1}聴覚の境界領域}{17}
+\contentsline {subsection}{\numberline {4.1.2}音の短期記憶}{17}
+\contentsline {subsection}{\numberline {4.1.3}線から点への遷移}{18}
+\contentsline {section}{\numberline {4.2}音響旋律―すべての音は旋律である}{19}
+\contentsline {chapter}{\numberline {第5章}層 (layer)}{21}
+\contentsline {section}{\numberline {5.1}音響対位法}{21}
+\contentsline {subsection}{\numberline {5.1.1}旋律の重ね合わせ}{21}
+\contentsline {subsection}{\numberline {5.1.2}差異}{21}
+\contentsline {subsection}{\numberline {5.1.3}変動}{22}
+\contentsline {subsection}{\numberline {5.1.4}対比}{22}
+\contentsline {section}{\numberline {5.2}フィードバック}{23}
+\contentsline {chapter}{\numberline {第6章}塊 (cluster)}{26}
+\contentsline {section}{\numberline {6.1}音響和音}{26}
+\contentsline {subsection}{\numberline {6.1.1}倍音と等差数列}{26}
+\contentsline {subsection}{\numberline {6.1.2}下方倍音列}{27}
+\contentsline {subsection}{\numberline {6.1.3}音程と等比数列}{28}
+\contentsline {subsection}{\numberline {6.1.4}音色と和音の統合}{30}
+\contentsline {section}{\numberline {6.2}和音と音階}{33}
+\contentsline {chapter}{\numberline {第7章}色彩(color)}{35}
+\contentsline {section}{\numberline {7.1}色と音}{35}
+\contentsline {subsection}{\numberline {7.1.1}ノイズと色}{37}
+\contentsline {subsubsection}{ピンクノイズ}{37}
+\contentsline {subsubsection}{ブラウンノイズ}{37}
+\contentsline {subsubsection}{ブルーノイズ}{37}
+\contentsline {subsubsection}{パープルノイズ}{38}
+\contentsline {section}{\numberline {7.2}ノイズ彫刻}{38}
+\contentsline {chapter}{\numberline {第8章}式(formula)}{39}
+\contentsline {chapter}{\numberline {第9章}変調(modulation)}{40}
+\contentsline {chapter}{\numberline {第10章}型(pattern)}{41}
+\contentsline {chapter}{\numberline {第11章}流動(flux)}{42}

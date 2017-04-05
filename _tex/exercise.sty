@@ -1,0 +1,66 @@
+% Save file as: EXERCISE.STY           Source: FILESERV@SHSU.BITNET  
+% Original author: Alan R. Rogers <rogers@anthro.utah.edu>
+% Example usage follows style file
+\newcounter{exno}[chapter]
+\newcounter{cono}[chapter]
+
+%\newenvironment{exercise}{\begin{list}{\small\llap{$\bullet$\kern.15em}%
+%    {\footnotesize EXERCISE \bf\thechapter.\theexno}}{
+%    \usecounter{exno}\small
+%	\setlength{\labelwidth}{5em} \setlength{\labelsep}{1em}
+%	\setlength{\leftmargin}{6em}
+%	\setlength{\itemsep}{0em} \setlength{\topsep}{\parsep}}}
+%        {\end{list}\normalsize}
+
+%\outer\def\exercise{\addtocounter{exno}{1}
+%  \par\small\noindent
+%  {\footnotesize\bf\large 課題 \thechapter.\theexno}\par\nopagebreak\noindent}
+
+\newcommand\exercise[1]{\addtocounter{exno}{1}
+  \par\small\noindent
+  {\footnotesize\bf\large 課題 \thechapter.\theexno：#1}\par\nopagebreak\noindent}
+
+\def\ansno#1.#2:{\par\noindent
+  \hbox to\parindent{\bf\hss#1.#2.\enspace}\ignorespaces}
+\chardef\other=12
+\newwrite\ans
+\immediate\openout\ans=answers
+\outer\def\answer{\normalsize\par
+  \immediate\write\ans{}
+  \immediate\write\ans{\string\ansno\thechapter.\theexno:}
+  \copytoblankline}
+\def\copytoblankline{\begingroup\setupcopy\copyans}
+\def\setupcopy{\def\do##1{\catcode`##1=\other}\dospecials
+  \catcode`\|=\other \obeylines}
+{\obeylines \gdef\copyans#1
+  {\def\next{#1}%
+  \ifx\next\empty\let\next=\endgroup %
+  \else\immediate\write\ans{\next} \let\next=\copyans\fi\next}}
+
+\def\listanswers{\immediate\closeout\ans\input answers}
+
+\outer\def\code{\addtocounter{cono}{1}
+  \par\small\noindent
+  {\footnotesize\bf\large コード \thechapter.\thecono}\par\nopagebreak\noindent}
+
+%============================================================================
+% These macros are modified versions of the \exercise and \answer macros
+% on p. 422 of the TeXbook.  The modifications are to make them work under
+% LaTeX.
+% Usage:
+%  \documentstyle [12pt,twoside,exercise]{report}
+%  \begin{document}
+%  \chapter{Text}
+%  \exercise In what season of the year did George Washington spend the
+%  winter in Valley forge?
+%  \answer 1776
+%
+%  \exercise In what year did George Washington spend the winter there?
+%  \answer Winter
+%
+%  \chapter{Answers}
+%  \listanswers     % The answers are inserted here.
+%  \end{document}
+% BUG: The blank lines after the \answer macros are *mandatory*.  If you leave
+% them out TeX will exhaust the file looking for them.
+%  Alan R. Rogers (rogers@anthro.utah.edu), U. of Utah,  10/23/88

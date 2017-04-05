@@ -1,0 +1,31 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf230
+{\fonttbl\f0\fnil\fcharset77 Monaco;\f1\fnil\fcharset78 Osaka-Mono;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue191;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 ~chorusin.ar(2);\
+~chorusout.ar(2);\
+\
+~chorusout = \{ \cf2 DelayC\cf0 .ar(~chorusin.ar, 0.5, ~mods.ar) \};\
+\
+~mods = \{ \cf2 SinOsc\cf0 .ar(1 * rrand(0.9, 1.1), 0.1, 0.1, 0.1).dup \};\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf0 ~chorusin = \{ \cf2 Impulse\cf0 .ar(\cf2 200\cf0 .dup, 0, 0.5, 0)\}
+\f1 \'81\'47\
+~chorusout.play;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\f0 \cf0 \
+~chorus = \{ \cf2 |numChan = 1, numDelays = 2|\cf0  \
+   \cf2 SynthDef\cf0 (\{ \cf2 arg\cf0  out, bus, predelay, speed, depth, ph_diff; \
+      \cf2 var\cf0  in, sig, mods; \
+      in = \cf2 In\cf0 .ar(bus, numChan); \
+      mods = \{ \cf2 |i|\cf0  \
+         \cf2 SinOsc\cf0 .kr(speed * rrand(0.9, 1.1), ph_diff * i, depth, predelay); \
+      \} ! (numDelays * numChan); \
+      sig = \cf2 DelayC\cf0 .ar(in, 0.5, mods); \
+      \cf2 ReplaceOut\cf0 .ar(out, \cf2 Mix\cf0 (sig.clump(numChan))) \
+   \}); \
+\};\
+}

@@ -1,0 +1,463 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf230
+{\fonttbl\f0\fnil\fcharset78 Osaka-Mono;\f1\fnil\fcharset77 Monaco;\f2\fnil\fcharset77 LucidaGrande;
+}
+{\colortbl;\red255\green255\blue255;\red191\green0\blue0;\red0\green0\blue191;\red0\green115\blue0;
+}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs24 \cf0 \
+\'89\'b9\'8b\'bf\'91\'ce\'88\'ca\'96\'40\
+\
+\
+\
+\
+\'91\'ce\'8f\'c6=\'88\'d9\'82\'c8\'82\'e9\'97\'76\'91\'66\'82\'cc\'95\'c0\'92\'75\
+\
+\
+\'8c\'b4\'8c\'5e\'82\'cc\'95\'cf\'91\'74\
+\
+\
+\'91\'ce\'8f\'c6\'82\'cc\'8e\'96\'97\'e1\'82\'c6\'82\'b5\'82\'c4\'8c\'b4\'8c\'5e\'82\'c9\'91\'ce\'8c\'5e\'82\'f0\'93\'b1\'93\'fc\'82\'b5\'82\'bd\'81\'42\
+\
+\'83\'70\'83\'89\'83\'8c\'83\'8b/\'83\'52\'83\'93\'83\'4a\'83\'8c\'83\'93\'83\'67(\'93\'af\'8e\'9e\'90\'69\'8d\'73)\'82\'c9\'95\'c0\'92\'75\'82\'b7\'82\'e9\
+\
+\
+\
+\'83\'8c\'83\'43\'83\'84\'81\'5b\'8d\'5c\'91\'a2\
+\'91\'77=\'95\'c0\'97\'f1\'8d\'5c\'91\'a2\
+\
+\'81\'75\'91\'77\'82\'cc\'8e\'76\'8d\'6c\'81\'76\
+\
+\
+\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+
+\f1 \cf2 // adding nodes\cf0 \
+a.add(\{ \cf3 SinOsc\cf0 .ar([50, 390]*1.25, 0, 0.1) \});\
+a.add(\{ \cf3 BrownNoise\cf0 .ar([0.02,0.02]) \});\
+\
+\cf2 // setting nodes at indices:\cf0 \
+a[0] = \{ \cf3 SinOsc\cf0 .ar( 700 * \cf3 LFNoise1\cf0 .kr(1, 0.3, 0.6) + 200, 0, 0.1) \};\
+a[1] = \{ \cf3 LFPulse\cf0 .kr(3, 0.3) * \cf3 SinOsc\cf0 .ar(500, 0, 0.1) \};\
+a[2] = \{ \cf3 LFPulse\cf0 .kr(3.5, 0.3) * \cf3 SinOsc\cf0 .ar(600, 0, 0.1) \};\
+a[3] = \{ \cf3 SinOsc\cf0 .ar([1,1.25] * 840, 0, 0.1) \};\
+\
+\cf2 // filtering: the first argument is the previous bus content. more args can be used as usual.\cf0 \
+a[3] = \cf4 \\filter\cf0  -> \{ \cf3 arg\cf0  in; in * \cf3 SinOsc\cf0 .ar(\cf3 Rand\cf0 (100,1000)) \};\
+a[2] = \cf4 \\filter\cf0  -> \{ \cf3 arg\cf0  in; in * \cf3 MouseY\cf0 .kr(0,1) \};\
+a[8] = \cf4 \\filter\cf0  -> \{ \cf3 arg\cf0  in; in * \cf3 MouseX\cf0 .kr(0,1) \};\
+a[4] = \cf4 \\filter\cf0  -> \{ \cf3 arg\cf0  in; in * \cf3 SinOsc\cf0 .ar(\cf3 ExpRand\cf0 (1,5)).max(0) \};\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0 \cf0 \
+\
+\
+\'95\'c0\'97\'f1\'8d\'5c\'91\'a2\
+\
+\
+\
+\'83\'56\'83\'93\'83\'4e\'83\'8d\'81\'41\'83\'59\'83\'8c\
+\
+\'91\'ce\'88\'ca
+\f1 /
+\f0 \'91\'ce\'92\'75\'82\'b7\'82\'e9\'90\'f9\'97\'a5\
+\
+\'89\'a1\'8e\'b2\'82\'c6\'8f\'63\'8e\'b2\'82\'cc\'8c\'f0\'8d\'f6\
+\
+\
+\
+\'83\'7d\'83\'58\'83\'4c\'83\'93\'83\'4f\'82\'cc\'89\'9e\'97\'70\
+\
+\
+\'95\'a1\'90\'94\'82\'cc\'96\'ca\'81\'41\'90\'fc\'82\'cc\'95\'c0\'92\'75\
+\
+\'97\'a7\'91\'cc\'93\'49\
+\
+\'81\'75\'89\'b9\'82\'cc\'83\'4c\'83\'85\'83\'72\'83\'59\'83\'80\'81\'76\
+\
+\'89\'b9\'82\'cc\'8f\'64\'82\'cb\'8d\'87\'82\'b9\
+\'83\'70\'81\'5b\'83\'4a\'83\'62\'83\'56\'83\'94\'82\'c8\'90\'fc\
+\'83\'41\'83\'5e\'83\'62\'83\'4e\'82\'c9\'83\'4e\'83\'8a\'83\'62\'83\'4e\'82\'e2\'83\'67\'81\'5b\'83\'93\'83\'6f\'81\'5b\'83\'58\'83\'67\'82\'f0\'8f\'64\'82\'cb\'82\'e9\
+\
+\
+\'83\'7e\'83\'6a\'83\'7d\'83\'8a\'83\'59\'83\'80\'82\'a9\'82\'e7\'83\'4c\'83\'85\'83\'72\'83\'59\'83\'80\'82\'d6\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1\fs36 \cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f2 \cf0 \uc0\u9660 
+\f0 \'83\'47\'83\'4e\'83\'54\'83\'54\'83\'43\'83\'59\'81\'46\'8c\'a9\'82\'a6\'89\'42\'82\'ea\'82\'b7\'82\'e9\'90\'fc(\'96\'ca\'82\'c6\'90\'fc\'82\'cc\'83\'5f\'83\'93\'83\'58)
+\f1\fs24 \
+\
+2
+\f0 \'82\'c2\'82\'cc\'8b\'df\'82\'a2\'8e\'fc\'94\'67\'90\'94\'82\'f0\'82\'e0\'82\'c2\'90\'fc\'82\'c6\'96\'ca
+\f1 (
+\f0 \'83\'6f\'83\'93\'83\'68\'83\'6d\'83\'43\'83\'59
+\f1 )
+\f0 \'82\'c9\'82\'e6\'82\'e9\'81\'41\'91\'ce\'88\'ca\'96\'40\'93\'49\'82\'c8\'90\'f9\'97\'a5\'82\'c2\'82\'ad\'82\'c1\'82\'c4\'82\'dd\'82\'e6\'81\'42\'81\'75\'83\'43\'83\'93\'83\'5e\'83\'89\'83\'4e\'83\'56\'83\'87\'83\'93\'81\'76\'82\'cc\'8f\'cd\'82\'c5\'90\'e0\'96\'be\'82\'b5\'82\'bd\'83\'7d\'83\'58\'83\'4c\'83\'93\'83\'4f\'8c\'f8\'89\'ca\'82\'f0\'82\'c2\'82\'a9\'82\'c1\'82\'c4\'81\'41\'90\'fc\'82\'aa\'96\'ca\'82\'cc\'92\'86\'82\'a9\'82\'e7\'8c\'a9\'82\'a6\'89\'42\'82\'ea\'82\'b7\'82\'e9\'82\'e6\'82\'a4\'82\'c9\'83\'66\'83\'55\'83\'43\'83\'93\'82\'b9\'82\'e6\'81\'42\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf2 // 
+\f0 \'8e\'fc\'94\'67\'90\'94\'82\'c6\'90\'55\'95\'9d\'82\'aa\'82\'e4\'82\'c1\'82\'ad\'82\'e8\'82\'c6\'83\'89\'83\'93\'83\'5f\'83\'80\'95\'cf\'93\'ae\'82\'b7\'82\'e9\'81\'41\'8b\'df\'82\'a2\'8e\'fc\'94\'67\'90\'94\'82\'f0\'8e\'9d\'82\'c1\'82\'bd\'90\'fc\'82\'c6\'96\'ca
+\f1 (
+\f0 \'83\'6f\'83\'93\'83\'68\'83\'6d\'83\'43\'83\'59
+\f1 )\cf0 \
+(\
+~out = \{\
+	\cf3 var\cf0  fn = 4000.0 + \cf3 LFNoise1\cf0 .kr(0.11, 100.0);\
+	\cf3 var\cf0  fs = 4100.0 + \cf3 LFNoise1\cf0 .kr(1.0, 100.0);\
+	\cf3 var\cf0  an = 0.5 + \cf3 LFNoise1\cf0 .kr(0.1, 0.1);\
+	\cf3 var\cf0  as = 0.1 + \cf3 LFNoise1\cf0 .kr(1.1, 0.01);\
+	\cf3 Resonz\cf0 .ar(\cf3 WhiteNoise\cf0 .ar.dup, fn, 0.3, an) + \cf3 SinOsc\cf0 .ar(fs, 0, as)\
+\}\
+)\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f2\fs36 \cf0 \uc0\u9660 
+\f0 \'83\'47\'83\'4e\'83\'54\'83\'54\'83\'43\'83\'59\'81\'463\'82\'c2\'82\'cc\'8e\'9e\'8a\'d4\'82\'c9\'82\'e6\'82\'e9\'91\'ce\'88\'ca\'96\'40\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\fs24 \cf0 \
+
+\f1 \
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f2\fs36 \cf0 \uc0\u9660 
+\f0 \'83\'47\'83\'4e\'83\'54\'83\'54\'83\'43\'83\'59\'81\'46
+\f1 4000[\cf3 Hz\cf0 ]
+\f0 \'88\'c8\'8f\'e3\'82\'cc\'90\'f9\'97\'a5
+\f1 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs24 \cf0 \'90\'6c\'8a\'d4\'82\'cc\'89\'ef\'98\'62\'89\'b9\'90\'ba\'82\'cd\'81\'41\'82\'a8\'82\'a8\'82\'e6\'82\'bb
+\f1 4000
+\f0 [\cf3 Hz\cf0 ]\'82\'dc\'82\'c5\'82\'cc\'89\'b9\'82\'c5\'8d\'5c\'90\'ac\'82\'b3\'82\'ea\'82\'c4\'82\'a2\'82\'e9(\'82\'bb\'82\'cc\'82\'bd\'82\'df\'93\'64\'98\'62\'82\'cc\'83\'54\'83\'93\'83\'76\'83\'8a\'83\'93\'83\'4f\'8e\'fc\'94\'67\'90\'94\'82\'cd8000[\cf3 Hz\cf0 ]\'82\'c6\'82\'c8\'82\'c1\'82\'c4\'82\'a2\'82\'e9)\'81\'42\'82\'dc\'82\'bd\'81\'415000[\cf3 Hz\cf0 ]\'88\'c8\'8f\'e3\'82\'cc\'89\'b9\'82\'c5\'82\'cd\'81\'41\'82\'a2\'82\'ed\'82\'e4\'82\'e9\'83\'81\'83\'8d\'83\'66\'83\'42\'81\'5b\'82\'cc\'8a\'b4\'8a\'6f(\'89\'b9\'92\'b2\'90\'ab\'82\'c6\'8c\'c4\'82\'ce\'82\'ea\'82\'c4\'82\'a2\'82\'e9)\'82\'aa\'90\'b6\'82\'b6\'82\'c8\'82\'a2\'81\'42\
+\
+\
+
+\f1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+\cf0 4000[\cf3 Hz\cf0 ]
+\f0 \'88\'c8\'8f\'e3\'82\'cc\'92\'86\'90\'53\'8e\'fc\'94\'67\'90\'94\'82\'f0\'8e\'9d\'82\'c2\'83\'6f\'83\'93\'83\'68\'83\'6d\'83\'43\'83\'59\'82\'c6\'90\'fc(\'83\'54\'83\'43\'83\'93\'94\'67) 
+\f1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf0 \
+\
+\
+\
+
+\f0 \'83\'68\'83\'8d\'81\'5b\'83\'93+\'8f\'e3\'8f\'b8\'82\'b7\'82\'e9\'90\'fc\
+\
+
+\f1 \
+\
+\
+\
+\
+~out.play;\
+\
+\
+
+\f0 \'8e\'9e\'8a\'d4\'93\'49\'82\'c8\'83\'59\'83\'8c\'82\'cc\'8c\'f8\'89\'ca\
+\
+\
+\
+\'82\'a2\'82\'ad\'82\'c2\'82\'a9\'82\'cc\'89\'b9\'82\'f0\'8f\'64\'82\'cb\'82\'c4\'82\'a2\'82\'ad\'8d\'db\'82\'c9\'82\'cd\'81\'41\'82\'bb\'82\'ea\'82\'bc\'82\'ea\'82\'cc\'89\'b9\'82\'cc\'91\'e5\'82\'ab\'82\'b3\'82\'aa\'8f\'64\'97\'76\'82\'c5\'82\'a0\'82\'e9\'81\'42\'82\'bd\'82\'c6\'82\'a6\'93\'af\'82\'b6\'89\'b9\'82\'cc\'91\'67\'82\'dd\'8d\'87\'82\'ed\'82\'b9\'82\'c5\'82\'a0\'82\'c1\'82\'c4\'82\'e0\'81\'41\'82\'bb\'82\'ea\'82\'e7\'82\'cc\'89\'b9\'97\'ca\'83\'6f\'83\'89\'83\'93\'83\'58\'82\'aa\'95\'cf\'89\'bb\'82\'b7\'82\'e9\'82\'be\'82\'af\'82\'c5\'81\'41\'8f\'64\'82\'cb\'8d\'87\'82\'b9\'82\'c4\'90\'b6\'82\'ea\'82\'e9\'89\'b9\'90\'46\'82\'cd\'91\'e5\'82\'ab\'82\'ad\'95\'cf\'89\'bb\'82\'b7\'82\'e9\'81\'42\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf2 // 
+\f0 \'83\'89\'83\'93\'83\'5f\'83\'80\'82\'c8\'83\'47\'83\'93\'83\'94\'83\'46\'83\'8d\'81\'5b\'83\'76\'82\'c9\'82\'e6\'82\'e9
+\f1 4
+\f0 \'82\'c2\'82\'cc\'89\'b9\'82\'f0\'8f\'64\'82\'cb\'82\'c4\'82\'dd\'82\'e9\cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf0 (\
+~env1 = \{ \cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .new(\cf3 Array\cf0 .rand(11, 0.0, 1.0), \cf3 Array\cf0 .rand(10, 0.5, 1.5)), ~trig.kr) \};\
+~env2 = \{ \cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .new(\cf3 Array\cf0 .rand(11, 0.0, 1.0), \cf3 Array\cf0 .rand(10, 0.5, 1.5)), ~trig.kr) \};\
+~env3 = \{ \cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .new(\cf3 Array\cf0 .rand(11, 0.0, 1.0), \cf3 Array\cf0 .rand(10, 0.5, 1.5)), ~trig.kr) \};\
+~env4 = \{ \cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .new(\cf3 Array\cf0 .rand(11, 0.0, 1.0), \cf3 Array\cf0 .rand(10, 0.5, 1.5)), ~trig.kr) \};\
+\
+~out1 = \{ \cf3 Pan2\cf0 .ar(\cf3 SinOsc\cf0 .ar(1000+100.rand2, 0, ~env1.kr), 0, 0.25) \};\
+~out2 = \{ \cf3 Pan2\cf0 .ar(\cf3 SinOsc\cf0 .ar(1000+100.rand2, 0, ~env2.kr), 0, 0.25) \};\
+~out3 = \{ \cf3 Pan2\cf0 .ar(\cf3 SinOsc\cf0 .ar(1000+100.rand2, 0, ~env3.kr), 0, 0.25) \};\
+~out4 = \{ \cf3 Pan2\cf0 .ar(\cf3 SinOsc\cf0 .ar(1000+100.rand2, 0, ~env4.kr), 0, 0.25) \};\
+)\
+\
+~out = ~out1 + ~out2 + ~out3 + ~out4;\
+\
+\
+
+\f0 \'83\'47\'83\'93\'83\'94\'83\'46\'83\'8d\'81\'5b\'83\'76\'82\'cc\'8a\'54\'94\'4f\'82\'cd\'81\'41\'89\'b9\'97\'ca\'82\'cc\'82\'dd\'82\'c8\'82\'e7\'82\'b8\'91\'bc\'82\'cc\'82\'c7\'82\'f1\'82\'c8\'83\'70\'83\'89\'83\'81\'81\'5b\'83\'5e\'82\'c9\'82\'e0\'93\'4b\'97\'70\'82\'b7\'82\'e9\'82\'b1\'82\'c6\'82\'aa\'82\'c5\'82\'ab\'82\'e9\'81\'42\'83\'47\'83\'93\'83\'94\'83\'46\'83\'8d\'81\'5b\'83\'76\'82\'c5\'81\'41\'82\'b3\'82\'dc\'82\'b4\'82\'dc\'82\'c8\'89\'b9\'82\'cc\'83\'70\'83\'89\'83\'81\'81\'5b\'83\'5e\'82\'f0\'95\'cf\'89\'bb\'82\'b3\'82\'b9\'82\'e9\'82\'b1\'82\'c6\'82\'c9\'82\'e6\'82\'c1\'82\'c4\'81\'41\'82\'bb\'82\'b1\'82\'a9\'82\'e7\'90\'b6\'82\'ea\'82\'e9\'89\'b9\'82\'cc\'89\'c2\'94\'5c\'90\'ab\'82\'cd\'82\'b3\'82\'e7\'82\'c9\'8d\'4c\'82\'aa\'82\'e9\'81\'42\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf2 // 
+\f0 \'90\'55\'95\'9d\'88\'c8\'8a\'4f\'82\'cc\'83\'70\'83\'89\'83\'81\'81\'5b\'83\'5e
+\f1 (
+\f0 \'8e\'fc\'94\'67\'90\'94\'81\'41\'83\'70\'83\'93
+\f1 )
+\f0 \'82\'c9\'82\'e0\'83\'47\'83\'93\'83\'94\'83\'46\'83\'8d\'81\'5b\'83\'76\'82\'f0\'82\'a9\'82\'af\'82\'e9\cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf0 (\
+~enva1 = \{ \cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .new(\cf3 Array\cf0 .rand(11, 0.0, 1.0), \cf3 Array\cf0 .rand(10, 0.5, 1.5)), ~trig.kr) \};\
+~enva2 = \{ \cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .new(\cf3 Array\cf0 .rand(11, 0.0, 1.0), \cf3 Array\cf0 .rand(10, 0.5, 1.5)), ~trig.kr) \};\
+~enva3 = \{ \cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .new(\cf3 Array\cf0 .rand(11, 0.0, 1.0), \cf3 Array\cf0 .rand(10, 0.5, 1.5)), ~trig.kr) \};\
+~enva4 = \{ \cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .new(\cf3 Array\cf0 .rand(11, 0.0, 1.0), \cf3 Array\cf0 .rand(10, 0.5, 1.5)), ~trig.kr) \};\
+\
+~envf1 = \{ \cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .new(\cf3 Array\cf0 .rand(11, -1.0, 1.0), \cf3 Array\cf0 .rand(10, 0.5, 1.5)), ~trig.kr) \};\
+~envf2 = \{ \cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .new(\cf3 Array\cf0 .rand(11, -1.0, 1.0), \cf3 Array\cf0 .rand(10, 0.5, 1.5)), ~trig.kr) \};\
+~envf3 = \{ \cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .new(\cf3 Array\cf0 .rand(11, -1.0, 1.0), \cf3 Array\cf0 .rand(10, 0.5, 1.5)), ~trig.kr) \};\
+~envf4 = \{ \cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .new(\cf3 Array\cf0 .rand(11, -1.0, 1.0), \cf3 Array\cf0 .rand(10, 0.5, 1.5)), ~trig.kr) \};\
+\
+~envp1 = \{ \cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .new(\cf3 Array\cf0 .rand(11, -1.0, 1.0), \cf3 Array\cf0 .rand(10, 0.5, 1.5)), ~trig.kr) \};\
+~envp2 = \{ \cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .new(\cf3 Array\cf0 .rand(11, -1.0, 1.0), \cf3 Array\cf0 .rand(10, 0.5, 1.5)), ~trig.kr) \};\
+~envp3 = \{ \cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .new(\cf3 Array\cf0 .rand(11, -1.0, 1.0), \cf3 Array\cf0 .rand(10, 0.5, 1.5)), ~trig.kr) \};\
+~envp4 = \{ \cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .new(\cf3 Array\cf0 .rand(11, -1.0, 1.0), \cf3 Array\cf0 .rand(10, 0.5, 1.5)), ~trig.kr) \};\
+\
+~out1 = \{ \cf3 Pan2\cf0 .ar(\cf3 SinOsc\cf0 .ar(100+(100*~envf1.kr), 0, ~enva1.kr), ~envp1.kr, 0.25) \};\
+~out2 = \{ \cf3 Pan2\cf0 .ar(\cf3 SinOsc\cf0 .ar(100+(100*~envf2.kr), 0, ~enva2.kr), ~envp2.kr, 0.25) \};\
+~out3 = \{ \cf3 Pan2\cf0 .ar(\cf3 SinOsc\cf0 .ar(100+(100*~envf3.kr), 0, ~enva3.kr), ~envp3.kr, 0.25) \};\
+~out4 = \{ \cf3 Pan2\cf0 .ar(\cf3 SinOsc\cf0 .ar(100+(100*~envf4.kr), 0, ~enva4.kr), ~envp4.kr, 0.25) \};\
+)\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 //
+\f0 \'83\'82\'83\'6a\'83\'5e\'81\'5b\'82\'f0\'92\'e2\'8e\'7e\'82\'b7\'82\'e9\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf0 ~out.stop(5);\
+\
+
+\f0 \'81\'a1\'83\'47\'83\'4e\'83\'54\'83\'54\'83\'43\'83\'59\
+\
+\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+
+\f2\fs36 \cf0 \uc0\u9660 
+\f0 \'83\'47\'83\'4e\'83\'54\'83\'54\'83\'43\'83\'59\'81\'46\'93\'5f
+\f1 /
+\f0 \'90\'fc
+\f1 /
+\f0 \'96\'ca\'82\'c9\'82\'e6\'82\'e9\'83\'8a\'83\'59\'83\'80\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1\fs24 \cf0 \
+\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+
+\f0 \cf0 \'83\'8a\'83\'59\'83\'80\'82\'cd\'89\'b9\'8b\'bf\'93\'49\'82\'c8\'8e\'9e\'8a\'d4\'82\'c9\'82\'a8\'82\'af\'82\'e9\'92\'81\'8f\'98\'82\'c5\'82\'a0\'82\'e8\'8d\'5c\'91\'a2\'82\'c5\'82\'a0\'82\'e9\'81\'42\
+\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf0 \ul \ulc0 \'93\'5f\'82\'c6\'94\'f1\'8f\'ed\'82\'c9\'92\'5a\'82\'a2\'90\'fc\'82\'c6\'96\'ca\'82\'f0\'8e\'67\'82\'c1\'82\'c4\'83\'70\'83\'5e\'81\'5b\'83\'93\'82\'f0\'82\'c2\'82\'ad\'82\'e8\'81\'41\'94\'bd\'95\'9c\'82\'b3\'82\'b9\'82\'e9\'82\'b1\'82\'c6\'82\'c5\'83\'8a\'83\'59\'83\'80\'82\'f0\'83\'66\'83\'55\'83\'43\'83\'93\'82\'b9\'82\'e6\'81\'42\ulnone \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf0 \
+\
+\
+\'82\'dc\'82\'b8\'8d\'c5\'8f\'89\'82\'c9\'81\'41
+\f1 1
+\f0 \'82\'c2\'82\'cc\'96\'ca\'82\'c6
+\f1 8
+\f0 \'82\'c2\'82\'cc\'93\'5f\'82\'c9\'82\'e6\'82\'e9\'83\'70\'83\'5e\'81\'5b\'83\'93\'82\'a9\'82\'e7\'8f\'6f\'94\'ad\'82\'b7\'82\'e9\'81\'42\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf2 // 
+\f0 \'92\'5a\'82\'a2
+\f1 1
+\f0 \'82\'c2\'82\'cc\'96\'ca\'82\'c6\'82\'bb\'82\'ea\'82\'c9\'91\'b1\'82\'ad
+\f1 8
+\f0 \'82\'c2\'82\'cc\'93\'5f\'82\'c9\'82\'e6\'82\'e9\'83\'70\'83\'5e\'81\'5b\'83\'93\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf0 (\
+\cf3 var\cf0  i = ([ \cf4 \\plane\cf0  ] ++ \cf3 Array\cf0 .fill(8, \cf4 \\points\cf0 )).postln;\
+\cf3 var\cf0  a = ([ 0.1 ] ++ \cf3 Array\cf0 .rand(8, 0.5, 0.9)).postln;\
+\cf3 var\cf0  d = ([ 0.1 ] ++ \cf3 Array\cf0 .fill(8, 0.2)).postln;\
+\cf3 var\cf0  p = ([ 0 ] ++ \cf3 Array\cf0 .rand(8, -1, 1)).postln;\
+y.source = \cf3 Pbind\cf0 (\
+		\cf4 \\instrument\cf0 , \cf3 Pseq\cf0 (i, \cf3 inf\cf0 ),\
+		\cf4 \\amp\cf0 , \cf3 Pseq\cf0 (a, \cf3 inf\cf0 ),\
+		\cf4 \\freq\cf0 , 1,\
+		\cf4 \\pan\cf0 , \cf3 Pseq\cf0 (p, \cf3 inf\cf0 ),\
+		\cf4 \\sustain\cf0 , 0.01,\
+		\cf4 \\dur\cf0 , \cf3 Pseq\cf0 (d, \cf3 inf\cf0 )\
+	);\
+)\
+\
+\
+\
+\
+
+\f0 \'96\'ca\'82\'cc\'83\'70\'83\'5e\'81\'5b\'83\'93\'82\'c6\'93\'5f\'82\'cc\'83\'70\'83\'5e\'81\'5b\'83\'93\'82\'f0\'93\'c6\'97\'a7\'82\'c9\'82\'c2\'82\'ad\'82\'e8\'81\'41\'93\'af\'8e\'9e\'82\'c9\'94\'bd\'95\'9c\'82\'b3\'82\'b9\'82\'c4\'82\'dd\'82\'e9\'81\'42\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf2 // 
+\f0 \'83\'89\'83\'93\'83\'5f\'83\'80\'82\'c8
+\f1 8
+\f0 \'82\'c2\'82\'cc\'96\'ca\'82\'c6\'93\'99\'8a\'d4\'8a\'75\'82\'cc
+\f1 8
+\f0 \'82\'c2\'82\'cc\'93\'5f\'82\'cc\'83\'70\'83\'5e\'81\'5b\'83\'93\'82\'f0\'8d\'87\'90\'ac\'82\'b7\'82\'e9\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf0 (\
+\cf3 var\cf0  d1 = \cf3 Array\cf0 .exprand(8, 0.01, 2).postln;\
+\cf3 var\cf0  d2 = \cf3 Array\cf0 .fill(8, d1.sum/8).postln;\
+\cf3 var\cf0  pt1, pt2;\
+pt1 = \cf3 Pbind\cf0 (\
+		\cf4 \\instrument\cf0 , \cf4 \\plane\cf0 ,\
+		\cf4 \\amp\cf0 , 0.1,\
+		\cf4 \\freq\cf0 , 1,\
+		\cf4 \\pan\cf0 , \cf3 Pfunc\cf0 (\{1.rand2\}),\
+		\cf4 \\sustain\cf0 , 0.01,\
+		\cf4 \\dur\cf0 , \cf3 Pseq\cf0 (d1, \cf3 inf\cf0 )\
+	);\
+pt2 = \cf3 Pbind\cf0 (\
+		\cf4 \\instrument\cf0 , \cf4 \\points\cf0 ,\
+		\cf4 \\amp\cf0 , 0.9,\
+		\cf4 \\freq\cf0 , 1,\
+		\cf4 \\pan\cf0 , \cf3 Pfunc\cf0 (\{1.rand2\}),\
+		\cf4 \\sustain\cf0 , 0.1,\
+		\cf4 \\dur\cf0 , \cf3 Pseq\cf0 (d2, \cf3 inf\cf0 )\
+	);\
+~out = \cf3 Ppar\cf0 ([pt1, pt2]);\
+)\
+\
+\
+\
+\
+
+\f0 \'82\'b3\'82\'e7\'82\'c9\'92\'5a\'82\'ad\'82\'c4\'8d\'82\'82\'a2\'90\'fc\'82\'cc\'83\'70\'83\'5e\'81\'5b\'83\'93\'82\'f0\'89\'c1\'82\'a6\'82\'e9\'81\'42\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf2 // 
+\f0 \'83\'89\'83\'93\'83\'5f\'83\'80\'82\'c8
+\f1 8
+\f0 \'82\'c2\'82\'cc\'90\'fc\'82\'c6\'96\'ca\'82\'cc\'83\'70\'83\'5e\'81\'5b\'83\'93\'82\'c6\'93\'99\'8a\'d4\'8a\'75\'82\'cc
+\f1 8
+\f0 \'82\'c2\'82\'cc\'93\'5f\'82\'cc\'83\'70\'83\'5e\'81\'5b\'83\'93\'82\'f0\'8d\'87\'90\'ac\'82\'b7\'82\'e9\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf0 (\
+\cf3 var\cf0  d1 = \cf3 Array\cf0 .exprand(8, 0.01, 3).postln;\
+\cf3 var\cf0  d2 = \cf3 Array\cf0 .exprand(8, 0.01, 3).postln;\
+\cf3 var\cf0  d3 = \cf3 Array\cf0 .fill(8, [d1.sum, d2.sum].choose/8).postln;\
+\cf3 var\cf0  pt1, pt2, pt3;\
+pt1 = \cf3 Pbind\cf0 (\
+		\cf4 \\instrument\cf0 , \cf4 \\line\cf0 ,\
+		\cf4 \\amp\cf0 , 0.1,\
+		\cf4 \\freq\cf0 , \cf3 Pfunc\cf0 (\{rrand(8000, 12000)\}),\
+		\cf4 \\pan\cf0 , \cf3 Pfunc\cf0 (\{1.rand2\}),\
+		\cf4 \\sustain\cf0 , \cf3 Pfunc\cf0 (\{0.1.rand\}),\
+		\cf4 \\dur\cf0 , \cf3 Pseq\cf0 (d1, \cf3 inf\cf0 )\
+	);\
+pt2 = \cf3 Pbind\cf0 (\
+		\cf4 \\instrument\cf0 , \cf4 \\plane\cf0 ,\
+		\cf4 \\amp\cf0 , 0.1,\
+		\cf4 \\pan\cf0 , \cf3 Pfunc\cf0 (\{1.rand2\}),\
+		\cf4 \\sustain\cf0 , 0.01,\
+		\cf4 \\dur\cf0 , \cf3 Pseq\cf0 (d2, \cf3 inf\cf0 )\
+	);\
+pt3 = \cf3 Pbind\cf0 (\
+		\cf4 \\instrument\cf0 , \cf4 \\points\cf0 ,\
+		\cf4 \\amp\cf0 , 0.9,\
+		\cf4 \\freq\cf0 , 1,\
+		\cf4 \\pan\cf0 , \cf3 Pfunc\cf0 (\{1.rand2\}),\
+		\cf4 \\sustain\cf0 , 0.1,\
+		\cf4 \\dur\cf0 , \cf3 Pseq\cf0 (d3, \cf3 inf\cf0 )\
+	);\
+y.source = \cf3 Ppar\cf0 ([pt1, pt2, pt3]);\
+)\
+\
+\
+\
+
+\f0 \'8d\'c5\'8c\'e3\'82\'c9\'92\'e1\'82\'a2\'90\'fc\'82\'cc\'83\'70\'83\'5e\'81\'5b\'83\'93\'82\'f0\'89\'c1\'82\'a6\'82\'e9\'81\'42\'8d\'87\'8c\'76
+\f1 4
+\f0 \'82\'c2\'82\'cc\'83\'70\'83\'5e\'81\'5b\'83\'93\'82\'aa\'95\'c0\'97\'f1\'82\'c9\'94\'bd\'95\'9c\'82\'b3\'82\'ea\'82\'c4\'82\'a2\'82\'e9\'81\'42\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf2 // 
+\f0 \'83\'89\'83\'93\'83\'5f\'83\'80\'82\'c8
+\f1 8
+\f0 \'82\'c2\'82\'cc\'8d\'82\'82\'a2\'90\'fc\'82\'c6\'96\'ca\'81\'41
+\f1 2
+\f0 \'82\'c2\'82\'cc\'92\'e1\'82\'a2\'90\'fc\'82\'cc\'83\'70\'83\'5e\'81\'5b\'83\'93\'82\'c6\'93\'99\'8a\'d4\'8a\'75\'82\'cc
+\f1 8
+\f0 \'82\'c2\'82\'cc\'93\'5f\'82\'cc\'83\'70\'83\'5e\'81\'5b\'83\'93\'82\'f0\'8d\'87\'90\'ac\'82\'b7\'82\'e9\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf0 (\
+\cf3 var\cf0  d1 = \cf3 Array\cf0 .exprand(8, 0.01, 3).postln;\
+\cf3 var\cf0  d2 = \cf3 Array\cf0 .exprand(8, 0.01, 3).postln;\
+\cf3 var\cf0  d3 = \cf3 Array\cf0 .fill(8, [d1.sum, d2.sum].choose/8).postln;\
+\cf3 var\cf0  d4 = \cf3 Array\cf0 .fill(2, [d1.sum, d2.sum].choose/2).postln;\
+\cf3 var\cf0  pt1, pt2, pt3, pt4;\
+pt1 = \cf3 Pbind\cf0 (\
+		\cf4 \\instrument\cf0 , \cf4 \\line\cf0 ,\
+		\cf4 \\amp\cf0 , 0.1,\
+		\cf4 \\freq\cf0 , \cf3 Pfunc\cf0 (\{rrand(8000, 12000)\}),\
+		\cf4 \\pan\cf0 , \cf3 Pfunc\cf0 (\{1.rand2\}),\
+		\cf4 \\sustain\cf0 , \cf3 Pfunc\cf0 (\{0.1.rand\}),\
+		\cf4 \\dur\cf0 , \cf3 Pseq\cf0 (d1, \cf3 inf\cf0 )\
+	);\
+pt2 = \cf3 Pbind\cf0 (\
+		\cf4 \\instrument\cf0 , \cf4 \\plane\cf0 ,\
+		\cf4 \\amp\cf0 , 0.1,\
+		\cf4 \\pan\cf0 , \cf3 Pfunc\cf0 (\{1.rand2\}),\
+		\cf4 \\sustain\cf0 , 0.01,\
+		\cf4 \\dur\cf0 , \cf3 Pseq\cf0 (d2, \cf3 inf\cf0 )\
+	);\
+pt3 = \cf3 Pbind\cf0 (\
+		\cf4 \\instrument\cf0 , \cf4 \\points\cf0 ,\
+		\cf4 \\amp\cf0 , 0.9,\
+		\cf4 \\freq\cf0 , 1,\
+		\cf4 \\pan\cf0 , \cf3 Pfunc\cf0 (\{1.rand2\}),\
+		\cf4 \\sustain\cf0 , 0.1,\
+		\cf4 \\dur\cf0 , \cf3 Pseq\cf0 (d3, \cf3 inf\cf0 )\
+	);\
+pt4 = \cf3 Pbind\cf0 (\
+		\cf4 \\instrument\cf0 , \cf4 \\line\cf0 ,\
+		\cf4 \\amp\cf0 , 0.5,\
+		\cf4 \\freq\cf0 , 50,\
+		\cf4 \\pan\cf0 , 0,\
+		\cf4 \\sustain\cf0 , 0.3,\
+		\cf4 \\dur\cf0 , \cf3 Pseq\cf0 (d4, \cf3 inf\cf0 )\
+	);\
+y.source = \cf3 Ppar\cf0 ([pt1, pt2, pt3, pt4]);\
+)\
+\
+\
+\
+\
+\
+\
+\
+
+\f0 \
+\
+}

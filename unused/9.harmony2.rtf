@@ -1,0 +1,632 @@
+{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fnil\fcharset77 Monaco;\f1\fnil\fcharset78 Osaka;}
+{\colortbl;\red255\green255\blue255;\red191\green0\blue0;\red0\green0\blue191;\red0\green115\blue0;
+}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs24 \cf2 //\cf0 \
+\cf2 // 
+\f1 \'89\'b9\'8b\'bf\'98\'61\'90\'ba\'96\'40\'81\'46\'89\'b9\'90\'46
+\f0 (
+\f1 \'94\'7b\'89\'b9\'97\'f1
+\f0 )
+\f1 \'82\'c6\'98\'61\'89\'b9
+\f0 (
+\f1 \'89\'b9\'92\'f6\'97\'f1
+\f0 )
+\f1 \'82\'cc\'93\'9d\'8d\'87\cf0 \
+
+\f0 \cf2 //\cf0 \
+(\
+s = \cf3 Server\cf0 .internal;	\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural
+\cf0 if(not(s.serverRunning), \{s.boot\}); \cf2 //
+\f1 \'83\'54\'81\'5b\'83\'6f\'81\'5b\'82\'aa\'97\'a7\'82\'bf\'82\'a0\'82\'aa\'82\'c1\'82\'c4\'82\'a2\'82\'c8\'82\'af\'82\'ea\'82\'ce\'97\'a7\'82\'bf\'82\'a0\'82\'b0\'82\'e9\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0 \cf0 p = \cf3 ProxySpace\cf0 .push(s); \cf2 //
+\f1 \'82\'69\'82\'68\'82\'73\'82\'6b\'82\'89\'82\'82\'83\'82\'81\'5b\'83\'68\'82\'c9\'93\'fc\'82\'e9\cf0 \
+
+\f0 )\
+\cf2 // 
+\f1 \'83\'58\'83\'79\'83\'4e\'83\'67\'83\'8b\'82\'f0\'8c\'a9\'82\'c8\'82\'aa\'82\'e7\'89\'b9\'82\'f0\'92\'ae\'82\'ad\cf0 \
+
+\f0 \cf2 // http://www.uweb.ucsb.edu/~ljputnam/sc3.html\cf0 \
+\cf3 FreqScope\cf0 .new(200, 0);\
+\cf2 //\cf0 \
+~out.ar(2); \cf2 //
+\f1 \'83\'81\'83\'43\'83\'93\'8f\'6f\'97\'cd\'97\'70\'83\'76\'83\'8d\'83\'4c\'83\'56
+\f0 (out)
+\f1 \'82\'f0\'82\'c2\'82\'ad\'82\'e9\cf0 \
+
+\f0 ~out.fadeTime = 0; \cf2 //
+\f1 \'83\'74\'83\'46\'83\'43\'83\'68\'81\'45\'83\'43\'83\'93
+\f0 /
+\f1 \'83\'41\'83\'45\'83\'67\'82\'cc\'8e\'9e\'8a\'d4\'82\'f0
+\f0 0
+\f1 \'95\'62\'82\'c9\'90\'dd\'92\'e8\cf0 \
+
+\f0 ~out.play; \cf2 //
+\f1 \'83\'81\'83\'43\'83\'93\'8f\'6f\'97\'cd\'82\'cc\'83\'82\'83\'6a\'83\'5e\'81\'5b\'82\'f0\'8a\'4a\'8e\'6e\cf0 \
+
+\f0 ~out.scope; \cf2 //
+\f1 \'94\'67\'8c\'60\'82\'f0\'95\'5c\'8e\'a6\'82\'b7\'82\'e9\cf0 \
+
+\f0 \cf2 //\cf0 \
+\cf2 // 
+\f1 \'8e\'fc\'94\'67\'90\'94\'83\'7d\'83\'67\'83\'8a\'83\'4e\'83\'58\'82\'cc\'97\'e1
+\f0 (6
+\f1 \'97\'76\'91\'66
+\f0 )\cf0 \
+\cf2 //\cf0 \
+\cf3 Array\cf0 .series(6, 1, 1).postln; \cf2 // 
+\f1 \'93\'99\'8d\'b7\'90\'94\'97\'f1
+\f0 (
+\f1 \'94\'7b\'89\'b9\'97\'f1
+\f0 )\cf0 \
+\cf3 Array\cf0 .geom(6, 1, 1.5).postln; \cf2 // 
+\f1 \'93\'99\'94\'e4\'90\'94\'97\'f1
+\f0 (
+\f1 \'89\'b9\'92\'f6\'97\'f1
+\f0 )\cf0 \
+(\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 1.5)).postln; \cf2 // 
+\f1 \'94\'7b\'89\'b9\'97\'f1\'82\'c6\'89\'b9\'92\'f6\'97\'f1\'82\'cc\'83\'7d\'83\'67\'83\'8a\'83\'62\'83\'4e\'83\'58\cf0 \
+
+\f0 \cf2 //\cf0 \
+\cf2 // 
+\f1 \'90\'55\'95\'9d\'83\'7d\'83\'67\'83\'8a\'83\'4e\'83\'58\'82\'cc\'97\'e1
+\f0 (6
+\f1 \'97\'76\'91\'66
+\f0 )\cf0 \
+\cf2 //\cf0 \
+(1 / \cf3 Array\cf0 .series(6, 1, 1)).postln; \cf2 // 
+\f1 \'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\cf0 \
+
+\f0 \cf3 Array\cf0 .fill(6, 1).postln; \cf2 // 
+\f1 \'90\'55\'95\'9d\'88\'ea\'92\'e8\cf0 \
+
+\f0 ((1 / \cf3 Array\cf0 .series(6, 1, 1)) * .x \cf3 Array\cf0 .fill(6, 1)).postln; \cf2 // 
+\f1 \'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\'82\'c6\'88\'ea\'92\'e8\'82\'cc\'83\'7d\'83\'67\'83\'8a\'83\'62\'83\'4e\'83\'58\cf0 \
+
+\f0 ((1 / \cf3 Array\cf0 .series(6, 1, 1)) * .x (1 / \cf3 Array\cf0 .series(6, 1, 1))).postln; \cf2 // 
+\f1 \'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\'82\'c6\'94\'bd\'94\'e4\'97\'e1\'82\'cc\'83\'7d\'83\'67\'83\'8a\'83\'62\'83\'4e\'83\'58\cf0 \
+
+\f0 \cf2 //\cf0 \
+\cf2 // 36
+\f1 \'96\'7b\'82\'cc\'90\'fc
+\f0 (
+\f1 \'83\'54\'83\'43\'83\'93\'94\'67
+\f0 )
+\f1 \'82\'cc\'8f\'57\'8d\'87\'82\'f0\'81\'75
+\f0 SinOsc
+\f1 \'81\'76\'82\'c5\'92\'e8\'8b\'60\'82\'b7\'82\'e9
+\f0 (parray
+\f1 \'82\'cd\'88\'ca\'91\'8a\'82\'c5\'82\'cd\'82\'c8\'82\'ad\'83\'70\'83\'93\'82\'c9\'8e\'67\'97\'70\'82\'b7\'82\'e9
+\f0 )\cf0 \
+\cf2 // \cf0 \
+(\
+~out = \{\cf3 var\cf0  farray, aarray, parray;\
+		farray = \cf3 Control\cf0 .names(\cf4 \\farray\cf0 ).kr(\cf3 Array\cf0 .fill(36, 0));\
+		aarray = \cf3 Control\cf0 .names(\cf4 \\aarray\cf0 ).kr(\cf3 Array\cf0 .fill(36, 0));\
+		parray = \cf3 Control\cf0 .names(\cf4 \\parray\cf0 ).kr(\cf3 Array\cf0 .fill(36, 0));\
+		\cf3 Mix\cf0 .new(\
+			\cf3 Pan2\cf0 .ar(\
+				\cf3 SinOsc\cf0 .ar(\
+					farray, 0.0, aarray, 0.0),\
+				parray, 1.0))\};\
+)\
+\cf2 //\cf0 \
+\cf2 // 
+\f1 \'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\'82\'cc\'94\'7b\'89\'b9\'97\'f1\'82\'c6\'90\'55\'95\'9d\'88\'ea\'92\'e8\'82\'cc\'8a\'ae\'91\'53
+\f0 5
+\f1 \'93\'78\'82\'cc\'89\'b9\'92\'f6\'97\'f1
+\f0 (
+\f1 \'8a\'ee\'89\'b9
+\f0 100Hz)
+\f1 \'81\'41\'83\'89\'83\'93\'83\'5f\'83\'80\'83\'70\'83\'93\cf0 \
+
+\f0 \cf2 //\cf0 \
+(\
+~out.setn(\cf4 \\farray\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 1.5)) * 100.0).postln,\
+		  \cf4 \\aarray\cf0 , ((1 / \cf3 Array\cf0 .series(6, 1, 1)) * .x \cf3 Array\cf0 .fill(6, 1)).normalizeSum.postln,\
+		  \cf4 \\parray\cf0 , (\cf3 Array\cf0 .fill(36, \{1.0.rand2\})).postln);\
+)\
+\cf2 //\cf0 \
+\cf2 // 
+\f1 \'90\'55\'95\'9d\'88\'ea\'92\'e8\'82\'cc\'94\'7b\'89\'b9\'97\'f1\'82\'c6\'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\'82\'cc\'8a\'ae\'91\'53
+\f0 5
+\f1 \'93\'78\'82\'cc\'89\'b9\'92\'f6\'97\'f1
+\f0 (
+\f1 \'8a\'ee\'89\'b9
+\f0 100Hz)
+\f1 \'81\'41\'83\'89\'83\'93\'83\'5f\'83\'80\'83\'70\'83\'93\cf0 \
+
+\f0 \cf2 //\cf0 \
+(\
+~out.setn(\cf4 \\farray\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 1.5)) * 100.0).postln,\
+		  \cf4 \\aarray\cf0 , (\cf3 Array\cf0 .fill(6, 1) * .x (1 / \cf3 Array\cf0 .series(6, 1, 1))).normalizeSum.postln,\
+		  \cf4 \\parray\cf0 , (\cf3 Array\cf0 .fill(36, \{1.0.rand2\})).postln);\
+)\
+\cf2 //\cf0 \
+\cf2 // 
+\f1 \'90\'55\'95\'9d\'88\'ea\'92\'e8\'82\'cc\'94\'7b\'89\'b9\'97\'f1\'82\'c6\'8a\'ae\'91\'53
+\f0 5
+\f1 \'93\'78\'82\'cc\'89\'b9\'92\'f6\'97\'f1
+\f0 (
+\f1 \'8a\'ee\'89\'b9
+\f0 100Hz)
+\f1 \'81\'41\'83\'89\'83\'93\'83\'5f\'83\'80\'83\'70\'83\'93\cf0 \
+
+\f0 \cf2 //\cf0 \
+(\
+~out.setn(\cf4 \\farray\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 1.5)) * 100.0).postln,\
+		  \cf4 \\aarray\cf0 , (\cf3 Array\cf0 .fill(6, 1) * .x \cf3 Array\cf0 .fill(6, 1)).normalizeSum.postln,\
+		  \cf4 \\parray\cf0 , (\cf3 Array\cf0 .fill(36, \{1.0.rand2\})).postln);\
+)\
+\cf2 //\cf0 \
+\cf2 // 
+\f1 \'83\'89\'83\'93\'83\'5f\'83\'80\'90\'55\'95\'9d\'82\'cc\'94\'7b\'89\'b9\'97\'f1\'82\'c6\'8a\'ae\'91\'53
+\f0 5
+\f1 \'93\'78\'82\'cc\'89\'b9\'92\'f6\'97\'f1
+\f0 (
+\f1 \'8a\'ee\'89\'b9
+\f0 100Hz)
+\f1 \'81\'41\'83\'89\'83\'93\'83\'5f\'83\'80\'83\'70\'83\'93\cf0 \
+
+\f0 \cf2 //\cf0 \
+(\
+~out.setn(\cf4 \\farray\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 1.5)) * 100.0).postln,\
+		  \cf4 \\aarray\cf0 , (\cf3 Array\cf0 .rand(6, 0.0, 1.0) * .x \cf3 Array\cf0 .rand(6, 0.0, 1.0)).normalizeSum.postln,\
+		  \cf4 \\parray\cf0 , (\cf3 Array\cf0 .fill(36, \{1.0.rand2\})).postln);\
+)\
+\cf2 //\cf0 \
+\cf2 // 36
+\f1 \'96\'7b\'82\'cc\'90\'fc
+\f0 (
+\f1 \'83\'54\'83\'43\'83\'93\'94\'67
+\f0 )
+\f1 \'82\'cc\'8f\'57\'8d\'87\'82\'f0\'81\'75
+\f0 SinOsc
+\f1 \'81\'76\'82\'c5\'8d\'c4\'92\'e8\'8b\'60\'82\'b7\'82\'e9\cf0 \
+
+\f0 \cf2 // 
+\f1 \'8e\'fc\'94\'67\'90\'94\'83\'7d\'83\'67\'83\'8a\'83\'62\'83\'4e\'83\'58\'82\'c6\'90\'55\'95\'9d\'83\'7d\'83\'67\'83\'8a\'83\'62\'83\'4e\'83\'58\'82\'cc\'8f\'89\'8a\'fa\'92\'6c\'82\'c6\'8f\'49\'92\'6c\'82\'f0\'90\'dd\'92\'e8\'82\'b5\'82\'bb\'82\'cc\'8a\'d4\'82\'f0\'90\'fc\'8c\'60\'95\'e2\'8a\'d4\'82\'b7\'82\'e9(\'8d\'c5\'82\'e0\'92\'50\'8f\'83\'82\'c8\'83\'47\'83\'93\'83\'94\'83\'46\'83\'8d\'81\'5b\'83\'76)\cf0 \
+
+\f0 \cf2 //\cf0 \
+(\
+~out = \{\cf3 arg\cf0  dur = 10;\
+		\cf3 var\cf0  farray1, farray2, aarray1, aarray2, parray;\
+		farray1 = \cf3 Control\cf0 .names(\cf4 \\farray1\cf0 ).kr(\cf3 Array\cf0 .fill(36, 0));\
+		farray2 = \cf3 Control\cf0 .names(\cf4 \\farray2\cf0 ).kr(\cf3 Array\cf0 .fill(36, 0));\
+		aarray1 = \cf3 Control\cf0 .names(\cf4 \\aarray1\cf0 ).kr(\cf3 Array\cf0 .fill(36, 0));\
+		aarray2 = \cf3 Control\cf0 .names(\cf4 \\aarray2\cf0 ).kr(\cf3 Array\cf0 .fill(36, 0));\
+		parray = \cf3 Control\cf0 .names(\cf4 \\parray\cf0 ).kr(\cf3 Array\cf0 .fill(36, 0));\
+		\cf3 Mix\cf0 .new(\
+			\cf3 Pan2\cf0 .ar(\
+				\cf3 SinOsc\cf0 .ar(\
+					\cf3 Line\cf0 .kr(farray1, farray2, dur),\
+					0.0,\
+					\cf3 Line\cf0 .kr(aarray1, aarray2, dur),\
+					0.0),\
+				parray, 1.0))\};\
+)\
+\cf2 //\cf0 \
+\cf2 // 
+\f1 \'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\'82\'cc\'94\'7b\'89\'b9\'97\'f1\'82\'c6\'90\'55\'95\'9d\'88\'ea\'92\'e8\'82\'cc\'8a\'ae\'91\'53
+\f0 5
+\f1 \'93\'78\'82\'cc\'89\'b9\'92\'f6\'97\'f1\'82\'a9\'82\'e7\cf0 \
+
+\f0 \cf2 // 
+\f1 \'90\'55\'95\'9d\'88\'ea\'92\'e8\'82\'cc\'94\'7b\'89\'b9\'97\'f1\'82\'c6\'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\'82\'cc\'8a\'ae\'91\'53
+\f0 5
+\f1 \'93\'78\'82\'cc\'89\'b9\'92\'f6\'97\'f1\'82\'d6
+\f0 (
+\f1 \'8a\'ee\'89\'b9
+\f0 200Hz)
+\f1 \'81\'41\'83\'89\'83\'93\'83\'5f\'83\'80\'83\'70\'83\'93\cf0 \
+
+\f0 \cf2 //\cf0 \
+(\
+~out.setn(\
+	\cf4 \\farray1\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 1.5)) * 200.0).postln,\
+	\cf4 \\farray2\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 1.5)) * 200.0).postln,\
+	\cf4 \\aarray1\cf0 , ((1 / \cf3 Array\cf0 .series(6, 1, 1)) * .x \cf3 Array\cf0 .fill(6, 1)).normalizeSum.postln,\
+	\cf4 \\aarray2\cf0 , (\cf3 Array\cf0 .fill(6, 1) * .x (1 / \cf3 Array\cf0 .series(6, 1, 1))).normalizeSum.postln,\
+	\cf4 \\parray\cf0 , (\cf3 Array\cf0 .fill(36, \{1.0.rand2\})).postln).rebuild;\
+)\
+\cf2 //\cf0 \
+\cf2 // 
+\f1 \'83\'89\'83\'93\'83\'5f\'83\'80\'90\'55\'95\'9d\'82\'cc\'94\'7b\'89\'b9\'97\'f1\'82\'c6\'8a\'ae\'91\'53
+\f0 5
+\f1 \'93\'78\'82\'cc\'89\'b9\'92\'f6\'97\'f1\'82\'a9\'82\'e7\cf0 \
+
+\f0 \cf2 // 
+\f1 \'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\'82\'cc\'94\'7b\'89\'b9\'97\'f1\'82\'c6\'90\'55\'95\'9d\'88\'ea\'92\'e8\'82\'cc\'8a\'ae\'91\'53
+\f0 5
+\f1 \'93\'78\'82\'cc\'89\'b9\'92\'f6\'97\'f1\'82\'d6
+\f0 (
+\f1 \'8a\'ee\'89\'b9
+\f0 200Hz)
+\f1 \'81\'41\'83\'89\'83\'93\'83\'5f\'83\'80\'83\'70\'83\'93\cf0 \
+
+\f0 \cf2 //\cf0 \
+(\
+~out.setn(\
+	\cf4 \\farray1\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 1.5)) * 200.0).postln,\
+	\cf4 \\farray2\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 1.5)) * 200.0).postln,\
+	\cf4 \\aarray1\cf0 , (\cf3 Array\cf0 .rand(6, 0.0, 1.0) * .x \cf3 Array\cf0 .rand(6, 0.0, 1.0)).normalizeSum.postln,\
+	\cf4 \\aarray2\cf0 , ((1 / \cf3 Array\cf0 .series(6, 1, 1)) * .x \cf3 Array\cf0 .fill(6, 1)).normalizeSum.postln,\
+	\cf4 \\parray\cf0 , (\cf3 Array\cf0 .fill(36, \{1.0.rand2\})).postln).rebuild;\
+)\
+\cf2 //\cf0 \
+\cf2 // 
+\f1 \'90\'55\'95\'9d\'88\'ea\'92\'e8\'82\'cc\'94\'7b\'89\'b9\'97\'f1\'82\'c6\'92\'b7
+\f0 3
+\f1 \'93\'78\'82\'a9\'82\'e7\'8a\'ae\'91\'53
+\f0 5
+\f1 \'93\'78\'82\'d6\'82\'c6\'95\'cf\'89\'bb\'82\'b7\'82\'e9\'89\'b9\'92\'f6\'97\'f1
+\f0 (
+\f1 \'8a\'ee\'89\'b9
+\f0 150Hz)
+\f1 \'81\'41\'83\'89\'83\'93\'83\'5f\'83\'80\'83\'70\'83\'93\cf0 \
+
+\f0 \cf2 //\cf0 \
+(\
+~out.setn(\
+	\cf4 \\farray1\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 1.25)) * 150.0).postln,\
+	\cf4 \\farray2\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 1.5)) * 150.0).postln,\
+	\cf4 \\aarray1\cf0 , (\cf3 Array\cf0 .fill(36, 1.0)).normalizeSum.postln,\
+	\cf4 \\aarray2\cf0 , (\cf3 Array\cf0 .fill(36, 1.0)).normalizeSum.postln,\
+	\cf4 \\parray\cf0 , (\cf3 Array\cf0 .fill(36, \{1.0.rand2\})).postln).rebuild;\
+)\
+\cf2 //\cf0 \
+\cf2 // 
+\f1 \'83\'89\'83\'93\'83\'5f\'83\'80\'90\'55\'95\'9d\'82\'cc\'94\'7b\'89\'b9\'97\'f1\'82\'c6\'8a\'ae\'91\'53
+\f0 5
+\f1 \'93\'78\'82\'a9\'82\'e7\'92\'b7
+\f0 3
+\f1 \'93\'78\'82\'d6\'82\'c6\'95\'cf\'89\'bb\'82\'b7\'82\'e9\'89\'b9\'92\'f6\'97\'f1
+\f0 (
+\f1 \'8a\'ee\'89\'b9
+\f0 150Hz)
+\f1 \'81\'41\'83\'89\'83\'93\'83\'5f\'83\'80\'83\'70\'83\'93\cf0 \
+
+\f0 \cf2 //\cf0 \
+(\
+~out.setn(\
+	\cf4 \\farray1\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 1.5)) * 150.0).postln,\
+	\cf4 \\farray2\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 1.25)) * 150.0).postln,\
+	\cf4 \\aarray1\cf0 , (\cf3 Array\cf0 .rand(36, 0.0, 1.0)).normalizeSum.postln,\
+	\cf4 \\aarray2\cf0 , (\cf3 Array\cf0 .rand(36, 0.0, 1.0)).normalizeSum.postln,\
+	\cf4 \\parray\cf0 , (\cf3 Array\cf0 .fill(36, \{1.0.rand2\})).postln).rebuild;\
+)\
+\cf2 //\cf0 \
+\cf2 // 
+\f1 \'83\'89\'83\'93\'83\'5f\'83\'80\'90\'55\'95\'9d\'82\'cc\'94\'7b\'89\'b9\'97\'f1\'82\'c6\'92\'b7
+\f0 3
+\f1 \'93\'78\'82\'a9\'82\'e7\'8a\'ae\'91\'53
+\f0 7
+\f1 \'93\'78\'82\'d6\'82\'c6\'95\'cf\'89\'bb\'82\'b7\'82\'e9\'89\'b9\'92\'f6\'97\'f1
+\f0 (
+\f1 \'8a\'ee\'89\'b9
+\f0 200Hz
+\f1 \'81\'a8
+\f0 100Hz)
+\f1 \'81\'41\'83\'89\'83\'93\'83\'5f\'83\'80\'83\'70\'83\'93\cf0 \
+
+\f0 \cf2 //\cf0 \
+(\
+~out.setn(\
+	\cf4 \\farray1\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 1.25)) * 200.0).postln,\
+	\cf4 \\farray2\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 1.75)) * 100.0).postln,\
+	\cf4 \\aarray1\cf0 , (\cf3 Array\cf0 .rand(36, 0.0, 1.0)).normalizeSum.postln,\
+	\cf4 \\aarray2\cf0 , (\cf3 Array\cf0 .rand(36, 0.0, 1.0)).normalizeSum.postln,\
+	\cf4 \\parray\cf0 , (\cf3 Array\cf0 .fill(36, \{1.0.rand2\})).postln).rebuild;\
+)\
+\cf2 //\cf0 \
+\cf2 // 
+\f1 \'83\'89\'83\'93\'83\'5f\'83\'80\'90\'55\'95\'9d\'82\'cc\'94\'7b\'89\'b9\'97\'f1\'82\'c6
+\f0 (
+\f1 \'95\'bd\'8b\'cf\'97\'a5
+\f0 )
+\f1 \'91\'9d
+\f0 4
+\f1 \'93\'78\'82\'a9\'82\'e7\'8a\'ae\'91\'53
+\f0 5
+\f1 \'93\'78\'82\'d6\'82\'c6\'95\'cf\'89\'bb\'82\'b7\'82\'e9\'89\'b9\'92\'f6\'97\'f1
+\f0 (
+\f1 \'8a\'ee\'89\'b9
+\f0 200Hz
+\f1 \'81\'a8
+\f0 150Hz)
+\f1 \'81\'41\'83\'89\'83\'93\'83\'5f\'83\'80\'83\'70\'83\'93\cf0 \
+
+\f0 \cf2 //\cf0 \
+(\
+~out.setn(\
+	\cf4 \\farray1\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 2.sqrt)) * 200.0).postln,\
+	\cf4 \\farray2\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, 1.5)) * 150.0).postln,\
+	\cf4 \\aarray1\cf0 , (\cf3 Array\cf0 .rand(36, 0.0, 1.0)).normalizeSum.postln,\
+	\cf4 \\aarray2\cf0 , (\cf3 Array\cf0 .rand(36, 0.0, 1.0)).normalizeSum.postln,\
+	\cf4 \\parray\cf0 , (\cf3 Array\cf0 .fill(36, \{1.0.rand2\})).postln).rebuild;\
+)\
+\cf2 //\cf0 \
+\cf2 // Routine
+\f1 \'82\'c5\'89\'b9\'8b\'bf\'98\'61\'90\'ba\'82\'cc\'98\'41\'8d\'bd\'82\'f0\'90\'a7\'8c\'e4\'82\'b7\'82\'e9\cf0 \
+
+\f0 \cf2 //\cf0 \
+(\
+r = \cf3 Routine\cf0 .new(\{\
+	\cf3 var\cf0  base = [100, 150, 200];\
+\cf2 //	var ratio = [16/15, 10/9, 9/8, 6/5, 5/4, 4/3, 2.sqrt, 3/2, 8/5, 5/3, 7/4, 16/9, 15/8];\cf0 \
+\cf2 //	var ratio = [6/5, 5/4, 4/3, 3/2, 5/3, 7/4];\cf0 \
+	\cf3 var\cf0  ratio = [6/5, 5/4, 3/2, 7/4];\
+\cf2 //	var ratio = [16/15, 9/8, 16/9, 15/8];\cf0 \
+\cf2 //	var ratio = [9/8, 16/9];\cf0 \
+	loop(\{\
+		~out.setn(\
+			\cf4 \\farray1\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, ratio.choose)) * base.choose).postln,\
+			\cf4 \\farray2\cf0 , ((\cf3 Array\cf0 .series(6, 1, 1) * .x \cf3 Array\cf0 .geom(6, 1, ratio.choose)) * base.choose).postln,\
+			\cf4 \\aarray1\cf0 , (\cf3 Array\cf0 .rand(36, 0.0, 1.0)).normalizeSum.postln,\
+			\cf4 \\aarray2\cf0 , (\cf3 Array\cf0 .rand(36, 0.0, 1.0)).normalizeSum.postln,\
+			\cf4 \\parray\cf0 , (\cf3 Array\cf0 .fill(36, \{1.0.rand2\})).postln).rebuild;\
+		20.wait;\
+	\});\
+\});\
+)\
+\cf2 //\cf0 \
+~out.play;\
+r.play; \cf2 // 
+\f1 \'83\'8b\'81\'5b\'83\'60\'83\'93\'82\'f0\'83\'76\'83\'8c\'83\'43
+\f0 \cf0 \
+r.stop; \cf2 // 
+\f1 \'83\'8b\'81\'5b\'83\'60\'83\'93\'82\'f0\'83\'58\'83\'67\'83\'62\'83\'76
+\f0 \cf0 \
+~out.stop(10);\
+\cf2 //\cf0 \
+\
+\
+\cf2 //\cf0 \
+\cf2 //\cf0 \
+\cf2 //\cf0 \
+\
+\
+\
+\
+\
+(\
+~out = \{ \cf3 Mix\cf0 .new(\
+			\cf3 Pan2\cf0 .ar(\
+				\cf3 SinOsc\cf0 .ar(\
+					((\cf3 Array\cf0 .series(8, 1, 1) * .x \cf3 Array\cf0 .geom(8, 1, 1.5)) * 100.0).postln,\
+					0.0,\
+					((1 / \cf3 Array\cf0 .series(8, 1, 1)) * .x \cf3 Array\cf0 .fill(8, 1)).normalizeSum.postln,\
+					0.0),\
+				\cf3 Array\cf0 .fill(64, \{1.0.rand2\}).postln,\
+				1.0))\};\
+)\
+\
+~out.fadeTime = 0;\
+\
+(\
+~out = \{ \cf3 Mix\cf0 .new(\
+			\cf3 Pan2\cf0 .ar(\
+				\cf3 SinOsc\cf0 .ar(\
+					((\cf3 Array\cf0 .series(8, 1, 1) * .x \cf3 Array\cf0 .geom(8, 1, 1.5)) * 100.0).postln,\
+					0.0,\
+					(\cf3 Array\cf0 .fill(8, 1) * .x (1 / \cf3 Array\cf0 .series(8, 1, 1))).normalizeSum.postln,\
+					0.0),\
+				\cf3 Array\cf0 .fill(64, \{1.0.rand2\}).postln,\
+				1.0))\};\
+)\
+\
+(\
+~out = \{ \cf3 Mix\cf0 .new(\
+			\cf3 Pan2\cf0 .ar(\
+				\cf3 SinOsc\cf0 .ar(\
+					((\cf3 Array\cf0 .series(8, 1, 1) * .x \cf3 Array\cf0 .geom(8, 1, 1.25)) * 100.0).postln,\
+					0.0,\
+					(\cf3 Array\cf0 .fill(64, \{1.0.rand\})).normalizeSum.postln,\
+					0.0),\
+				\cf3 Array\cf0 .fill(64, \{1.0.rand2\}).postln,\
+				1.0))\};\
+)\
+\
+(\
+~out = \{ \cf3 Mix\cf0 .new(\
+			\cf3 Pan2\cf0 .ar(\
+				\cf3 SinOsc\cf0 .ar(\
+					((\cf3 Array\cf0 .series(8, 1, 1) * .x \cf3 Array\cf0 .geom(8, 1, 1.5)) * 100.0).postln,\
+					0.0,\
+					\cf3 Line\cf0 .kr(\
+						(\cf3 Array\cf0 .fill(8, 1) * .x (1 / \cf3 Array\cf0 .series(8, 1, 1))).normalizeSum.postln,\
+						((1 / \cf3 Array\cf0 .series(8, 1, 1)) * .x \cf3 Array\cf0 .fill(8, 1)).normalizeSum.postln,\
+						10),\
+					0.0),\
+				\cf3 Array\cf0 .fill(64, \{1.0.rand2\}).postln,\
+				1.0))\};\
+)\
+\
+(\
+~out = \{ \cf3 Mix\cf0 .new(\
+			\cf3 Pan2\cf0 .ar(\
+				\cf3 SinOsc\cf0 .ar(\
+					((\cf3 Array\cf0 .series(8, 1, 1) * .x \cf3 Array\cf0 .geom(8, 1, 1.5)) * 100.0).postln,\
+					0.0,\
+					\cf3 Line\cf0 .kr(\
+						(\cf3 Array\cf0 .fill(64, \{1.0.rand\})).normalizeSum.postln,\
+						(\cf3 Array\cf0 .fill(64, \{1.0.rand\})).normalizeSum.postln,\
+						10),\
+					0.0),\
+				\cf3 Array\cf0 .fill(64, \{1.0.rand2\}).postln,\
+				1.0))\};\
+)\
+\
+\
+\
+	z =	\cf3 Mix\cf0 .ar(\cf3 Array\cf0 .fill(n, \{\
+		\cf3 Pan2\cf0 .ar(\
+			\cf3 SinOsc\cf0 .ar((base\
+				+ [0, 3, 8, 11, 16, 18].choose\
+				+ [-12.1, -5.9, -0.1, 0.1, 6.1, 11.9, 18.1, 24.1, 29.9, 36.1].choose\
+				).midicps \
+				*[1.0, 1.5 ,1.5*1.5, 1.5*1.5*1.5, 1.5*1.5*1.5*1.5].choose\
+					+ \cf3 LFNoise1\cf0 .kr(0.1.rand, 13.0.rand), 0),\
+				\cf3 LFNoise1\cf0 .kr(0.6 + 0.4.rand)\
+			)\
+		\}))*(1.0 / n);\
+\
+\cf2 //\cf0 \
+\cf2 // 
+\f1 \'8e\'fc\'94\'67\'90\'94\'83\'7d\'83\'67\'83\'8a\'83\'4e\'83\'58\cf0 \
+
+\f0 \cf2 //\cf0 \
+\cf3 Array\cf0 .series(8, 1, 1).postln; \cf2 // 
+\f1 \'93\'99\'8d\'b7\'90\'94\'97\'f1
+\f0 (
+\f1 \'94\'7b\'89\'b9\'97\'f1
+\f0 )\cf0 \
+\cf3 Array\cf0 .geom(8, 1, 1.2).postln; \cf2 // 
+\f1 \'93\'99\'94\'e4\'90\'94\'97\'f1
+\f0 (
+\f1 \'89\'b9\'92\'f6\'97\'f1
+\f0 )\cf0 \
+(\cf3 Array\cf0 .series(8, 1, 1) * .x \cf3 Array\cf0 .geom(8, 1, 1.2)).postln; \cf2 // 
+\f1 \'94\'7b\'89\'b9\'97\'f1\'82\'c6\'89\'b9\'92\'f6\'97\'f1\'82\'cc\'83\'7d\'83\'67\'83\'8a\'83\'62\'83\'4e\'83\'58\cf0 \
+
+\f0 \cf2 //\cf0 \
+\cf2 // 
+\f1 \'90\'55\'95\'9d\'83\'7d\'83\'67\'83\'8a\'83\'4e\'83\'58\cf0 \
+
+\f0 \cf2 //\cf0 \
+(1 / \cf3 Array\cf0 .series(8, 1, 1)).postln; \cf2 // 
+\f1 \'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\cf0 \
+
+\f0 \cf3 Array\cf0 .fill(8, 1).postln; \cf2 // 
+\f1 \'90\'55\'95\'9d\'88\'ea\'92\'e8\cf0 \
+
+\f0 ((1 / \cf3 Array\cf0 .series(8, 1, 1)) * .x \cf3 Array\cf0 .fill(8, 1)).postln; \cf2 // 
+\f1 \'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\'82\'c6\'88\'ea\'92\'e8\'82\'cc\'83\'7d\'83\'67\'83\'8a\'83\'62\'83\'4e\'83\'58\cf0 \
+
+\f0 ((1 / \cf3 Array\cf0 .series(8, 1, 1)) * .x (1 / \cf3 Array\cf0 .series(8, 1, 1))).postln; \cf2 // 
+\f1 \'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\'82\'c6\'94\'bd\'94\'e4\'97\'e1\'82\'cc\'83\'7d\'83\'67\'83\'8a\'83\'62\'83\'4e\'83\'58\cf0 \
+
+\f0 \cf2 //\cf0 \
+\cf2 // 64
+\f1 \'96\'7b\'82\'cc\'90\'fc
+\f0 (
+\f1 \'83\'54\'83\'43\'83\'93\'94\'67
+\f0 )
+\f1 \'82\'cc\'8f\'57\'8d\'87\'82\'f0\'92\'e8\'8b\'60\'82\'b7\'82\'e9\cf0 \
+
+\f0 \cf2 //\cf0 \
+(\
+~out = \{\cf3 arg\cf0  fscale = 1, foffset = 0, pan = 0, level = 0.5;\
+		\cf3 var\cf0  farray, aarray, parray;\
+		farray = \cf3 Control\cf0 .names(\cf4 \\farray\cf0 ).kr(\cf3 Array\cf0 .fill(64, 0));\
+		aarray = \cf3 Control\cf0 .names(\cf4 \\aarray\cf0 ).kr(\cf3 Array\cf0 .fill(64, 0));\
+		parray = \cf3 Control\cf0 .names(\cf4 \\parray\cf0 ).kr(\cf3 Array\cf0 .fill(64, 0));\
+		\cf3 Pan2\cf0 .ar(\cf3 Klang\cf0 .ar(`[ farray, aarray, parray ], fscale, foffset), pan, level) \};\
+)\
+\cf2 //\cf0 \
+\cf2 // 
+\f1 \'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\'82\'cc\'94\'7b\'89\'b9\'97\'f1\'82\'c6\'90\'55\'95\'9d\'88\'ea\'92\'e8\'82\'cc\'8a\'ae\'91\'53
+\f0 5
+\f1 \'93\'78\'82\'cc\'89\'b9\'92\'f6\'97\'f1
+\f0 (
+\f1 \'8a\'ee\'89\'b9
+\f0 100Hz)\cf0 \
+(\
+~out.setn(\cf4 \\farray\cf0 , ((\cf3 Array\cf0 .series(8, 1, 1) * .x \cf3 Array\cf0 .geom(8, 1, 1.5)) * 100.0).postln,\
+		  \cf4 \\aarray\cf0 , ((1 / \cf3 Array\cf0 .series(8, 1, 1)) * .x \cf3 Array\cf0 .fill(8, 1)).normalizeSum.postln).rebuild;\
+)\
+\cf2 //\cf0 \
+\cf2 // 
+\f1 \'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\'82\'cc\'94\'7b\'89\'b9\'97\'f1\'82\'c6\'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\'82\'cc\'8a\'ae\'91\'53
+\f0 5
+\f1 \'93\'78\'82\'cc\'89\'b9\'92\'f6\'97\'f1
+\f0 (
+\f1 \'8a\'ee\'89\'b9
+\f0 100Hz)\cf0 \
+(\
+~out.setn(\cf4 \\farray\cf0 , ((\cf3 Array\cf0 .series(8, 1, 1) * .x \cf3 Array\cf0 .geom(8, 1, 1.5)) * 100.0).postln,\
+		  \cf4 \\aarray\cf0 , ((1 / \cf3 Array\cf0 .series(8, 1, 1)) * .x (1 / \cf3 Array\cf0 .series(8, 1, 1))).normalizeSum.postln).rebuild;\
+)\
+\cf2 //\cf0 \
+\cf2 // 
+\f1 \'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\'82\'cc\'94\'7b\'89\'b9\'97\'f1\'82\'c6\'90\'55\'95\'9d\'88\'ea\'92\'e8\'82\'cc\'8a\'ae\'91\'53
+\f0 5
+\f1 \'93\'78\'82\'cc\'89\'b9\'92\'f6\'97\'f1
+\f0 (
+\f1 \'8a\'ee\'89\'b9
+\f0 100Hz
+\f1 \'81\'41\'88\'ca\'91\'8a\'82\'f0\'83\'89\'83\'93\'83\'5f\'83\'80\'82\'c9
+\f0 )\cf0 \
+(\
+~out.setn(\cf4 \\farray\cf0 , ((\cf3 Array\cf0 .series(8, 1, 1) * .x \cf3 Array\cf0 .geom(8, 1, 1.5)) * 100.0).postln,\
+		  \cf4 \\aarray\cf0 , ((1 / \cf3 Array\cf0 .series(8, 1, 1)) * .x \cf3 Array\cf0 .fill(8, 1)).normalizeSum.postln,\
+		  \cf4 \\parray\cf0 , (\cf3 Array\cf0 .rand(64, 0.0, 2*pi).postln)).rebuild;\
+)\
+\
+\cf2 //\cf0 \
+\cf2 // Routine
+\f1 \'82\'c5\'90\'a7\'8c\'e4\'82\'b7\'82\'e9\cf0 \
+
+\f0 \cf2 //\cf0 \
+(\
+r = \cf3 Routine\cf0 .new(\{\
+	\cf3 var\cf0  base = 400;\
+	\cf3 var\cf0  ratio = [16/15, 10/9, 9/8, 6/5, 5/4, 4/3, 2.sqrt, 3/2, 8/5, 5/3, 7/4, 16/9, 15/8];\
+	loop(\{\
+		~out.setn(\
+			\cf4 \\farray\cf0 , (\cf3 Array\cf0 .geom(8, base, ratio.choose.postln) \
+				++ \cf3 Array\cf0 .geom(8, base*ratio.choose.postln, ratio.choose.postln) \
+				++ \cf3 Array\cf0 .geom(8, base*ratio.choose*ratio.choose.postln, ratio.choose.postln)).postln, \
+			\cf4 \\aarray\cf0 , ((1 / \cf3 Array\cf0 .series(8, 1, 1))\
+				++ (1 / \cf3 Array\cf0 .series(8, 1, 1))\
+				++ (1 / \cf3 Array\cf0 .series(8, 1, 1))).normalizeSum.postln).rebuild;\
+		10.wait;\
+		~out.xset(\cf4 \\fscale\cf0 , 2.0.rand.postln);\
+		10.wait;\
+		~out.xset(\cf4 \\foffset\cf0 , 200.0.rand2.postln);\
+		10.wait;\
+	\});\
+\});\
+)\
+\
+(\
+r = \cf3 Routine\cf0 .new(\{\
+	\cf3 var\cf0  base = 200;\
+\cf2 //	var ratio = [16/15, 10/9, 9/8, 6/5, 5/4, 4/3, 2.sqrt, 3/2, 8/5, 5/3, 7/4, 16/9, 15/8];\cf0 \
+\cf2 //	var ratio = [6/5, 5/4, 4/3, 3/2, 5/3, 7/4];\cf0 \
+\cf2 //	var ratio = [6/5, 5/4, 3/2];\cf0 \
+\cf2 //	var ratio = [16/15, 9/8, 16/9, 15/8];\cf0 \
+	\cf3 var\cf0  ratio = [9/8, 16/9];\
+	loop(\{\
+		~out.setn(\
+			\cf4 \\farray\cf0 , (\cf3 Array\cf0 .geom(8, base, ratio.choose.postln) \
+				++ \cf3 Array\cf0 .geom(8, base*ratio.choose.postln, ratio.choose.postln) \
+				++ \cf3 Array\cf0 .geom(8, base*ratio.choose*ratio.choose.postln, ratio.choose.postln)).postln, \
+			\cf4 \\aarray\cf0 , ((1 / \cf3 Array\cf0 .series(8, 1, 1))\
+				++ (1 / \cf3 Array\cf0 .series(8, 1, 1))\
+				++ (1 / \cf3 Array\cf0 .series(8, 1, 1))).postln).rebuild;\
+		10.wait;\
+		~out.xset(\cf4 \\fscale\cf0 , (1 + 1.0.sum3rand).postln);\
+		10.wait;\
+		~out.xset(\cf4 \\foffset\cf0 , 100.0.sum3rand.postln);\
+		10.wait;\
+	\});\
+\});\
+)\
+\
+~out.play;\
+r.play;\
+r.stop;\
+~out.stop(10);\
+r.clear;\
+~out.xset(\cf4 \\fscale\cf0 , 0.1);\
+~out.xset(\cf4 \\foffset\cf0 , -200.0);\
+~out.xset(\cf4 \\fscale\cf0 , 1.0.rand);\
+~out.xset(\cf4 \\foffset\cf0 , 200.0.rand2);\
+\
+}

@@ -1,0 +1,375 @@
+This is pTeX, Version 3.141592-p3.1.9 (sjis) (Web2C 7.5.4) (format=platex-sjis 2005.11.2)  13 JAN 2008 22:19
+**cc.tex
+(./cc.tex
+pLaTeX2e <2005/01/04>+0 (based on LaTeX2e <2003/12/01> patch level 0)
+(/usr/local/share/texmf/ptex/platex/base/jbook.cls
+Document Class: jbook 2002/04/09 v1.4 Standard pLaTeX class
+\c@@paper=\count81
+(/usr/local/share/texmf/ptex/platex/base/jbk10.clo
+File: jbk10.clo 2002/04/09 v1.4 Standard pLaTeX file (size option)
+)
+\c@part=\count82
+\c@chapter=\count83
+\c@section=\count84
+\c@subsection=\count85
+\c@subsubsection=\count86
+\c@paragraph=\count87
+\c@subparagraph=\count88
+\c@figure=\count89
+\c@table=\count90
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\symmincho=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
+(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 676.
+LaTeX Info: Redefining \mathrm on input line 678.
+LaTeX Info: Redefining \mathbf on input line 679.
+\toclineskip=\dimen118
+\@lnumwidth=\dimen119
+\bibindent=\dimen120
+\heisei=\count91
+) (./numberpar.sty
+\c@par@number=\count92
+\npeverypar=\toks15
+)
+(./fancybox.sty
+Style option: `fancybox' v1.0 <93/02/10> (tvz)
+\@fancybox=\box41
+\shadowsize=\dimen121
+\@Sbox=\box42
+\do@VerbBox=\toks16
+\the@fancyput=\toks17
+\this@fancyput=\toks18
+\EndVerbatimTokens=\toks19
+\Verbatim@Outfile=\write3
+\Verbatim@Infile=\read1
+) (./exercise.sty
+\c@exno=\count93
+\c@cono=\count94
+\ans=\write4
+\openout4 = `answers.tex'.
+
+) (./cc.aux)
+\openout1 = `cc.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <17.28> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 42.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <17.28> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 42.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <17.28> on input line 42.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 42.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 42.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 42.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 42.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 42.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 42.
+ [1
+
+
+]
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <20.74> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 43.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <20.74> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 43.
+ (./cc.toc
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1.
+ [1
+
+])
+\tf@toc=\write5
+\openout5 = `cc.toc'.
+
+ [2]
+ëÊ 0 èÕ
+[3
+
+]
+ëÊ 1 èÕ
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 53.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 53.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 62.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 62.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <8> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 66.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <8> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 66.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 98.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 98.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 98.
+[4
+
+] [5]
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 203.
+
+Underfull \vbox (badness 3439) has occurred while \output is active []
+
+ [6]
+[7]
+ëÊ 2 èÕ
+[8
+
+] [9]
+Overfull \hbox (7.90361pt too wide) in paragraph at lines 336--336
+[]\OT1/cmtt/m/n/9 ~out.set(\freq1, 1, \freq2, 100, \amp1, 0.5, \amp2, 0.5, \pan
+1, -1, \pan2, 1, \sustain, 10);[]  
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [10]
+[11] [12]
+Overfull \hbox (40.97823pt too wide) in paragraph at lines 509--509
+[]\OT1/cmtt/m/n/9 ~out.set(\freq1, 12000, \freq2, 12000, \amp1, 0, \amp2, 0.9, 
+\pan1, 0.0, \pan2, 0.0, \sustain, 30);[]  
+ []
+
+
+Overfull \hbox (36.25328pt too wide) in paragraph at lines 509--509
+[]\OT1/cmtt/m/n/9 ~out.set(\freq1, 1000, \freq2, 50, \amp1, 0.5, \amp2, 0.5, \p
+an1, 0.0, \pan2, 0.0, \sustain, 0.1);[]  
+ []
+
+[13]
+ëÊ 3 èÕ
+
+Overfull \hbox (10.27995pt too wide) in paragraph at lines 524--527
+[][]\OT1/cmr/m/n/9 44100 \JY1/mc/m/n/9 ÇÃñÒêîÇÕ \OT1/cmtt/m/n/9 [1, 2, 3, 4, 5,
+ 6, 7, 9, 10, 12, 14, 15, 18, 20, 21, 25, 28, 30, 35, 36, 42, 45,
+ []
+
+
+Overfull \hbox (22.07845pt too wide) in paragraph at lines 524--527
+\OT1/cmtt/m/n/9 49, 50, 60, 63, 70, 75, 84, 90, 98, 100, 105, 126, 140, 147, 15
+0, 175, 180, 196, 210, 225, 245,
+ []
+
+
+Overfull \hbox (26.80339pt too wide) in paragraph at lines 524--527
+\OT1/cmtt/m/n/9 252, 294, 300, 315, 350, 420, 441, 450, 490, 525, 588, 630, 700
+, 735, 882, 900, 980, 1050, 1225,
+ []
+
+
+Overfull \hbox (26.80339pt too wide) in paragraph at lines 524--527
+\OT1/cmtt/m/n/9 1260, 1470, 1575, 1764, 2100, 2205, 2450, 2940, 3150, 3675, 441
+0, 4900, 6300, 7350, 8820, 11025,
+ []
+
+[14
+
+] [15] [16]
+ëÊ 4 èÕ
+[17
+
+] [18] [19] [20]
+ëÊ 5 èÕ
+[21
+
+] [22]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 990.
+
+ (/usr/local/share/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 990.
+ [23]
+Overfull \hbox (12.62856pt too wide) in paragraph at lines 1076--1076
+[]\OT1/cmtt/m/n/9 ~feedback = { PitchShift.ar(~out.ar, 0.1, LFNoise1.ar(0.2, 0.
+01, 1.0), 0.0, 0.0, ~gain.ar) };[]  
+ []
+
+[24] [25]
+ëÊ 6 èÕ
+[26
+
+] [27]
+Overfull \hbox (45.70317pt too wide) in paragraph at lines 1266--1266
+[]\OT1/cmtt/m/n/9 (1..20).do({|i| i.post; "-tone scale:".post; " interval ratio
+ = ".post; (2**i.reciprocal).postln });[]  
+ []
+
+[28] [29] [30] [31]
+Overfull \hbox (26.80339pt too wide) in paragraph at lines 1556--1556
+[]         \OT1/cmtt/m/n/9 \aarray, (Array.series(16, 1, 1).reciprocal * .x Arr
+ay.fill(4, 1)).normalizeSum.postln,[]  
+ []
+
+
+Overfull \hbox (22.07845pt too wide) in paragraph at lines 1556--1556
+[]         \OT1/cmtt/m/n/9 \aarray, (Array.series(8, 1, 1).reciprocal * .x Arra
+y.fill(8, 1)).normalizeSum.postln,[]  
+ []
+
+
+Overfull \hbox (45.70317pt too wide) in paragraph at lines 1556--1556
+[]         \OT1/cmtt/m/n/9 \aarray, (Array.series(8, 1, 1) * .x Array.series(8,
+ 1, 1)).reciprocal.normalizeSum.postln,[]  
+ []
+
+
+Overfull \hbox (45.70317pt too wide) in paragraph at lines 1556--1556
+[]         \OT1/cmtt/m/n/9 \aarray, (Array.series(8, 1, 1) * .x Array.series(8,
+ 1, 1)).reciprocal.normalizeSum.postln,[]  
+ []
+
+
+Overfull \hbox (22.07845pt too wide) in paragraph at lines 1556--1556
+[]         \OT1/cmtt/m/n/9 \aarray, (Array.series(8, 1, 1).reciprocal * .x Arra
+y.fill(8, 1)).normalizeSum.postln,[]  
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [32]
+[33] [34]
+ëÊ 7 èÕ
+
+Overfull \hbox (31.52834pt too wide) in paragraph at lines 1727--1727
+[]    \OT1/cmtt/m/n/9 idata = [390, 395, 400, 405, 410, 415, 420, 425, 430, 435
+, 440, 445, 450, 455, 460, 465, 470,[]  
+ []
+
+
+Overfull \hbox (12.62856pt too wide) in paragraph at lines 1727--1727
+[]    \OT1/cmtt/m/n/9 475, 480, 485, 490, 495, 500, 505, 510, 515, 520, 525, 53
+0, 535, 540, 545, 550, 555, 560,[]  
+ []
+
+
+Overfull \hbox (12.62856pt too wide) in paragraph at lines 1727--1727
+[]    \OT1/cmtt/m/n/9 565, 570, 575, 580, 585, 590, 595, 600, 605, 610, 615, 62
+0, 625, 630, 635, 640, 645, 650,[]  
+ []
+
+
+Overfull \hbox (12.62856pt too wide) in paragraph at lines 1727--1727
+[]    \OT1/cmtt/m/n/9 655, 660, 665, 670, 675, 680, 685, 690, 695, 700, 705, 71
+0, 715, 720, 725, 730, 735, 740,[]  
+ []
+
+
+Overfull \hbox (17.3535pt too wide) in paragraph at lines 1727--1727
+[]    \OT1/cmtt/m/n/9 745, 750, 755, 760, 765, 770, 775, 780, 785, 790, 795, 80
+0, 805, 810, 815, 820, 825, 830];[]  
+ []
+
+
+Overfull \hbox (26.80339pt too wide) in paragraph at lines 1727--1727
+[]    \OT1/cmtt/m/n/9 rdata = [1.5000E-03, 3.8000E-03, 8.9000E-03, 1.8800E-02, 
+3.5000E-02, 5.3100E-02, 7.0200E-02,[]  
+ []
+
+[35
+
+]
+Overfull \hbox (17.3535pt too wide) in paragraph at lines 1727--1727
+[]    \OT1/cmtt/m/n/9 -2.8900E-02, -3.3800E-02, -3.4900E-02, -2.7600E-02, -1.69
+00E-02,  2.4000E-03,  2.8300E-02,[]  
+ []
+
+
+Overfull \hbox (12.62856pt too wide) in paragraph at lines 1727--1727
+[]    \OT1/cmtt/m/n/9 4.7160E-01,  5.4910E-01,  6.2600E-01,  7.0970E-01,  7.935
+0E-01,  8.7150E-01,  9.4770E-01,[]  
+ []
+
+
+Overfull \hbox (17.3535pt too wide) in paragraph at lines 1727--1727
+[]    \OT1/cmtt/m/n/9 -2.0060E-03, -1.6420E-03, -1.2720E-03, -9.4700E-04, -6.83
+00E-04, -4.7800E-04, -3.3700E-04,[]  
+ []
+
+
+Overfull \hbox (17.3535pt too wide) in paragraph at lines 1727--1727
+[]    \OT1/cmtt/m/n/9 -2.3500E-04, -1.6300E-04, -1.1100E-04, -7.4800E-05, -5.08
+00E-05, -3.4400E-05, -2.3400E-05,[]  
+ []
+
+
+Overfull \hbox (17.3535pt too wide) in paragraph at lines 1727--1727
+[]    \OT1/cmtt/m/n/9 -1.5900E-05, -1.0700E-05, -7.2300E-06, -4.8700E-06, -3.29
+00E-06, -2.2200E-06, -1.5000E-06,[]  
+ []
+
+
+Overfull \hbox (17.3535pt too wide) in paragraph at lines 1727--1727
+[]    \OT1/cmtt/m/n/9 -1.0200E-06, -6.8800E-07, -4.6500E-07, -3.1200E-07, -2.08
+00E-07, -1.3700E-07, -8.8000E-08,[]  
+ []
+
+
+Overfull \hbox (26.80339pt too wide) in paragraph at lines 1727--1727
+[]    \OT1/cmtt/m/n/9 bdata = [6.2000E-03, 1.6100E-02, 4.0000E-02, 9.0600E-02, 
+1.8020E-01, 3.0880E-01, 4.6700E-01,[]  
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [36]
+[37] [38]
+ëÊ 8 èÕ
+[39
+
+]
+ëÊ 9 èÕ
+[40
+
+]
+ëÊ 10 èÕ
+[41
+
+]
+ëÊ 11 èÕ
+[42
+
+]
+Missing character: There is no ^^a5 in font cmr9!
+ [43] (./cc.aux) ) 
+Here is how much of TeX's memory you used:
+ 643 strings out of 95552
+ 7043 string characters out of 1187504
+ 58748 words of memory out of 1000000
+ 3823 multiletter control sequences out of 10000+50000
+ 20868 words of font info for 81 fonts, out of 500000 for 2000
+ 14 hyphenation exceptions out of 1000
+ 25i,11n,20p,424b,382s stack positions out of 1500i,500n,5000p,200000b,5000s
+
+Output written on cc.dvi (44 pages, 86276 bytes).

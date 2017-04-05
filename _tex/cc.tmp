@@ -1,0 +1,10 @@
+(
+// インターナル・サーバーをデフォルトに指定して起動
+Server.default = Server.internal;
+s = Server.default;
+if(not(s.serverRunning), {s.boot});
+// プロキシ空間を用意し変数pに代入しておく
+p = ProxySpace.push(s);
+// フェイドアウト時間を1秒に設定
+p.fadeTime = 1;
+)

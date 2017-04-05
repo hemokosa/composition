@@ -1,0 +1,171 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf230
+{\fonttbl\f0\fnil\fcharset78 Osaka-Mono;\f1\fnil\fcharset77 Monaco;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue191;\red191\green0\blue0;\red0\green115\blue0;
+\red96\green96\blue96;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs36 \cf0 \'89\'b9\'82\'f0\'8f\'6f\'82\'b7\'82\'bd\'82\'df\'82\'cc\'8f\'80\'94\'f5\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1\fs24 \cf0 \
+(\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 Server\cf0 .default = \cf2 Server\cf0 .internal; \cf3 // 
+\f0 \'83\'43\'83\'93\'83\'5e\'81\'5b\'83\'69\'83\'8b\'81\'45\'83\'54\'81\'5b\'83\'6f\'81\'5b
+\f1 s
+\f0 \'82\'f0\'83\'66\'83\'74\'83\'48\'83\'8b\'83\'67\'82\'c9\'8e\'77\'92\'e8\'82\'b5\'82\'c4\'8b\'4e\'93\'ae\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf0 Server.default.options.numWireBufs = 128;\
+s = \cf2 Server\cf0 .default;\
+if(not(s.serverRunning), \{s.boot\});\
+p = \cf2 ProxySpace\cf0 .push(s); \cf3 // 
+\f0 \'83\'76\'83\'8d\'83\'4c\'83\'56\'8b\'f3\'8a\'d4\'82\'f0\'97\'70\'88\'d3\'82\'b5\'95\'cf\'90\'94
+\f1 p
+\f0 \'82\'c9\'91\'e3\'93\'fc\'82\'b5\'82\'c4\'82\'a8\'82\'ad\cf0 \
+
+\f1 p.fadeTime = 3; \cf3 // 
+\f0 \'83\'74\'83\'46\'83\'43\'83\'68\'83\'41\'83\'45\'83\'67\'8e\'9e\'8a\'d4\'82\'f0
+\f1 3
+\f0 \'95\'62\'82\'c9\'90\'dd\'92\'e8\cf0 \
+
+\f1 p.clock = \cf2 TempoClock\cf0 .default;\
+p.clock.tempo = 1.0; \cf3 // 
+\f0 \'83\'65\'83\'93\'83\'7c\'82\'cc\'90\'dd\'92\'e8
+\f1 (1bps=60bpm)\cf0 \
+)\
+\
+(\
+~out.ar(2); \cf3 // 2ch
+\f0 \'8f\'6f\'97\'cd\'97\'70\'83\'76\'83\'8d\'83\'4c\'83\'56
+\f1 (out)
+\f0 \'82\'f0\'97\'70\'88\'d3\cf0 \
+
+\f1 ~out.play; \cf3 // 
+\f0 \'83\'82\'83\'6a\'83\'5e\'81\'5b\'8a\'4a\'8e\'6e\cf0 \
+
+\f1 ~out.vol = 1.0; \cf3 // 
+\f0 \'89\'b9\'97\'ca\'82\'f0\'90\'dd\'92\'e8\cf0 \
+
+\f1 ~out.scope; \cf3 // 
+\f0 \'94\'67\'8c\'60\'82\'cc\'95\'5c\'8e\'a6\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf2 FreqScope\cf0 .new(512
+\f0 , 
+\f1 200, 0); \cf3 // 
+\f0 \'83\'58\'83\'79\'83\'4e\'83\'67\'83\'8b\'82\'cc\'95\'5c\'8e\'a6
+\f1 (http://www.uweb.ucsb.edu/~ljputnam/sc3.html)\cf0 \
+)\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs36 \cf0 \'89\'b9\'8b\'bf\'91\'66\'8d\'de
+\f1 (
+\f0 \'93\'5f
+\f1 /
+\f0 \'93\'5f\'97\'f1\'81\'45\'90\'fc\'81\'45\'96\'ca
+\f1 )
+\f0 \'82\'cc\'92\'e8\'8b\'60\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1\fs24 \cf0 \
+(\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 SynthDef\cf0 (\cf4 \\points\cf0 , \{\cf2 arg\cf0  amp=0.5, freq=1, pan=0, sustain=10;	\cf2 var\cf0  env;\
+	env = \cf2 Env\cf0 .linen(0, sustain, 0, amp, 0);\
+	\cf2 Out\cf0 .ar(0, \
+		\cf2 Pan2\cf0 .ar(\
+		\cf2 Impulse\cf0 .ar(freq) * \cf2 EnvGen\cf0 .ar(env, doneAction:2),\
+		pan))\
+	\}).store;\
+\
+\cf2 SynthDef\cf0 (\cf4 \\line\cf0 , \{\cf2 arg\cf0  amp=0.5, freq=441, pan=0, sustain=10;	\cf2 var\cf0  env;\
+	env = \cf2 Env\cf0 .linen(0, sustain, 0, amp, 0);\
+	\cf2 Out\cf0 .ar(0, \
+		\cf2 Pan2\cf0 .ar(\
+		\cf2 SinOsc\cf0 .ar(freq) * \cf2 EnvGen\cf0 .ar(env, doneAction:2),\
+		pan))\
+	\}).store;\
+\
+\cf2 SynthDef\cf0 (\cf4 \\plane\cf0 , \{\cf2 arg\cf0  amp=0.5, pan=0, sustain=10;	\cf2 var\cf0  env;\
+	env = \cf2 Env\cf0 .linen(0, sustain, 0, amp, 0);\
+	\cf2 Out\cf0 .ar(0, \
+		\cf2 Pan2\cf0 .ar(\
+		\cf2 WhiteNoise\cf0 .ar * \cf2 EnvGen\cf0 .ar(env, doneAction:2),\
+		pan))\
+	\}).store;\
+\
+\cf2 SynthDef\cf0 (\cf4 \\points2\cf0 , \{\cf2 arg\cf0  amp1=0.2, amp2=0.7, freq1=2, freq2=0.5, pan1= -1, pan2=1, sustain=10;	\cf2 var\cf0  env;\
+	env = \cf2 Env\cf0 .new([amp1, amp2], [sustain]);\
+	\cf2 Out\cf0 .ar(0, \
+		\cf2 Pan2\cf0 .ar(\
+		\cf2 Impulse\cf0 .ar(\cf2 Line\cf0 .kr(freq1, freq2, sustain)) * \cf2 EnvGen\cf0 .ar(env, doneAction:2),\
+		\cf2 Line\cf0 .kr(pan1, pan2, sustain)))\
+	\}).store;\
+\
+\cf2 SynthDef\cf0 (\cf4 \\line2\cf0 , \{\cf2 arg\cf0  amp1=0.7, amp2=0.2, freq1=4410, freq2=441, pan1= -1, pan2=1, sustain=10;	\cf2 var\cf0  env;\
+	env = \cf2 Env\cf0 .new([amp1, amp2], [sustain]);\
+	\cf2 Out\cf0 .ar(0, \
+		\cf2 Pan2\cf0 .ar(\
+		\cf2 SinOsc\cf0 .ar(\cf2 Line\cf0 .kr(freq1, freq2, sustain)) * \cf2 EnvGen\cf0 .ar(env, doneAction:2),\
+		\cf2 Line\cf0 .kr(pan1, pan2, sustain)))\
+	\}).store;\
+\
+\cf2 SynthDef\cf0 (\cf4 \\plane2\cf0 , \{\cf2 arg\cf0  amp1=0.7, amp2=0.2, pan1= -1, pan2=1, sustain=10;	\cf2 var\cf0  env;\
+	env = \cf2 Env\cf0 .new([amp1, amp2], [sustain]);\
+	\cf2 Out\cf0 .ar(0, \
+		\cf2 Pan2\cf0 .ar(\
+		\cf2 WhiteNoise\cf0 .ar * \cf2 EnvGen\cf0 .ar(env, doneAction:2),\
+		\cf2 Line\cf0 .kr(pan1, pan2, sustain)))\
+	\}).store;\
+)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs36 \cf0 \
+\'83\'7d\'83\'45\'83\'58\'83\'82\'83\'6a\'83\'5e\'81\'5b(\'8d\'c0\'95\'57\'95\'5c\'8e\'a6)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1\fs24 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf3 // 
+\f0 \'83\'7d\'83\'45\'83\'58\'83\'82\'83\'6a\'83\'5e\'81\'5b\'82\'cc\'83\'54\'81\'5b\'83\'6f\'81\'5b\'92\'e8\'8b\'60\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf0 (\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 SynthDef\cf0 (\cf4 \\mousexToClient\cf0 , \{ \cf2 |trig_id = 0|\cf0 \
+	\cf2 var\cf0 	mousex, mousey, trig;\
+	mousex = \cf2 MouseX\cf0 .kr(0, 1, \cf4 \\linear\cf0 , 0);\
+	mousey = \cf2 MouseY\cf0 .kr(0, 1, \cf4 \\linear\cf0 , 0);\
+	trig = \cf2 HPZ1\cf0 .kr(mousex).abs;\
+	trig = \cf2 HPZ1\cf0 .kr(mousey).abs;\
+	\cf2 SendTrig\cf0 .kr(trig, 0, mousex);\
+	\cf2 SendTrig\cf0 .kr(trig, 1, mousey);\
+\}).send(s);\
+)\
+\
+m.free;\
+m = \cf2 Synth\cf0 (\cf4 \\mousexToClient\cf0 );\
+\
+\cf3 // 
+\f0 \'83\'7d\'83\'45\'83\'58\'8d\'c0\'95\'57\'82\'f0\'83\'45\'83\'42\'83\'93\'83\'68\'83\'45\'82\'c9\'95\'5c\'8e\'a6\'82\'b7\'82\'e9\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f1 \cf0 (\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 var\cf0  win, mouse, x, y, text, resp;\
+win = \cf2 SCWindow\cf0 (\cf5 "mouse"\cf0 , \cf2 Rect\cf0 (100, 200, 350, 40)).front;\
+win.view.background_(\cf2 Color\cf0 .white);\
+win.view.decorator = \cf2 FlowLayout\cf0 (win.view.bounds);\
+mouse = \cf2 SCStaticText\cf0 (win, 350@20).font_(\cf2 Font\cf0 (\cf5 "Monaco"\cf0 , 12)).stringColor_(\cf2 Color\cf0 .black);\
+\
+resp = \cf2 OSCresponderNode\cf0 (s.addr, \cf4 '/tr'\cf0 , \{ \cf2 |time, resp, msg|\cf0 \
+	if( msg[2] == 0,\{ x = msg[3] \}, \{ y = msg[3] \});\
+	text = \cf5 "[ x ="\cf0  + x.asString + \cf5 ", y ="\cf0  + y.asString + \cf5 "]"\cf0 ;\
+	\{ mouse.string_(text); \}.defer;\
+\}).add;\
+win.onClose_(\{resp.remove\});	\
+)\
+\
+}

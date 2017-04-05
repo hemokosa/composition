@@ -1,0 +1,1707 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf420
+{\fonttbl\f0\fnil\fcharset77 Monaco;\f1\fnil\fcharset78 Osaka-Mono;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red191\green0\blue0;\red0\green0\blue191;
+\red96\green96\blue96;\red0\green115\blue0;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf2 (\
+\cf3 // 
+\f1 \'83\'43\'83\'93\'83\'5e\'81\'5b\'83\'69\'83\'8b\'81\'45\'83\'54\'81\'5b\'83\'6f\'81\'5b\'82\'f0\'83\'66\'83\'74\'83\'48\'83\'8b\'83\'67\'82\'c6\'82\'b5\'95\'cf\'90\'94
+\f0 s
+\f1 \'82\'c9\'91\'e3\'93\'fc\'82\'b5\'82\'c4\'8b\'4e\'93\'ae
+\f0  \cf2 \
+\cf4 Server\cf2 .default = s = \cf4 Server\cf2 .internal; \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 s.options.numWireBufs = 128;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+\cf2 s.recSampleFormat = \cf5 "int16"\cf2 ;\
+if(not(s.serverRunning), \{s.boot\}); \
+\cf3 // 
+\f1 \'83\'76\'83\'8d\'83\'4c\'83\'56\'8b\'f3\'8a\'d4\'82\'f0\'97\'70\'88\'d3\'82\'b5\'95\'cf\'90\'94
+\f0 p
+\f1 \'82\'c9\'91\'e3\'93\'fc\cf2 \
+
+\f0 p = \cf4 ProxySpace\cf2 .push(s); \
+\cf3 // 
+\f1 \'83\'74\'83\'46\'83\'43\'83\'68\'83\'41\'83\'45\'83\'67\'8e\'9e\'8a\'d4\'82\'f0
+\f0 1
+\f1 \'95\'62\'82\'c9\'90\'dd\'92\'e8
+\f0  \cf2 \
+p.fadeTime = 1; \
+)\
+\
+(\
+\cf3 // 2ch
+\f1 \'8f\'6f\'97\'cd\'97\'70\'83\'76\'83\'8d\'83\'4c\'83\'56
+\f0 (out)
+\f1 \'82\'f0\'97\'70\'88\'d3
+\f0  \cf2 \
+~out.ar(2); \
+\cf3 // 
+\f1 \'83\'82\'83\'6a\'83\'5e\'81\'5b\'8a\'4a\'8e\'6e
+\f0  \cf2 \
+~out.play;\
+\cf3 // 
+\f1 \'89\'b9\'97\'ca\'82\'f0\'90\'dd\'92\'e8
+\f0  \cf2 \
+~out.vol = 1.0;\
+)\
+\
+(\
+\cf3 // 
+\f1 \'94\'67\'8c\'60\'82\'cc\'95\'5c\'8e\'a6\cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0 \cf4 Stethoscope\cf2 .new(s, 2, zoom:0.2);\
+\cf3 // 
+\f1 \'83\'58\'83\'79\'83\'4e\'83\'67\'83\'8b\'82\'cc\'95\'5c\'8e\'a6
+\f0 (http://www.uweb.ucsb.edu/~ljputnam/sc3.html)\cf2 \
+\cf4 FreqScope\cf2 .new(512, 256, 0, \cf4 Color\cf2 .yellow, \cf4 Color\cf2 .black);\
+)\
+\
+(\
+\cf3 // 
+\f1 \'93\'5f(\'97\'f1)\'81\'46
+\f0 points\cf2 \
+\cf4 SynthDef\cf2 (\cf6 \\points\cf2 , \{\cf4 arg\cf2  freq=1, amp=0.5, pan=0, sustain=1;\
+	\cf4 var\cf2  env = \cf4 Env\cf2 .linen(0, sustain, 0, amp, 0);\
+	\cf4 Out\cf2 .ar(0, \
+		\cf4 Pan2\cf2 .ar(\
+		\cf4 Impulse\cf2 .ar(freq) * \cf4 EnvGen\cf2 .ar(env, doneAction:2),\
+		pan))\
+	\}).store;\
+\cf3 // 
+\f1 \'90\'fc\'81\'46
+\f0 line\cf2 \
+\cf4 SynthDef\cf2 (\cf6 \\line\cf2 , \{\cf4 arg\cf2  freq=441, amp=0.5, pan=0, sustain=1;\
+	\cf4 var\cf2  env = \cf4 Env\cf2 .linen(0, sustain, 0, amp, 0);\
+	\cf4 Out\cf2 .ar(0, \
+		\cf4 Pan2\cf2 .ar(\
+		\cf4 SinOsc\cf2 .ar(freq) * \cf4 EnvGen\cf2 .ar(env, doneAction:2),\
+		pan))\
+	\}).store;\
+\cf3 // 
+\f1 \'96\'ca\'81\'46
+\f0 plane\cf2 \
+\cf4 SynthDef\cf2 (\cf6 \\plane\cf2 , \{\cf4 arg\cf2  amp=0.5, pan=0, sustain=1;\
+	\cf4 var\cf2  env = \cf4 Env\cf2 .linen(0, sustain, 0, amp, 0);\
+	\cf4 Out\cf2 .ar(0, \
+		\cf4 Pan2\cf2 .ar(\
+		\cf4 WhiteNoise\cf2 .ar * \cf4 EnvGen\cf2 .ar(env, doneAction:2),\
+		pan))\
+	\}).store;\
+)\
+\
+(\
+\cf3 // 
+\f1 \'93\'5f(\'97\'f1)\'81\'46
+\f0 points2\cf2 \
+\cf4 SynthDef\cf2 (\cf6 \\points2\cf2 , \{\
+	\cf4 arg\cf2  freq1=2, freq2=0.5, amp1=0.2, amp2=0.7, pan1= -1, pan2=1, sustain=1;\
+	\cf4 var\cf2  env = \cf4 Env\cf2 .new([amp1, amp2], [sustain]);\
+	\cf4 Out\cf2 .ar(0, \
+		\cf4 Pan2\cf2 .ar(\
+		\cf4 Impulse\cf2 .ar(\cf4 Line\cf2 .kr(freq1, freq2, sustain)) * \cf4 EnvGen\cf2 .ar(env, doneAction:2),\
+		\cf4 Line\cf2 .kr(pan1, pan2, sustain)))\
+	\}).store;\
+\cf3 // 
+\f1 \'90\'fc\'81\'46
+\f0 line2\cf2 \
+\cf4 SynthDef\cf2 (\cf6 \\line2\cf2 , \{\
+	\cf4 arg\cf2  freq1=4410, freq2=441, amp1=0.7, amp2=0.2, pan1= -1, pan2=1, sustain=1;\
+	\cf4 var\cf2  env = \cf4 Env\cf2 .new([amp1, amp2], [sustain]);\
+	\cf4 Out\cf2 .ar(0, \
+		\cf4 Pan2\cf2 .ar(\
+		\cf4 SinOsc\cf2 .ar(\cf4 Line\cf2 .kr(freq1, freq2, sustain)) * \cf4 EnvGen\cf2 .ar(env, doneAction:2),\
+		\cf4 Line\cf2 .kr(pan1, pan2, sustain)))\
+	\}).store;\
+\cf3 // 
+\f1 \'96\'ca\'81\'46
+\f0 plane2\cf2 \
+\cf4 SynthDef\cf2 (\cf6 \\plane2\cf2 , \{\
+	\cf4 arg\cf2  amp1=0.7, amp2=0.2, pan1= -1, pan2=1, sustain=1;\
+	\cf4 var\cf2  env = \cf4 Env\cf2 .new([amp1, amp2], [sustain]);\
+	\cf4 Out\cf2 .ar(0, \
+		\cf4 Pan2\cf2 .ar(\
+		\cf4 WhiteNoise\cf2 .ar * \cf4 EnvGen\cf2 .ar(env, doneAction:2),\
+		\cf4 Line\cf2 .kr(pan1, pan2, sustain)))\
+	\}).store;\
+)\
+\
+\
+(\
+\cf4 SynthDescLib\cf2 .global.read;\
+\cf4 SynthDescLib\cf2 .global.browse;\
+)\
+\
+\
+\cf3 // 1[Hz]
+\f1 \'82\'cc\'93\'5f\'97\'f1\cf2 \
+
+\f0 ~out = \{ \cf4 Impulse\cf2 .ar(1, 0, 0.5, 0).dup \};\
+\cf3 // 10[Hz]
+\f1 \'82\'cc\'93\'5f\'97\'f1\cf2 \
+
+\f0 ~out = \{ \cf4 Impulse\cf2 .ar(10, 0, 0.5, 0).dup \};\
+\cf3 // 100[Hz]
+\f1 \'82\'cc\'93\'5f\'97\'f1\cf2 \
+
+\f0 ~out = \{ \cf4 Impulse\cf2 .ar(100, 0, 0.5, 0).dup \};\
+\cf3 // 1000[Hz]
+\f1 \'82\'cc\'93\'5f\'97\'f1\cf2 \
+
+\f0 ~out = \{ \cf4 Impulse\cf2 .ar(1000, 0, 0.5, 0).dup \};\
+\cf3 // 10000[Hz]
+\f1 \'82\'cc\'93\'5f\'97\'f1\cf2 \
+
+\f0 ~out = \{ \cf4 Impulse\cf2 .ar(10000, 0, 0.5, 0).dup \};\
+\cf3 // 
+\f1 \'8f\'49\'97\'b9\cf2 \
+
+\f0 ~out = \cf4 nil\cf2 ;\
+\
+\
+\cf3 // 1[Hz]
+\f1 \'82\'cc\'90\'fc\cf2 \
+
+\f0 ~out = \{ \cf4 SinOsc\cf2 .ar(1, 0, 0.5, 0).dup \};\
+\cf3 // 10[Hz]
+\f1 \'82\'cc\'90\'fc\cf2 \
+
+\f0 ~out = \{ \cf4 SinOsc\cf2 .ar(10, 0, 0.5, 0).dup \};\
+\cf3 // 100[Hz]
+\f1 \'82\'cc\'90\'fc\cf2 \
+
+\f0 ~out = \{ \cf4 SinOsc\cf2 .ar(100, 0, 0.5, 0).dup \}.plot(0.1);\
+\cf3 // 1000[Hz]
+\f1 \'82\'cc\'90\'fc\cf2 \
+
+\f0 ~out = \{ \cf4 SinOsc\cf2 .ar(1000, 0, 0.5, 0).dup \};\
+\cf3 // 10000[Hz]
+\f1 \'82\'cc\'90\'fc\cf2 \
+
+\f0 ~out = \{ \cf4 SinOsc\cf2 .ar(10000, 0, 0.5, 0).dup \};\
+\cf3 // 
+\f1 \'8f\'49\'97\'b9\cf2 \
+
+\f0 ~out = \cf4 nil\cf2 ;\
+\
+\
+\cf3 // 
+\f1 \'90\'55\'95\'9d
+\f0 0.001
+\f1 \'82\'cc\'96\'ca\cf2 \
+
+\f0 ~out = \{ \cf4 WhiteNoise\cf2 .ar(0.001, 0).dup \};\
+\cf3 // 
+\f1 \'90\'55\'95\'9d
+\f0 0.01
+\f1 \'82\'cc\'96\'ca\cf2 \
+
+\f0 ~out = \{ \cf4 WhiteNoise\cf2 .ar(0.01, 0).dup \};\
+\cf3 // 
+\f1 \'90\'55\'95\'9d
+\f0 0.1
+\f1 \'82\'cc\'96\'ca\cf2 \
+
+\f0 ~out = \{ \cf4 WhiteNoise\cf2 .ar(0.1, 0).dup \};\
+\cf3 // 
+\f1 \'90\'55\'95\'9d
+\f0 1
+\f1 \'82\'cc\'96\'ca\cf2 \
+
+\f0 ~out = \{ \cf4 WhiteNoise\cf2 .ar(1, 0).dup \};\
+\cf3 // 
+\f1 \'8f\'49\'97\'b9\cf2 \
+
+\f0 ~out = \cf4 nil\cf2 ;\
+\
+\
+\
+\cf3 // 
+\f1 \'83\'70\'83\'89\'83\'81\'81\'5b\'83\'5e\'82\'cc\'92\'6c\'82\'f0\'83\'5a\'83\'62\'83\'67\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~out.set(\cf6 \\freq\cf2 , 100, \cf6 \\amp\cf2 , 0.5, \cf6 \\pan\cf2 , 0, \cf6 \\sustain\cf2 , 1);\
+\cf3 // 
+\f1 \'8f\'6f\'97\'cd\'82\'f0\'93\'5f\'82\'c9\'83\'41\'83\'54\'83\'43\'83\'93\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~out = \cf6 \\points\cf2 ;\
+\cf3 // 
+\f1 \'8f\'6f\'97\'cd\'82\'f0\'90\'fc\'82\'c9\'83\'41\'83\'54\'83\'43\'83\'93\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~out = \cf6 \\line\cf2 ;\
+\cf3 // 
+\f1 \'83\'70\'83\'89\'83\'81\'81\'5b\'83\'5e\'82\'cc\'92\'6c\'82\'f0\'95\'cf\'8d\'58\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~out.set(\cf6 \\freq\cf2 , 10000);\
+~out = \cf6 \\line\cf2 ;\
+\cf3 // 
+\f1 \'8f\'6f\'97\'cd\'82\'f0\'96\'ca\'82\'c9\'83\'41\'83\'54\'83\'43\'83\'93\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~out = \cf6 \\plane\cf2 ;\
+\cf3 // 
+\f1 \'83\'70\'83\'89\'83\'81\'81\'5b\'83\'5e\'82\'f0\'8e\'9e\'8a\'d4\'95\'cf\'89\'bb\'82\'b3\'82\'b9\'82\'e9\cf2 \
+
+\f0 ~out.set(\cf6 \\freq1\cf2 , 1, \cf6 \\freq2\cf2 , 100, \cf6 \\amp1\cf2 , 0.5, \cf6 \\amp2\cf2 , 0.5, \cf6 \\pan1\cf2 , -1, \cf6 \\pan2\cf2 , 1, \cf6 \\sustain\cf2 , 10);\
+\cf3 // 
+\f1 \'8f\'6f\'97\'cd\'82\'f0\'8e\'9e\'8a\'d4\'95\'cf\'89\'bb\'82\'b7\'82\'e9\'93\'5f\'82\'c9\'83\'41\'83\'54\'83\'43\'83\'93\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~out = \cf6 \\points2\cf2 ;\
+\cf3 // 
+\f1 \'8f\'6f\'97\'cd\'82\'f0\'8e\'9e\'8a\'d4\'95\'cf\'89\'bb\'82\'b7\'82\'e9\'90\'fc\'82\'c9\'83\'41\'83\'54\'83\'43\'83\'93\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~out = \cf6 \\line2\cf2 ;\
+\cf3 // 
+\f1 \'8f\'6f\'97\'cd\'82\'f0\'8e\'9e\'8a\'d4\'95\'cf\'89\'bb\'82\'b7\'82\'e9\'96\'ca\'82\'c9\'83\'41\'83\'54\'83\'43\'83\'93\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~out = \cf6 \\plane2\cf2 ;\
+\
+\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf3 // Task
+\f1 \'82\'cc\'92\'e8\'8b\'60\cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0 \cf2 (\
+\cf4 var\cf2  freq, amp, pan, sustain;\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 , \{\
+	loop (\{\
+		freq = 22100.0.rand.post; \cf5 ", "\cf2 .post; \cf3 // 
+\f1 \'8e\'fc\'94\'67\'90\'94\cf2 \
+		
+\f0 amp = 1.0.rand.post; \cf5 ", "\cf2 .post; \cf3 // 
+\f1 \'90\'55\'95\'9d\cf2 \
+		
+\f0 pan = 1.0.rand2.post; \cf5 ", "\cf2 .post; \cf3 // 
+\f1 \'83\'70\'83\'93\cf2 \
+		
+\f0 sustain = 5.0.rand.post; \cf5 ", "\cf2 .post; \cf3 // 
+\f1 \'8c\'70\'91\'b1\'8e\'9e\'8a\'d4\cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 		
+\f0 ~out.set(\cf6 \\freq\cf2 , freq, \cf6 \\amp\cf2 , amp, \cf6 \\pan\cf2 , pan, \cf6 \\sustain\cf2 , sustain);\
+		~out = [\cf6 \\points\cf2 , \cf6 \\line\cf2 , \cf6 \\plane\cf2 ].choose.postln;\
+		5.wait;\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf2 	\});\
+\})\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 )\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf3 // Task
+\f1 \'82\'cc\'8e\'c0\'8d\'73\'82\'c6\'92\'e2\'8e\'7e\cf2 \
+
+\f0 \cf4 Tdef\cf2 (\cf6 \\x\cf2 ).play;\
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 ).stop;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 \
+\
+\
+\cf3 // 
+\f1 \'83\'54\'83\'45\'83\'93\'83\'68
+\f0 1
+\f1 \'81\'69\'8d\'c5\'92\'5a\'82\'cc\'89\'b9\'81\'6a\cf2 \
+
+\f0 ~out.set(\cf6 \\freq\cf2 , 10, \cf6 \\amp\cf2 , 1.0, \cf6 \\pan\cf2 , 0, \cf6 \\sustain\cf2 , 0.01);\
+~out = \cf6 \\points\cf2 ;\
+\cf3 // 
+\f1 \'83\'54\'83\'45\'83\'93\'83\'68
+\f0 2
+\f1 \'81\'69\'8d\'c5\'8f\'ac\'82\'cc\'89\'b9\'81\'6a\cf2 \
+
+\f0 ~out.set(\cf6 \\freq\cf2 , 50, \cf6 \\amp\cf2 , 1/32768, \cf6 \\pan\cf2 , 0, \cf6 \\sustain\cf2 , 3);\
+~out = \cf6 \\points\cf2 ;\
+\cf3 // 
+\f1 \'83\'54\'83\'45\'83\'93\'83\'68
+\f0 3\cf2 \
+~out.set(\cf6 \\freq\cf2 , 14000, \cf6 \\amp\cf2 , 1.0, \cf6 \\pan\cf2 , 0, \cf6 \\sustain\cf2 , 3);\
+~out = \cf6 \\points\cf2 ;\
+\cf3 // 
+\f1 \'83\'54\'83\'45\'83\'93\'83\'68
+\f0 4\cf2 \
+~out.set(\cf6 \\freq\cf2 , 35, \cf6 \\amp\cf2 , 1.0, \cf6 \\pan\cf2 , 0.0, \cf6 \\sustain\cf2 , 3);\
+~out = \cf6 \\line\cf2 ;\
+\cf3 // 
+\f1 \'83\'54\'83\'45\'83\'93\'83\'68
+\f0 5\cf2 \
+~out.set(\cf6 \\amp\cf2 , 0.0005, \cf6 \\pan\cf2 , 0, \cf6 \\sustain\cf2 , 30.0);\
+~out = \cf6 \\plane\cf2 ;\
+\cf3 // 
+\f1 \'83\'54\'83\'45\'83\'93\'83\'68
+\f0 6\cf2 \
+~out.set(\cf6 \\amp\cf2 , 0.5, \cf6 \\pan\cf2 , 0, \cf6 \\sustain\cf2 , 0.001);\
+~out = \cf6 \\plane\cf2 ;\
+\cf3 // 
+\f1 \'83\'54\'83\'45\'83\'93\'83\'68
+\f0 7\cf2 \
+~out.set(\cf6 \\freq1\cf2 , 12000, \cf6 \\freq2\cf2 , 12000, \cf6 \\amp1\cf2 , 0, \cf6 \\amp2\cf2 , 0.9, \cf6 \\pan1\cf2 , 0.0, \cf6 \\pan2\cf2 , 0.0, \cf6 \\sustain\cf2 , 30);\
+~out = \cf6 \\points2\cf2 ;\
+\cf3 // 
+\f1 \'83\'54\'83\'45\'83\'93\'83\'68
+\f0 8\cf2 \
+~out.set(\cf6 \\freq1\cf2 , 1000, \cf6 \\freq2\cf2 , 50, \cf6 \\amp1\cf2 , 0.5, \cf6 \\amp2\cf2 , 0.5, \cf6 \\pan1\cf2 , 0.0, \cf6 \\pan2\cf2 , 0.0, \cf6 \\sustain\cf2 , 0.1);\
+~out = \cf6 \\line2\cf2 ;\
+\
+\
+\
+\
+\
+\cf3 // 
+\f1 \'83\'7d\'83\'45\'83\'58\'83\'82\'83\'6a\'83\'5e\'81\'5b\'82\'cc
+\f0 SynthDef
+\f1 \'92\'e8\'8b\'60\cf2 \
+
+\f0 (\
+\cf4 SynthDef\cf2 (\cf6 \\mousexToClient\cf2 , \{ \cf4 |trig_id = 0|\cf2 \
+	\cf4 var\cf2 	mousex, mousey, trig;\
+	mousex = \cf4 MouseX\cf2 .kr(0, 1, \cf6 \\linear\cf2 , 0);\
+	mousey = \cf4 MouseY\cf2 .kr(0, 1, \cf6 \\linear\cf2 , 0);\
+	trig = \cf4 HPZ1\cf2 .kr(mousex).abs;\
+	trig = \cf4 HPZ1\cf2 .kr(mousey).abs;\
+	\cf4 SendTrig\cf2 .kr(trig, 0, mousex);\
+	\cf4 SendTrig\cf2 .kr(trig, 1, mousey);\
+\}).send(s);\
+)\
+a.free;\
+a = \cf4 Synth\cf2 (\cf6 \\mousexToClient\cf2 );\
+\cf3 // 
+\f1 \'83\'7d\'83\'45\'83\'58\'8d\'c0\'95\'57\'82\'f0\'83\'45\'83\'42\'83\'93\'83\'68\'83\'45\'82\'c9\'95\'5c\'8e\'a6\'82\'b7\'82\'e9\cf2 \
+
+\f0 (\
+\cf4 var\cf2  win, mouse, x, y, text, resp;\
+win = \cf4 SCWindow\cf2 (\cf5 "mouse"\cf2 , \cf4 Rect\cf2 (100, 200, 350, 40)).front;\
+win.view.background_(\cf4 Color\cf2 .white);\
+win.view.decorator = \cf4 FlowLayout\cf2 (win.view.bounds);\
+mouse = \cf4 SCStaticText\cf2 (win, 350@20).font_(\cf4 Font\cf2 (\cf5 "Monaco"\cf2 , 12)).stringColor_(\cf4 Color\cf2 .black);\
+\
+resp = \cf4 OSCresponderNode\cf2 (s.addr, \cf6 '/tr'\cf2 , \{ \cf4 |time, resp, msg|\cf2 \
+	if( msg[2] == 0, \{ x = msg[3] \}, \{ y = msg[3] \});\
+	text = \cf5 "[ x ="\cf2  + x.asString + \cf5 ", y ="\cf2  + y.asString + \cf5 "]"\cf2 ;\
+	\{ mouse.string_(text); \}.defer;\
+\}).add;\
+win.onClose_(\{resp.remove\});	\
+)\
+\
+\
+\
+\
+\
+\cf3 //44100
+\f1 \'82\'cc\'96\'f1\'90\'94\'82\'f0\'8b\'81\'82\'df\'82\'e9\cf2 \
+
+\f0 (1..44100).removeAllSuchThat(\{ \cf4 |i|\cf2  (44100 % i) == 0 \});\
+\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf2 \
+\cf3 // Task
+\f1 \'82\'cc\'92\'e8\'8b\'60\cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0 \cf2 (\
+\cf4 var\cf2  freq = (1..44100).removeAllSuchThat(\{ \cf4 |i|\cf2  (44100 % i) == 0 \});\
+~out.set(\cf6 \\amp\cf2 , 0.5, \cf6 \\pan\cf2 , 0, \cf6 \\sustain\cf2 , 1);\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 , \{\
+	(1..freq.size).do(\{ \cf4 |i|\cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 		~out.set(\cf6 \\freq\cf2 , freq.at(i-1).postln);\
+		~out = \cf6 \\points\cf2 ;\
+		1.wait;\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf2 	\});\
+\})\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 )\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf3 // Task
+\f1 \'82\'cc\'8e\'c0\'8d\'73\'82\'c6\'92\'e2\'8e\'7e\cf2 \
+
+\f0 \cf4 Tdef\cf2 (\cf6 \\x\cf2 ).play;\
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 ).stop;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 \
+\
+\
+\cf3 // 44100
+\f1 \'82\'cc\'90\'ae\'90\'94\'95\'aa\'82\'cc
+\f0 1
+\f1 \'82\'f0\'8b\'81\'82\'df\'82\'e9\cf2 \
+
+\f0 (1..20).collect(\{\cf4 |i|\cf2  44100 / i\});\
+\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf2 \
+\cf3 // Task
+\f1 \'82\'cc\'92\'e8\'8b\'60\cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0 \cf2 (\
+~out.set(\cf6 \\amp\cf2 , 0.5, \cf6 \\pan\cf2 , 0, \cf6 \\sustain\cf2 , 5);\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 , \{\
+	(2..20).do(\{ \cf4 |i|\cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 		~out.set(\cf6 \\freq\cf2 , (44100/i).postln); \cf3 // 
+\f1 \'8f\'83\'90\'b3\'97\'a5\'8e\'fc\'94\'67\'90\'94\cf2 \
+		
+\f0 ~out = \cf6 \\points\cf2 ;\
+		5.wait;\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf2 	\});\
+\})\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 )\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf3 // Task
+\f1 \'82\'cc\'8e\'c0\'8d\'73\'82\'c6\'92\'e2\'8e\'7e\cf2 \
+
+\f0 \cf4 Tdef\cf2 (\cf6 \\x\cf2 ).play;\
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 ).stop;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 \
+\
+\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf3 // Task
+\f1 \'82\'cc\'92\'e8\'8b\'60\cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0 \cf2 (\
+~out.set(\cf6 \\amp1\cf2 , 0.5, \cf6 \\amp2\cf2 , 0.5, \cf6 \\pan1\cf2 , 0, \cf6 \\pan2\cf2 , 0, \cf6 \\sustain\cf2 , 5);\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 , \{\
+	(2..20).do(\{ \cf4 |i|\cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 		~out.set(\cf6 \\freq1\cf2 , (44100/i).postln, \cf6 \\freq2\cf2 , (44100/i)+20); \cf3 // 
+\f1 \'93\'5f\'97\'f1\'82\'cc\'8e\'fc\'94\'67\'90\'94\'82\'f0
+\f0 20[Hz]
+\f1 \'82\'b8\'82\'e7\'82\'b7\cf2 \
+		
+\f0 ~out = \cf6 \\points2\cf2 ;\
+		5.wait;\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf2 	\});\
+\})\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 )\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf3 // Task
+\f1 \'82\'cc\'8e\'c0\'8d\'73\'82\'c6\'92\'e2\'8e\'7e\cf2 \
+
+\f0 \cf4 Tdef\cf2 (\cf6 \\x\cf2 ).play;\
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 ).stop;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 \
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf2 \
+\
+\
+\cf3 // Task
+\f1 \'82\'cc\'92\'e8\'8b\'60\cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0 \cf2 (\
+~out.set(\cf6 \\amp1\cf2 , 0.5, \cf6 \\amp2\cf2 , 0.5, \cf6 \\pan1\cf2 , 0, \cf6 \\pan2\cf2 , 0, \cf6 \\sustain\cf2 , 30);\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 , \{\
+	(2..20).do(\{ \cf4 |i|\cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 		~out.set(\cf6 \\freq1\cf2 , (44100/i).postln, \cf6 \\freq2\cf2 , (44100/(i+1))); \cf3 // 
+\f1 \'8e\'fc\'94\'67\'90\'94\'82\'cc\'8f\'89\'8a\'fa\'92\'6c\'82\'c6\'8f\'49\'92\'6c\cf2 \
+		
+\f0 ~out = \cf6 \\points2\cf2 ;\
+		35.wait;\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf2 	\});\
+\})\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 )\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf3 // Task
+\f1 \'82\'cc\'8e\'c0\'8d\'73\'82\'c6\'92\'e2\'8e\'7e\cf2 \
+
+\f0 \cf4 Tdef\cf2 (\cf6 \\x\cf2 ).play;\
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 ).stop;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 \
+\
+\
+(\
+\cf3 // 
+\f1 \'8e\'fc\'94\'67\'90\'94\'81\'41\'90\'55\'95\'9d\'81\'41\'83\'70\'83\'93\'82\'cc\'83\'76\'83\'8d\'83\'4c\'83\'56\'82\'cc\'92\'e8\'8b\'60\cf2 \
+
+\f0 ~freq.kr(1);\
+~amp.kr(1);\
+~pan.kr(1);\
+)\
+(\
+\cf3 // 
+\f1 \'8f\'89\'8a\'fa\'92\'6c\'82\'cc\'91\'e3\'93\'fc\cf2 \
+
+\f0 ~freq = 4410;\
+~amp = 0.5;\
+~pan = 0;\
+)\
+\cf3 // 
+\f1 \'93\'5f\'97\'f1\'82\'f0\'96\'c2\'82\'e7\'82\'b7\cf2 \
+
+\f0 ~out = \{ \cf4 Pan2\cf2 .ar(\cf4 Impulse\cf2 .ar(~freq.kr, 0, ~amp.kr), ~pan.kr(1)) \};\
+\cf3 // 
+\f1 \'83\'7d\'83\'45\'83\'58\'82\'cc
+\f0 X
+\f1 \'8d\'c0\'95\'57\'82\'f0\'8e\'fc\'94\'67\'90\'94\'82\'c9\'91\'ce\'90\'94\'83\'7d\'83\'62\'83\'73\'83\'93\'83\'4f\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~freq = \{ \cf4 MouseX\cf2 .kr(20.0, 22050.0, \cf6 \\exponential\cf2 ) \};\
+\cf3 // 
+\f1 \'83\'7d\'83\'45\'83\'58\'82\'cc
+\f0 Y
+\f1 \'8d\'c0\'95\'57\'82\'f0\'90\'55\'95\'9d\'82\'c9\'91\'ce\'90\'94\'83\'7d\'83\'62\'83\'73\'83\'93\'83\'4f\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~amp = \{ \cf4 MouseY\cf2 .kr(1.0, 0.01, \cf6 \\exponential\cf2 ) \};\
+\cf3 // 
+\f1 \'83\'7d\'83\'45\'83\'58\'82\'cc
+\f0 X
+\f1 \'8d\'c0\'95\'57\'82\'f0\'83\'70\'83\'93\'82\'c9\'90\'fc\'8c\'60\'83\'7d\'83\'62\'83\'73\'83\'93\'83\'4f\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~pan = \{ \cf4 MouseX\cf2 .kr(-1.0, 1.0, \cf6 \\linear\cf2 ) \};\
+\cf3 // 
+\f1 \'90\'fc\'82\'f0\'96\'c2\'82\'e7\'82\'b7\cf2 \
+
+\f0 ~out = \{ \cf4 Pan2\cf2 .ar(\cf4 SinOsc\cf2 .ar(~freq.kr, 0, ~amp.kr), ~pan.kr(1)) \};\
+\cf3 // 
+\f1 \'96\'ca\'82\'f0\'96\'c2\'82\'e7\'82\'b7\cf2 \
+
+\f0 ~out = \{ \cf4 Pan2\cf2 .ar(\cf4 WhiteNoise\cf2 .ar(~amp.kr), ~pan.kr(1)) \};\
+\cf3 // 
+\f1 \'8f\'49\'97\'b9\cf2 \
+
+\f0 ~out = \cf4 nil\cf2 ;\
+\
+\
+\
+\cf3 // 
+\f1 \'8b\'ab\'8a\'45\'97\'cc\'88\'e6\'82\'cc\'93\'5f\'97\'f1\'82\'f0\'96\'c2\'82\'e7\'82\'b7\cf2 \
+
+\f0 ~out = \{ \cf4 Impulse\cf2 .ar(\cf4 SinOsc\cf2 .kr(0.1, 0, 25, 25), 0.8).dup \};\
+\cf3 // 
+\f1 \'8f\'49\'97\'b9\cf2 \
+
+\f0 ~out = \cf4 nil\cf2 ;\
+\
+\
+~out = \{ \cf4 Impulse\cf2 .ar(\cf4 SinOsc\cf2 .kr(0.1, 0, 20, 20), [\cf4 LFNoise1\cf2 .kr(0.1, 0.5), \cf4 LFNoise1\cf2 .kr(0.1, 0.5)], 0.8) \};\
+~out = \{ \cf4 Impulse\cf2 .ar(\cf4 SinOsc\cf2 .kr(0.1, 0, 20, 20), [\cf4 WhiteNoise\cf2 .kr(0.5), \cf4 WhiteNoise\cf2 .kr(0.5)], 0.8) \};\
+\
+\
+\
+\
+\cf3 // Task
+\f1 \'82\'cc\'92\'e8\'8b\'60\cf2 \
+
+\f0 (\
+\cf4 var\cf2  pan, sustain, interval;\
+~out.set(\cf6 \\freq\cf2 , 441, \cf6 \\amp\cf2 , 0.8);\
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 , \{\
+	loop(\{\
+		rrand(5, 9).postln.do \{ \cf3 // 
+\f1 \'89\'b9\'82\'cc\'8c\'c2\'90\'94\cf2 \
+			
+\f0 pan = 1.rand2;\
+			sustain = rrand(0.005, 0.05); \cf3 // 
+\f1 \'89\'b9\'82\'cc\'8e\'9d\'91\'b1\'8e\'9e\'8a\'d4\cf2 \
+			
+\f0 interval = rrand(0.05, 0.2); \cf3 // 
+\f1 \'89\'b9\'82\'cc\'8a\'d4\'8a\'75\cf2 \
+			
+\f0 ~out.set(\cf6 \\pan\cf2 , pan, \cf6 \\sustain\cf2 , sustain);\
+			~out = [\cf6 \\points\cf2 , \cf6 \\line\cf2 , \cf6 \\plane\cf2 ].choose.postln;\
+			interval.wait;\
+		\};\
+		5.wait;\
+	\});\
+\})\
+)\
+\cf3 // Task
+\f1 \'82\'cc\'8e\'c0\'8d\'73\'82\'c6\'92\'e2\'8e\'7e\cf2 \
+
+\f0 \cf4 Tdef\cf2 (\cf6 \\x\cf2 ).play;\
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 ).stop;\
+\
+\
+\
+\
+\cf3 // Task
+\f1 \'82\'cc\'92\'e8\'8b\'60\cf2 \
+
+\f0 (\
+\cf4 var\cf2  sustain = 0.1; \cf3 // 
+\f1 \'8f\'89\'8a\'fa\'92\'6c\cf2 \
+
+\f0 ~out.set(\cf6 \\freq\cf2 , 8820, \cf6 \\amp\cf2 , 0.8, \cf6 \\pan\cf2 , 0);\
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 , \{\
+	while(\{ sustain > 44100.reciprocal \}, \{ \cf3 // 
+\f1 \'8f\'49\'97\'b9\'8f\'f0\'8c\'8f\cf2 \
+		
+\f0 ~out.set(\cf6 \\sustain\cf2 , sustain.postln);\
+		~out = \cf6 \\line\cf2 ;\
+		sustain = sustain * 0.8; \cf3 // 
+\f1 \'92\'b7\'82\'b3\'82\'f0
+\f0 20%
+\f1 \'82\'b8\'82\'c2\'92\'5a\'82\'ad\'82\'b5\'82\'c4\'82\'a2\'82\'ad\cf2 \
+		
+\f0 1.wait;\
+	\});\
+\})\
+)\
+\cf3 // Task
+\f1 \'82\'cc\'8e\'c0\'8d\'73\'82\'c6\'92\'e2\'8e\'7e\cf2 \
+
+\f0 \cf4 Tdef\cf2 (\cf6 \\x\cf2 ).play;\
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 ).stop;\
+\
+\
+\
+\cf3 // Task
+\f1 \'82\'cc\'92\'e8\'8b\'60\cf2 \
+
+\f0 (\
+\cf4 var\cf2  freq, amp, pan = 0.0, sustain = 0.01; \cf3 // 
+\f1 \'8f\'89\'8a\'fa\'92\'6c\cf2 \
+
+\f0 \cf4 Tdef\cf2 (\cf6 \\x\cf2 , \{\
+	loop(\{\
+		freq = exprand(20.0, 20000.0); \cf3 // 
+\f1 \'8e\'fc\'94\'67\'90\'94\'83\'8c\'83\'93\'83\'57\cf2 \
+		
+\f0 amp = exprand(0.1, 1); \cf3 // 
+\f1 \'90\'55\'95\'9d\'83\'8c\'83\'93\'83\'57\cf2 \
+		
+\f0 ~out.set(\cf6 \\freq\cf2 , freq, \cf6 \\amp\cf2 , amp, \cf6 \\pan\cf2 , pan, \cf6 \\sustain\cf2 , sustain);\
+		~out = [\cf6 \\points\cf2 , \cf6 \\line\cf2 , \cf6 \\plane\cf2 ].choose.postln;\
+		sustain.wait;\
+	\});\
+\})\
+)\
+\cf3 // Task
+\f1 \'82\'cc\'8e\'c0\'8d\'73\'82\'c6\'92\'e2\'8e\'7e\cf2 \
+
+\f0 \cf4 Tdef\cf2 (\cf6 \\x\cf2 ).play;\
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 ).stop;\
+\
+\cf3 // Task
+\f1 \'82\'cc\'92\'e8\'8b\'60\cf2 \
+
+\f0 (\
+\cf4 var\cf2  freq, amp = 0.5, pan = 0.0, sustain = 300.0; \cf3 // 
+\f1 \'8f\'89\'8a\'fa\'92\'6c\cf2 \
+
+\f0 ~out.set(\cf6 \\amp1\cf2 , amp, \cf6 \\amp2\cf2 , amp, \cf6 \\pan1\cf2 , 0.0, \cf6 \\pan2\cf2 , 0.0, \cf6 \\sustain\cf2 , sustain);\
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 , \{\
+	loop(\{\
+		freq = exprand(20.0, 20000.0); \cf3 // 
+\f1 \'8e\'fc\'94\'67\'90\'94\'83\'8c\'83\'93\'83\'57\cf2 \
+		
+\f0 amp = exprand(0.1, 1); \cf3 // 
+\f1 \'90\'55\'95\'9d\'83\'8c\'83\'93\'83\'57\cf2 \
+		
+\f0 ~out.set(\cf6 \\freq1\cf2 , freq, \cf6 \\freq2\cf2 , freq*1.1); \cf3 // 300[
+\f1 \'95\'62
+\f0 ]
+\f1 \'82\'c5\'8e\'fc\'94\'67\'90\'94\'82\'aa
+\f0 1.1
+\f1 \'94\'7b\'82\'c9\'95\'cf\'89\'bb\'82\'b7\'82\'e9\cf2 \
+		
+\f0 ~out = [\cf6 \\points2\cf2 , \cf6 \\line2\cf2 ].choose.postln;\
+		100.wait; \cf3 // 
+\f1 \'93\'af\'8e\'9e\'82\'c9
+\f0 3
+\f1 \'96\'7b\'82\'cc\'93\'5f\'97\'f1
+\f0 /
+\f1 \'90\'fc\'82\'aa\'96\'c2\'82\'e9\cf2 \
+	
+\f0 \});\
+\})\
+)\
+\cf3 // Task
+\f1 \'82\'cc\'8e\'c0\'8d\'73\'82\'c6\'92\'e2\'8e\'7e\cf2 \
+
+\f0 \cf4 Tdef\cf2 (\cf6 \\x\cf2 ).play;\
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 ).stop;\
+\
+\
+~out.clear;\
+~out.play;\
+\
+\cf3 // 
+\f1 \'8f\'6f\'97\'cd\'97\'70\'83\'76\'83\'8d\'83\'4c\'83\'56\'82\'cc\'83\'4e\'83\'8a\'83\'41\cf2 \
+
+\f0 ~out.clear;\
+~out.play;\
+\cf3 // 11025[Hz]
+\f1 \'82\'cc\'93\'5f\'97\'f1\'82\'c9\'82\'e6\'82\'e9\'8f\'83\'90\'b3\'97\'a5\'92\'e8\'90\'f9\'97\'a5\cf2 \
+
+\f0 ~out[0] = \{ \cf4 Impulse\cf2 .ar(11025, 0, 0.1).dup \};\
+\
+\cf3 // 
+\f1 \'8e\'fc\'94\'67\'90\'94\'82\'f0\'8f\'ad\'82\'b5\'82\'b8\'82\'e7\'82\'b5\'82\'bd\'91\'ce\'90\'f9\'97\'a5\'82\'f0\'8f\'64\'82\'cb\'82\'e9\cf2 \
+
+\f0 ~out[1] = \{ \cf4 Impulse\cf2 .ar(11028, 0, 0.1).dup \};\
+\
+\cf3 // 
+\f1 \'82\'b3\'82\'e7\'82\'c9\'8e\'fc\'94\'67\'90\'94\'82\'f0\'82\'b8\'82\'e7\'82\'b5\'82\'bd
+\f0 (3
+\f1 \'96\'7b\'96\'da\'82\'cc
+\f0 )
+\f1 \'91\'ce\'90\'f9\'97\'a5\'82\'f0\'8f\'64\'82\'cb\'82\'e9\cf2 \
+
+\f0 ~out[2] = \{ \cf4 Impulse\cf2 .ar(11050, 0, 0.1).dup \};\
+\
+\cf3 // 2
+\f1 \'82\'c2\'82\'df\'82\'cc\'91\'ce\'90\'f9\'97\'a5\'82\'cc\'8e\'fc\'94\'67\'90\'94\'82\'f0\'82\'e4\'82\'c1\'82\'ad\'82\'e8\'82\'c6\'95\'cf\'93\'ae\'82\'b3\'82\'b9\'82\'e9\cf2 \
+
+\f0 ~out[1] = \{ \cf4 Impulse\cf2 .ar(11028 + \cf4 LFNoise1\cf2 .ar(0.1, 5), 0, 0.1).dup \};\
+\cf3 // 3
+\f1 \'82\'c2\'82\'df\'82\'cc\'91\'ce\'90\'f9\'97\'a5\'82\'cc\'8e\'fc\'94\'67\'90\'94\'82\'f0\'82\'e4\'82\'c1\'82\'ad\'82\'e8\'82\'c6\'95\'cf\'93\'ae\'82\'b3\'82\'b9\'82\'e9\cf2 \
+
+\f0 ~out[3] = \{ \cf4 Impulse\cf2 .ar(11050 + \cf4 LFNoise1\cf2 .ar(0.1, 5), 0, 0.1).dup \};\
+\
+\
+\cf3 // 
+\f1 \'95\'cf\'93\'ae\'97\'70\'83\'76\'83\'8d\'83\'4c\'83\'56\cf2 \
+
+\f0 ~fluctuation = \{ \cf4 LFNoise1\cf2 .ar(1.0, 5) \}
+\f1 \'81\'47\
+
+\f0 \cf3 // 
+\f1 \'92\'e8\'90\'f9\'97\'a5\cf2 \
+
+\f0 ~out[0] = \{ \cf4 Impulse\cf2 .ar(11025 + ~fluctuation.ar, 0, 0.1).dup \};\
+\cf3 // 
+\f1 \'91\'ce\'90\'f9\'97\'a5
+\f0 (1)\cf2 \
+~out[1] = \{ \cf4 Impulse\cf2 .ar(11028 + ~fluctuation.ar, 0, 0.1).dup \};\
+\cf3 // 
+\f1 \'91\'ce\'90\'f9\'97\'a5
+\f0 (2)\cf2 \
+~out[2] = \{ \cf4 Impulse\cf2 .ar(11050 + ~fluctuation.ar, 0, 0.1).dup \};\
+\cf3 // 
+\f1 \'91\'ce\'90\'f9\'97\'a5
+\f0 (2)
+\f1 \'82\'cc\'95\'cf\'93\'ae\'82\'f0\'94\'bd\'8d\'73\'82\'b3\'82\'b9\'82\'e9\cf2 \
+
+\f0 ~out[2] = \{ \cf4 Impulse\cf2 .ar(11050 - ~fluctuation.ar, 0, 0.1).dup \};\
+\
+\
+\
+\cf3 // 
+\f1 \'8f\'6f\'97\'cd\'97\'70\'83\'76\'83\'8d\'83\'4c\'83\'56\'82\'cc\'83\'4e\'83\'8a\'83\'41\cf2 \
+
+\f0 ~out.clear;\
+~out.play;\
+\cf3 // 60[Hz]
+\f1 \'82\'cc\'90\'fc\'82\'c9\'82\'e6\'82\'e9\'92\'e8\'90\'f9\'97\'a5\cf2 \
+
+\f0 ~out[0] = \{ \cf4 SinOsc\cf2 .ar(60, 0, 0.5).dup \};\
+\cf3 // 
+\f1 \'8e\'fc\'94\'67\'90\'94\'82\'cc\'91\'e5\'82\'ab\'82\'ad\'88\'d9\'82\'c8\'82\'e9\'91\'ce\'90\'f9\'97\'a5\'82\'f0\'8f\'64\'82\'cb\'82\'e9\cf2 \
+
+\f0 ~out[1] = \{ \cf4 SinOsc\cf2 .ar(8000, 0, 0.1).dup \};\
+\cf3 // 
+\f1 \'82\'b3\'82\'e7\'82\'c9\'8e\'fc\'94\'67\'90\'94\'82\'cc\'91\'e5\'82\'ab\'82\'ad\'88\'d9\'82\'c8\'82\'e9\'91\'ce\'90\'f9\'97\'a5\'82\'f0\'8f\'64\'82\'cb\'82\'e9\cf2 \
+
+\f0 ~out[2] = \{ \cf4 SinOsc\cf2 .ar(14000, 0, 0.1).dup \};\
+\
+\
+\cf3 // 
+\f1 \'92\'e8\'90\'f9\'97\'a5\cf2 \
+
+\f0 ~out[0] = \{ \cf4 SinOsc\cf2 .ar(60, 0, 0.5 + \cf4 LFNoise1\cf2 .ar(1.0, 0.2)).dup \};\
+\cf3 // 
+\f1 \'91\'ce\'90\'f9\'97\'a5
+\f0 (1)\cf2 \
+~out[1] = \{ \cf4 SinOsc\cf2 .ar(8000, 0, 0.1 + \cf4 LFNoise1\cf2 .ar(0.5, 0.1)).dup \};\
+\cf3 // 
+\f1 \'91\'ce\'90\'f9\'97\'a5
+\f0 (2)\cf2 \
+~out[2] = \{ \cf4 SinOsc\cf2 .ar(14000, 0, 0.1 + \cf4 LFNoise1\cf2 .ar(0.2, 0.1)).dup \};\
+\
+\
+\
+\cf3 // 
+\f1 \'8f\'6f\'97\'cd\'97\'70\'83\'76\'83\'8d\'83\'4c\'83\'56\'82\'cc\'83\'4e\'83\'8a\'83\'41\cf2 \
+
+\f0 ~out.clear;\
+~out.play;\
+\cf3 // 
+\f1 \'88\'ca\'91\'8a\'82\'f0\'82\'e4\'82\'c1\'82\'ad\'82\'e8\'82\'c6\'95\'cf\'93\'ae\'82\'b3\'82\'b9\'82\'bd\'90\'fc\'82\'c9\'82\'e6\'82\'e9\'92\'e8\'90\'f9\'97\'a5\cf2 \
+
+\f0 ~out[0] = \{ \cf4 SinOsc\cf2 .ar(11025, \cf4 LFNoise1\cf2 .ar(1.0, 0.5, 0.5), 0.1).dup \};\
+\cf3 // 
+\f1 \'88\'ca\'91\'8a\'82\'f0\'82\'e4\'82\'c1\'82\'ad\'82\'e8\'82\'c6\'95\'cf\'93\'ae\'82\'b3\'82\'b9\'82\'bd\'91\'ce\'90\'f9\'97\'a5
+\f0 (1)\cf2 \
+~out[1] = \{ \cf4 SinOsc\cf2 .ar(11028, \cf4 LFNoise1\cf2 .ar(1.0, 0.5, 0.5), 0.1).dup \};\
+\cf3 // 
+\f1 \'88\'ca\'91\'8a\'82\'f0\'82\'e4\'82\'c1\'82\'ad\'82\'e8\'82\'c6\'95\'cf\'93\'ae\'82\'b3\'82\'b9\'82\'bd\'91\'ce\'90\'f9\'97\'a5
+\f0 (2)\cf2 \
+~out[3] = \{ \cf4 SinOsc\cf2 .ar(11050, \cf4 LFNoise1\cf2 .ar(1.0, 0.5, 0.5), 0.1).dup \};\
+\cf3 // 11020[Hz]
+\f1 \'82\'cc\'93\'5f\'97\'f1\'82\'f0\'8f\'64\'82\'cb\'82\'e9\cf2 \
+
+\f0 ~out[4] = \{ \cf4 Impulse\cf2 .ar(11020, 0, 0.1).dup \};\
+\cf3 // 
+\f1 \'93\'5f\'97\'f1\'82\'cc\'83\'70\'83\'93\'82\'f0\'8d\'b6\'89\'45\'82\'c9\'90\'55\'93\'ae\'82\'b3\'82\'b9\'82\'e9\cf2 \
+
+\f0 ~out[4] = \{ \cf4 Pan2\cf2 .ar(\cf4 Impulse\cf2 .ar(11020, 0, 0.1), \cf4 SinOsc\cf2 .ar(1.0, 1.0)) \};\
+\cf3 // 
+\f1 \'82\'e4\'82\'c1\'82\'ad\'82\'e8\'82\'c6\'90\'55\'95\'9d\'82\'aa\'95\'cf\'93\'ae\'82\'b7\'82\'e9\'8f\'ac\'82\'b3\'82\'c8\'96\'ca\'82\'f0\'8f\'64\'82\'cb\'82\'e9\cf2 \
+
+\f0 ~out[5] = \{ \cf4 WhiteNoise\cf2 .ar(\cf4 LFNoise1\cf2 .ar(1.0, 0.001, 0.001)).dup \};\
+\
+\
+\cf3 // 
+\f1 \'8f\'6f\'97\'cd\'97\'70\'83\'76\'83\'8d\'83\'4c\'83\'56\'82\'cc\'83\'4e\'83\'8a\'83\'41\cf2 \
+
+\f0 ~out.clear;\
+~out.play;\
+\cf3 // 
+\f1 \'83\'51\'83\'43\'83\'93\'81\'45\'83\'52\'83\'93\'83\'67\'83\'8d\'81\'5b\'83\'8b\'82\'a8\'82\'e6\'82\'d1\'83\'74\'83\'42\'81\'5b\'83\'68\'83\'6f\'83\'62\'83\'4e\'97\'70\'82\'cc\'83\'76\'83\'8d\'83\'4c\'83\'56\cf2 \
+
+\f0 ~gain.ar(1);\
+~feedback = ~out * ~gain;\
+\cf3 // 10[Hz]
+\f1 \'82\'cc\'93\'5f\'97\'f1\'82\'f0\'83\'74\'83\'42\'81\'5b\'83\'68\'83\'6f\'83\'62\'83\'4e\'82\'b3\'82\'b9\'82\'e9\cf2 \
+
+\f0 ~gain = 0.3; \cf3 // 
+\f1 \'83\'51\'83\'43\'83\'93\'82\'cd
+\f0 0.3\cf2 \
+~out = \{ \cf4 Impulse\cf2 .ar(10, 0, 0.1, ~feedback.ar).dup \};\
+\cf3 // 
+\f1 \'83\'51\'83\'43\'83\'93\'82\'f0\'8e\'fc\'8a\'fa\'93\'49\'82\'c9\'82\'e4\'82\'c1\'82\'ad\'82\'e8\'82\'c6\'95\'cf\'93\'ae\'82\'b3\'82\'b9\'82\'e9\cf2 \
+
+\f0 ~gain = \{ \cf4 SinOsc\cf2 .ar(0.09, 0, 0.5) \};\
+\cf3 // 
+\f1 \'83\'51\'83\'43\'83\'93\'95\'cf\'93\'ae\'82\'cc\'8e\'fc\'94\'67\'90\'94\'82\'f0\'91\'e5\'82\'ab\'82\'ad\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~gain = \{ \cf4 SinOsc\cf2 .ar(1000, 0, 0.5) \};\
+\cf3 // 11050[Hz]
+\f1 \'82\'cc\'93\'5f\'97\'f1\'82\'f0\'83\'74\'83\'42\'81\'5b\'83\'68\'83\'6f\'83\'62\'83\'4e\'82\'b3\'82\'b9\'82\'e9\cf2 \
+
+\f0 ~gain = -0.4; \cf3 // 
+\f1 \'83\'51\'83\'43\'83\'93\'82\'cd
+\f0 -0.4\cf2 \
+~out = \{ \cf4 Impulse\cf2 .ar(11050, 0, 0.1, ~feedback.ar).dup \};\
+\cf3 // 
+\f1 \'93\'5f\'97\'f1\'82\'cc\'8e\'fc\'94\'67\'90\'94\'82\'f0\'82\'e4\'82\'c1\'82\'ad\'82\'e8\'82\'c6\'95\'cf\'93\'ae\'82\'b3\'82\'b9\'82\'e9\cf2 \
+
+\f0 ~out = \{ \cf4 Impulse\cf2 .ar(11050 + \cf4 LFNoise1\cf2 .ar(0.2, 5), 0, 0.1, ~feedback.ar).dup \};\
+\cf3 // 
+\f1 \'83\'51\'83\'43\'83\'93\'82\'f0\'82\'e4\'82\'c1\'82\'ad\'82\'e8\'82\'c6\'95\'cf\'93\'ae\'82\'b3\'82\'b9\'82\'e9\cf2 \
+
+\f0 ~gain = \{ \cf4 LFNoise1\cf2 .ar(0.1, 0.1, -0.4) \};\
+\
+\
+\cf3 // 
+\f1 \'83\'74\'83\'42\'81\'5b\'83\'68\'83\'6f\'83\'62\'83\'4e\'82\'c9
+\f0 1
+\f1 \'83\'54\'83\'93\'83\'76\'83\'8b\'82\'cc\'83\'66\'83\'42\'83\'8c\'83\'43\'82\'f0\'82\'a9\'82\'af\'82\'e9\cf2 \
+
+\f0 ~feedback = \{ \cf4 Delay2\cf2 .ar(~out.ar, ~gain.ar) \};\
+\cf3 // 
+\f1 \'83\'74\'83\'42\'81\'5b\'83\'68\'83\'6f\'83\'62\'83\'4e\'82\'c9
+\f0 0.1[s]
+\f1 \'82\'cc\'83\'66\'83\'42\'83\'8c\'83\'43\'82\'f0\'82\'a9\'82\'af\'82\'e9\cf2 \
+
+\f0 ~feedback = \{ \cf4 DelayN\cf2 .ar(~out.ar, 1.0, 0.1, ~gain.ar) \};\
+\cf3 // 
+\f1 \'83\'66\'83\'42\'83\'8c\'83\'43\'82\'cc\'92\'b7\'82\'b3\'82\'f0
+\f0 0.5[s]
+\f1 \'82\'c9\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~feedback = \{ \cf4 DelayN\cf2 .ar(~out.ar, 1.0, 0.5, ~gain.ar) \};\
+\cf3 // 
+\f1 \'83\'74\'83\'42\'81\'5b\'83\'68\'83\'6f\'83\'62\'83\'4e\'82\'f0\'83\'73\'83\'62\'83\'60\'83\'8c\'83\'56\'83\'49
+\f0 1.5
+\f1 \'82\'c5\'83\'73\'83\'62\'83\'60\'83\'56\'83\'74\'83\'67\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~feedback = \{ \cf4 PitchShift\cf2 .ar(~out.ar, 0.1, 1.5, 0.0, 0.0, ~gain.ar) \};\
+\cf3 // 
+\f1 \'83\'73\'83\'62\'83\'60\'83\'8c\'83\'56\'83\'49\'82\'f0
+\f0 0.75
+\f1 \'82\'c9\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~feedback = \{ \cf4 PitchShift\cf2 .ar(~out.ar, 0.1, 0.75, 0.0, 0.0, ~gain.ar) \};\
+\cf3 // 
+\f1 \'83\'73\'83\'62\'83\'60\'83\'8c\'83\'56\'83\'49\'82\'f0
+\f0 1
+\f1 \'82\'cc\'8b\'df\'82\'ad\'82\'c5\'82\'e4\'82\'c1\'82\'ad\'82\'e8\'82\'c6\'95\'cf\'93\'ae\'82\'b3\'82\'b9\'82\'e9\cf2 \
+
+\f0 ~feedback = \{ \cf4 PitchShift\cf2 .ar(~out.ar, 0.1, \cf4 LFNoise1\cf2 .ar(0.2, 0.01, 1.0), 0.0, 0.0, ~gain.ar) \};\
+\cf3 // 
+\f1 \'83\'66\'83\'42\'83\'8c\'83\'43\'82\'c6\'83\'73\'83\'62\'83\'60\'83\'56\'83\'74\'83\'67\'82\'f0\'97\'bc\'95\'fb\'97\'70\'82\'a2\'82\'e9\cf2 \
+
+\f0 ~feedback = \{ \cf4 DelayN\cf2 .ar(\cf4 PitchShift\cf2 .ar(~out.ar, 0.1, 1.5), 1.0, 0.5, ~gain.ar) \};\
+~feedback = \{ \cf4 DelayN\cf2 .ar(\cf4 PitchShift\cf2 .ar(~out.ar, 0.1, 0.75), 1.0, 0.5, ~gain.ar) \};\
+~feedback = \{ \cf4 DelayN\cf2 .ar(\cf4 PitchShift\cf2 .ar(~out.ar, 0.1, 0.1), 1.0, 0.5, ~gain.ar) \};\
+~feedback = \{ \cf4 DelayN\cf2 .ar(\cf4 PitchShift\cf2 .ar(~out.ar, 0.1, 4.0), 1.0, 0.5, ~gain.ar) \};\
+\
+\
+\
+\cf3 // 
+\f1 \'93\'f1\'8f\'64\'83\'4a\'83\'6d\'83\'93\cf2 \
+
+\f0 ~out.clear; \cf3 // 
+\f1 \'8f\'6f\'97\'cd\'97\'70\'83\'76\'83\'8d\'83\'4c\'83\'56\'82\'cc\'83\'4e\'83\'8a\'83\'41\cf2 \
+
+\f0 ~out.play;\
+~out = ~out0 + ~out1; \cf3 // 2
+\f1 \'82\'c2\'82\'cc\'90\'f9\'97\'a5\'82\'f0\'83\'7e\'83\'62\'83\'4e\'83\'58\cf2 \
+
+\f0 \cf3 // 
+\f1 \'83\'51\'83\'43\'83\'93\'81\'45\'83\'52\'83\'93\'83\'67\'83\'8d\'81\'5b\'83\'8b\'82\'a8\'82\'e6\'82\'d1\'83\'74\'83\'42\'81\'5b\'83\'68\'83\'6f\'83\'62\'83\'4e\'97\'70\'82\'cc\'83\'76\'83\'8d\'83\'4c\'83\'56\cf2 \
+
+\f0 ~gain.ar(1);\
+~feedback0 = \{ \cf4 DelayN\cf2 .ar(~out1.ar, 1.0, 0.17, ~gain.ar) \};\
+~feedback1 = \{ \cf4 PitchShift\cf2 .ar(~out0.ar, 0.1, 1.5, 0.0, 0.0, ~gain.ar) \};\
+\cf3 // 
+\f1 \'82\'e4\'82\'c1\'82\'ad\'82\'e8\'82\'c6\'95\'cf\'93\'ae\'82\'b7\'82\'e9
+\f0 11050[Hz]
+\f1 \'82\'c6
+\f0 10[Hz]
+\f1 \'82\'cc\'93\'5f\'97\'f1\'82\'c9\'82\'e6\'82\'e9\'83\'4e\'83\'8d\'83\'58\'81\'45\'83\'74\'83\'42\'81\'5b\'83\'68\'83\'6f\'83\'62\'83\'4e\cf2 \
+
+\f0 ~gain = -0.4; \cf3 // 
+\f1 \'83\'51\'83\'43\'83\'93\'82\'cd
+\f0 -0.4\cf2 \
+~out0 = \{ \cf4 Impulse\cf2 .ar(11050 + \cf4 LFNoise1\cf2 .ar(0.2, 5), 0, 0.1, ~feedback0.ar).dup \};\
+~out1 = \{ \cf4 Impulse\cf2 .ar(10 + \cf4 LFNoise1\cf2 .ar(0.1, 1), 0, 0.1, ~feedback1.ar).dup \};\
+\
+\
+\
+\
+\cf3 // 16
+\f1 \'96\'7b\'82\'cc\'90\'fc\'82\'f0\'8f\'64\'82\'cb\'8d\'87\'82\'b9\'82\'e9\'8a\'d6\'90\'94\'82\'cc\'92\'e8\'8b\'60\cf2 \
+
+\f0 (\
+~out = \{ \cf4 arg\cf2  base = 441, amp = 0.5, pan = 0;\
+	\cf4 var\cf2  farray, aarray;\
+	farray = \cf4 Control\cf2 .names(\cf6 \\farray\cf2 ).kr(\cf4 Array\cf2 .fill(16, 0)) * base; \cf3 // 
+\f1 \'8e\'fc\'94\'67\'90\'94\'97\'f1\cf2 \
+	
+\f0 aarray = \cf4 Control\cf2 .names(\cf6 \\aarray\cf2 ).kr(\cf4 Array\cf2 .fill(16, 0)); \cf3 // 
+\f1 \'90\'55\'95\'9d\'97\'f1\cf2 \
+	
+\f0 \cf4 Pan2\cf2 .ar(\cf4 Klang\cf2 .ar(`[farray, aarray, \cf4 nil\cf2 ], 1, 0), pan, amp) \};\
+)\
+\
+\
+\
+\cf3 // 
+\f1 \'83\'6d\'83\'52\'83\'4d\'83\'8a\'94\'67\'82\'cc\'8d\'87\'90\'ac\cf2 \
+
+\f0 (\
+~out.setn(\
+	\cf6 \\base\cf2 , 441, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+	
+\f0 \cf6 \\farray\cf2 , \cf4 Array\cf2 .series(16, 1, 1).postln, \cf3 // 
+\f1 \'90\'ae\'90\'94\'94\'7b\'89\'b9\'97\'f1\cf2 \
+	
+\f0 \cf6 \\aarray\cf2 , \cf4 Array\cf2 .series(16, 1, 1).reciprocal.normalizeSum.postln \cf3 // 
+\f1 \'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\cf2 \
+	
+\f0 ).rebuild;\
+)\
+\cf3 // 
+\f1 \'8b\'e9\'8c\'60\'94\'67\'82\'cc\'8d\'87\'90\'ac\cf2 \
+
+\f0 (\
+~out.setn(\
+	\cf6 \\base\cf2 , 441, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+	
+\f0 \cf6 \\farray\cf2 , \cf4 Array\cf2 .series(16, 1, 2).postln, \cf3 // 
+\f1 \'8a\'ef\'90\'94\'94\'7b\'89\'b9\'97\'f1\cf2 \
+	
+\f0 \cf6 \\aarray\cf2 , \cf4 Array\cf2 .series(16, 1, 2).reciprocal.normalizeSum.postln \cf3 // 
+\f1 \'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\cf2 \
+	
+\f0 ).rebuild;\
+)\
+\cf3 // 
+\f1 \'8e\'4f\'8a\'70\'94\'67\'82\'cc\'8d\'87\'90\'ac\cf2 \
+
+\f0 (\
+~out.setn(\
+	\cf6 \\base\cf2 , 441, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+	
+\f0 \cf6 \\farray\cf2 , \cf4 Array\cf2 .series(16, 1, 2).postln, \cf3 // 
+\f1 \'8a\'ef\'90\'94\'94\'7b\'89\'b9\'97\'f1\cf2 \
+	
+\f0 \cf6 \\aarray\cf2 , \cf4 Array\cf2 .series(16, 1, 2).squared.reciprocal.normalizeSum.postln \cf3 // 2
+\f1 \'8f\'e6\'82\'c9\'94\'bd\'94\'e4\'97\'e1\cf2 \
+	
+\f0 ).rebuild;\
+)\
+\
+\cf3 // 
+\f1 \'83\'89\'83\'93\'83\'5f\'83\'80\'82\'c8\'8c\'f6\'8d\'b7\'82\'c9\'82\'e6\'82\'e9\'94\'67\'8c\'60\'82\'cc\'8d\'87\'90\'ac\cf2 \
+
+\f0 (\
+~out.setn(\
+	\cf6 \\base\cf2 , 441, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+	
+\f0 \cf6 \\farray\cf2 , \cf4 Array\cf2 .series(16, 1, 2.0.rand).postln, \cf3 // 
+\f1 \'8e\'fc\'94\'67\'90\'94\'97\'f1\cf2 \
+	
+\f0 \cf6 \\aarray\cf2 , \cf4 Array\cf2 .series(16, 1, 2.0.rand).reciprocal.normalizeSum.postln \cf3 // 
+\f1 \'90\'55\'95\'9d\'97\'f1\cf2 \
+	
+\f0 ).rebuild;\
+)\
+\
+\
+\cf3 // 
+\f1 \'83\'54\'83\'93\'83\'76\'83\'8a\'83\'93\'83\'4f\'8e\'fc\'94\'67\'90\'94\'82\'f0\'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\'82\'c6\'82\'b7\'82\'e9\'89\'ba\'95\'fb\'94\'7b\'89\'b9\'97\'f1\'82\'cc\'8f\'64\'82\'cb\'8d\'87\'82\'b9\cf2 \
+
+\f0 (\
+~out.setn(\
+	\cf6 \\base\cf2 , 44100, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+	
+\f0 \cf6 \\farray\cf2 , \cf4 Array\cf2 .series(16, 1, 1).reciprocal.postln, \cf3 // 
+\f1 \'89\'ba\'95\'fb\'94\'7b\'89\'b9\'97\'f1\cf2 \
+	
+\f0 \cf6 \\aarray\cf2 , \cf4 Array\cf2 .series(16, 1, 0).normalizeSum.postln \cf3 // 
+\f1 \'90\'55\'95\'9d\'88\'ea\'92\'e8\cf2 \
+	
+\f0 ).rebuild;\
+)\
+\
+\
+\cf3 // 1
+\f1 \'81\'60
+\f0 20
+\f1 \'89\'b9\'89\'b9\'8a\'4b\'82\'c9\'82\'a8\'82\'af\'82\'e9\'89\'b9\'92\'f6\'94\'e4\'82\'cc\'88\'ea\'97\'97\cf2 \
+
+\f0 (1..20).do(\{\cf4 |i|\cf2  i.post; \cf5 "-tone scale:"\cf2 .post; \cf5 " interval ratio = "\cf2 .post; (2**i.reciprocal).postln \});\
+\
+\
+\
+\cf3 // 5
+\f1 \'89\'b9\'95\'bd\'8b\'cf\'97\'a5\'89\'b9\'8a\'4b\'82\'cc
+\f0 3
+\f1 \'89\'b9\'89\'b9\'92\'f6\cf2 \
+
+\f0 (\
+~out.setn(\
+	\cf6 \\base\cf2 , 20, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+	
+\f0 \cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 1, 2**(3/5)).postln, \cf3 // 
+\f1 \'89\'b9\'92\'f6\'97\'f1\cf2 \
+	
+\f0 \cf6 \\aarray\cf2 , \cf4 Array\cf2 .fill(16, 1).normalizeSum.postln \cf3 // 
+\f1 \'90\'55\'95\'9d\'88\'ea\'92\'e8\cf2 \
+	
+\f0 ).rebuild;\
+)\
+\
+\cf3 // 17
+\f1 \'89\'b9\'95\'bd\'8b\'cf\'97\'a5\'89\'b9\'8a\'4b\'82\'cc
+\f0 2
+\f1 \'89\'b9\'89\'b9\'92\'f6\cf2 \
+
+\f0 (\
+~out.setn(\
+	\cf6 \\base\cf2 , 5000, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+	
+\f0 \cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 1, 2**(2/17)).postln, \cf3 // 
+\f1 \'89\'b9\'92\'f6\'97\'f1\cf2 \
+	
+\f0 \cf6 \\aarray\cf2 , \cf4 Array\cf2 .fill(16, 1).normalizeSum.postln \cf3 // 
+\f1 \'90\'55\'95\'9d\'88\'ea\'92\'e8\cf2 \
+	
+\f0 ).rebuild;\
+)\
+\
+\
+\cf3 // 
+\f1 \'92\'5a
+\f0 2
+\f1 \'93\'78\'89\'b9\'92\'f6
+\f0 (
+\f1 \'8e\'fc\'94\'67\'90\'94\'94\'e4
+\f0 15:16)
+\f1 \'82\'c5\'8f\'64\'82\'c8\'82\'c1\'82\'c4\'82\'a2\'82\'ad\'90\'fc\cf2 \
+
+\f0 (\
+~out.setn(\
+	\cf6 \\base\cf2 , 70, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+	
+\f0 \cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 1, 16/15).postln, \cf3 // 
+\f1 \'89\'b9\'92\'f6\'97\'f1\cf2 \
+	
+\f0 \cf6 \\aarray\cf2 , \cf4 Array\cf2 .fill(16, 1).normalizeSum.postln \cf3 // 
+\f1 \'90\'55\'95\'9d\'88\'ea\'92\'e8\cf2 \
+	
+\f0 ).rebuild;\
+)\
+\
+\cf3 // 
+\f1 \'8f\'ac\'91\'53\'89\'b9
+\f0 (9:10)\cf2 \
+~out.setn(\cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 2, 10/9).postln).rebuild;\
+\cf3 // 
+\f1 \'92\'b7
+\f0 2
+\f1 \'93\'78
+\f0 /
+\f1 \'91\'e5\'91\'53\'89\'b9
+\f0 (8:9)\cf2 \
+~out.setn(\cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 2, 9/8).postln).rebuild;\
+\cf3 // 
+\f1 \'92\'5a
+\f0 3
+\f1 \'93\'78
+\f0 (5:6)\cf2 \
+~out.setn(\cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 1, 6/5).postln).rebuild;\
+\cf3 // 
+\f1 \'92\'b7
+\f0 3
+\f1 \'93\'78
+\f0 (4:5)\cf2 \
+~out.setn(\cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 1, 5/4).postln).rebuild;\
+\cf3 // 
+\f1 \'8a\'ae\'91\'53
+\f0 4
+\f1 \'93\'78
+\f0 (3:4)\cf2 \
+~out.setn(\cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 0.5, 4/3).postln).rebuild;\
+\cf3 // 
+\f1 \'91\'9d
+\f0 4
+\f1 \'93\'78
+\f0 (32:45)\cf2 \
+~out.setn(\cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 0.5, 45/32).postln).rebuild;\
+\cf3 // 
+\f1 \'95\'bd\'8b\'cf\'97\'a5\'91\'9d
+\f0 4
+\f1 \'93\'78
+\f0 (1:\'c32)\cf2 \
+~out.setn(\cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 0.5, 2.sqrt).postln).rebuild;\
+\cf3 // 
+\f1 \'8c\'b8
+\f0 5
+\f1 \'93\'78
+\f0 (45
+\f1 \'81\'46
+\f0 64)\cf2 \
+~out.setn(\cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 0.2, 64/45).postln).rebuild;\
+\cf3 // 
+\f1 \'8a\'ae\'91\'53
+\f0 5
+\f1 \'93\'78
+\f0 (2
+\f1 \'81\'46
+\f0 3)\cf2 \
+~out.setn(\cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 0.2, 3/2).postln).rebuild;\
+\cf3 // 
+\f1 \'92\'5a
+\f0 6
+\f1 \'93\'78
+\f0 (5
+\f1 \'81\'46
+\f0 8)\cf2 \
+~out.setn(\cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 0.05, 8/5).postln).rebuild;\
+\cf3 // 
+\f1 \'92\'b7
+\f0 6
+\f1 \'93\'78
+\f0 (3
+\f1 \'81\'46
+\f0 5)\cf2 \
+~out.setn(\cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 0.05, 5/3).postln).rebuild;\
+\cf3 // 
+\f1 \'8e\'a9\'91\'52
+\f0 7
+\f1 \'93\'78
+\f0 (4
+\f1 \'81\'46
+\f0 7)\cf2 \
+~out.setn(\cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 0.05, 7/4).postln).rebuild;\
+\cf3 // 
+\f1 \'92\'5a
+\f0 7
+\f1 \'93\'78
+\f0 (9
+\f1 \'81\'46
+\f0 16)\cf2 \
+~out.setn(\cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 0.02, 16/9).postln).rebuild;\
+\cf3 // 
+\f1 \'92\'b7
+\f0 7
+\f1 \'93\'78
+\f0 (8
+\f1 \'81\'46
+\f0 15)\cf2 \
+~out.setn(\cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 0.02, 15/8).postln).rebuild;\
+\
+\
+\cf3 // 
+\f1 \'83\'89\'83\'93\'83\'5f\'83\'80\'82\'c8\'8c\'f6\'94\'e4\'82\'c9\'82\'e6\'82\'e9\'89\'b9\'8b\'bf\'98\'61\'89\'b9\cf2 \
+
+\f0 (\
+~out.setn(\
+	\cf6 \\base\cf2 , 70, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+	
+\f0 \cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 1, rrand(1.0, 2.0)).postln, \cf3 // 
+\f1 \'8e\'fc\'94\'67\'90\'94\'97\'f1\cf2 \
+	
+\f0 \cf6 \\aarray\cf2 , \cf4 Array\cf2 .fill(16, 1).normalizeSum.postln \cf3 // 
+\f1 \'90\'55\'95\'9d\'88\'ea\'92\'e8\cf2 \
+	
+\f0 ).rebuild;\
+)\
+\cf3 // 
+\f1 \'8c\'f6\'94\'e4\'82\'aa\'8f\'ac\'82\'b3\'82\'ad\'96\'a7\'8f\'57\'82\'b5\'82\'bd\'89\'b9\'8b\'bf\'98\'61\'89\'b9\cf2 \
+
+\f0 (\
+~out.setn(\
+	\cf6 \\base\cf2 , 7000, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+	
+\f0 \cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(16, 1, 1.01).postln, \cf3 // 
+\f1 \'8e\'fc\'94\'67\'90\'94\'97\'f1\cf2 \
+	
+\f0 \cf6 \\aarray\cf2 , \cf4 Array\cf2 .exprand(16, 0.5, 1.0).normalizeSum.postln \cf3 // 
+\f1 \'90\'55\'95\'9d\'82\'cd
+\f0 0.5
+\f1 \'81\'60
+\f0 1.0
+\f1 \'82\'cc\'8e\'77\'90\'94\'95\'aa\'95\'7a\cf2 \
+	
+\f0 ).rebuild;\
+)\
+\cf3 // 
+\f1 \'93\'99\'94\'e4\'90\'94\'97\'f1\'82\'c9\'97\'90\'90\'94\'82\'f0\'89\'c1\'82\'a6\'82\'bd\'89\'b9\'8b\'bf\'98\'61\'89\'b9
+\f0 (
+\f1 \'97\'90\'90\'94\'82\'f0\'89\'c1\'82\'a6\'82\'c8\'82\'a2\'8f\'ea\'8d\'87\'82\'c6\'92\'ae\'82\'ab\'94\'e4\'82\'d7\'82\'c4\'82\'dd\'82\'e6
+\f0 )\cf2 \
+(\
+~out.setn(\
+	\cf6 \\base\cf2 , 5000, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+	
+\f0 \cf6 \\farray\cf2 , (\cf4 Array\cf2 .geom(16, 1.0, 1.1) + \cf4 Array\cf2 .rand2(16, 0.2)).postln, \cf3 // 
+\f1 \'8e\'fc\'94\'67\'90\'94\'97\'f1\cf2 \
+	
+\f0 \cf6 \\aarray\cf2 , \cf4 Array\cf2 .fill(16, 1).normalizeSum.postln \cf3 // 
+\f1 \'90\'55\'95\'9d\'88\'ea\'92\'e8\cf2 \
+	
+\f0 ).rebuild;\
+)\
+\
+\
+\
+\cf3 // 64
+\f1 \'96\'7b
+\f0 (8\uc0\u215 8
+\f1 \'82\'cc\'83\'7d\'83\'67\'83\'8a\'83\'4e\'83\'58
+\f0 )
+\f1 \'82\'cc\'90\'fc\'82\'f0\'8f\'64\'82\'cb\'82\'c4\'96\'c2\'82\'e7\'82\'b7\'8a\'d6\'90\'94\'82\'cc\'92\'e8\'8b\'60\cf2 \
+
+\f0 (\
+~out = \{\cf4 arg\cf2  base = 441, amp = 0.5;\
+		\cf4 var\cf2  farray, aarray, parray;\
+		farray = \cf4 Control\cf2 .names(\cf6 \\farray\cf2 ).kr(\cf4 Array\cf2 .fill(64, 0));\
+		aarray = \cf4 Control\cf2 .names(\cf6 \\aarray\cf2 ).kr(\cf4 Array\cf2 .fill(64, 0));\
+		parray = \cf4 Control\cf2 .names(\cf6 \\parray\cf2 ).kr(\cf4 Array\cf2 .fill(64, 0));\
+		\cf4 Mix\cf2 .new(\
+			\cf4 Pan2\cf2 .ar(\
+				\cf4 SinOsc\cf2 .ar(\
+					farray * base, 0.0, aarray, 0.0),\
+				parray, amp))\};\
+)\
+\
+\
+(\
+\cf4 var\cf2  farray1 = \cf4 Array\cf2 .series(8, 1, 1).round(0.1).postln; \cf3 // 
+\f1 \'93\'99\'8d\'b7\'90\'94\'97\'f1
+\f0 (
+\f1 \'94\'7b\'89\'b9\'97\'f1
+\f0 )\cf2 \
+\cf4 var\cf2  farray2 = \cf4 Array\cf2 .geom(8, 1, 1.5).round(0.1).postln; \cf3 // 
+\f1 \'93\'99\'94\'e4\'90\'94\'97\'f1
+\f0 (
+\f1 \'89\'b9\'92\'f6\'97\'f1
+\f0 )\cf2 \
+(farray1 * .t farray2).do(\{ \cf4 |row|\cf2  row.round(0.1).postln \}); \cf3 // 
+\f1 \'8e\'fc\'94\'67\'90\'94\'83\'7d\'83\'67\'83\'8a\'83\'62\'83\'4e\'83\'58\cf2 \
+
+\f0 )\
+\
+(\
+\cf4 var\cf2  aarray1 = \cf4 Array\cf2 .series(8, 1, 1).reciprocal.round(0.01).postln; \cf3 // 
+\f1 \'90\'55\'95\'9d\'94\'bd\'94\'e4\'97\'e1\cf2 \
+
+\f0 \cf4 var\cf2  aarray2 = \cf4 Array\cf2 .fill(8, 1).round(0.01).postln; \cf3 // 
+\f1 \'90\'55\'95\'9d\'88\'ea\'92\'e8\cf2 \
+
+\f0 (aarray1 * .t aarray2).do(\{ \cf4 |row|\cf2  row.round(0.01).postln \}); \cf3 // 
+\f1 \'90\'55\'95\'9d\'83\'7d\'83\'67\'83\'8a\'83\'62\'83\'4e\'83\'58\cf2 \
+
+\f0 )\
+\
+\
+\
+\cf3 // 
+\f1 \'8c\'c3\'93\'54\'93\'49\'92\'b7
+\f0 7
+\f1 \'98\'61\'89\'b9\cf2 \
+
+\f0 (\
+~out.setn(\cf6 \\base\cf2 , 441, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+		
+\f0  \cf6 \\farray\cf2 , (\cf4 Array\cf2 .series(16, 1, 1) * .x [1, 4/3, 3/2, 15/8]).postln,\
+		 \cf6 \\aarray\cf2 , (\cf4 Array\cf2 .series(16, 1, 1).reciprocal * .x \cf4 Array\cf2 .fill(4, 1)).normalizeSum.postln,\
+		 \cf6 \\parray\cf2 , \cf4 Array\cf2 .fill(64, 0.0).postln).rebuild; \cf3 // 
+\f1 \'92\'86\'89\'9b\'83\'70\'83\'93\cf2 \
+
+\f0 )\
+\cf3 // 
+\f1 \'92\'b7
+\f0 3
+\f1 \'93\'78\'82\'c6\'92\'5a
+\f0 3
+\f1 \'93\'78\'82\'cc\'83\'89\'83\'93\'83\'5f\'83\'80\'82\'c8\'91\'67\'82\'dd\'82\'a0\'82\'ed\'82\'b9\'82\'c9\'82\'e6\'82\'e9
+\f0 8
+\f1 \'89\'b9\'98\'61\'89\'b9\cf2 \
+
+\f0 (\
+\cf4 var\cf2  intervals = [1, 1, 1, 1, 1, 1, 1, 1];\
+intervals.put(0, 1);\
+7.do(\{\cf4 |i|\cf2  intervals.put(i+1, intervals.at(i) * [6/5, 5/4].choose)\});\
+intervals.postln;\
+~out.setn(\cf6 \\base\cf2 , 441, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+		
+\f0  \cf6 \\farray\cf2 , (\cf4 Array\cf2 .series(8, 1, 1) * .x intervals).postln,\
+		 \cf6 \\aarray\cf2 , (\cf4 Array\cf2 .series(8, 1, 1).reciprocal * .x \cf4 Array\cf2 .fill(8, 1)).normalizeSum.postln,\
+		 \cf6 \\parray\cf2 , \cf4 Array\cf2 .rand2(64, 1.0).postln).rebuild; \cf3 // 
+\f1 \'83\'89\'83\'93\'83\'5f\'83\'80\'83\'70\'83\'93\cf2 \
+
+\f0 )\
+\cf3 // 
+\f1 \'92\'b7
+\f0 3
+\f1 \'93\'78\'89\'b9\'92\'f6\'97\'f1\'82\'c6\'92\'5a
+\f0 3
+\f1 \'93\'78\'89\'b9\'92\'f6\'97\'f1\'82\'cc\'91\'67\'82\'dd\'8d\'87\'82\'ed\'82\'b9\cf2 \
+
+\f0 (\
+~out.setn(\cf6 \\base\cf2 , 441, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+		
+\f0  \cf6 \\farray\cf2 , (\cf4 Array\cf2 .geom(8, 1, 5/4) * .x \cf4 Array\cf2 .geom(8, 1, 6/5)).postln,\
+		 \cf6 \\aarray\cf2 , (\cf4 Array\cf2 .series(8, 1, 1) * .x \cf4 Array\cf2 .series(8, 1, 1)).reciprocal.normalizeSum.postln,\
+		 \cf6 \\parray\cf2 , \cf4 Array\cf2 .fill(64, 0.0).postln).rebuild; \cf3 // 
+\f1 \'92\'86\'89\'9b\'83\'70\'83\'93\cf2 \
+
+\f0 )\
+\cf3 // 
+\f1 \'92\'b7
+\f0 3
+\f1 \'93\'78\'89\'b9\'92\'f6\'97\'f1\'82\'c6\'8a\'ae\'91\'53
+\f0 4
+\f1 \'93\'78\'89\'b9\'92\'f6\'97\'f1\'82\'cc\'91\'67\'82\'dd\'8d\'87\'82\'ed\'82\'b9\cf2 \
+
+\f0 (\
+~out.setn(\cf6 \\base\cf2 , 441, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+		
+\f0  \cf6 \\farray\cf2 , (\cf4 Array\cf2 .geom(8, 1, 5/4) * .x \cf4 Array\cf2 .geom(8, 1, 4/3)).postln,\
+		 \cf6 \\aarray\cf2 , (\cf4 Array\cf2 .series(8, 1, 1) * .x \cf4 Array\cf2 .series(8, 1, 1)).reciprocal.normalizeSum.postln,\
+		 \cf6 \\parray\cf2 , \cf4 Array\cf2 .fill(64, 0.0).postln).rebuild; \cf3 // 
+\f1 \'92\'86\'89\'9b\'83\'70\'83\'93\cf2 \
+
+\f0 )\
+\cf3 // 
+\f1 \'8d\'82\'88\'e6\'82\'c9\'82\'a2\'82\'ad\'82\'c9\'82\'c2\'82\'ea\'82\'c4\'90\'55\'95\'9d\'82\'aa\'91\'e5\'82\'ab\'82\'ad\'82\'c8\'82\'e9
+\f0 5
+\f1 \'89\'b9\'89\'b9\'8a\'4b
+\f0 (
+\f1 \'83\'79\'83\'93\'83\'5e\'83\'67\'83\'6a\'83\'62\'83\'4e
+\f0 )
+\f1 \'97\'f1\cf2 \
+
+\f0 (\
+~out.setn(\cf6 \\base\cf2 , 441, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+		
+\f0  \cf6 \\farray\cf2 , (\cf4 Array\cf2 .series(8, 1, 1) * .x \cf4 Array\cf2 .geom(8, 1, 2**(1/5))).postln,\
+		 \cf6 \\aarray\cf2 , (\cf4 Array\cf2 .series(8, 1, 1) * .x \cf4 Array\cf2 .series(8, 1, 1)).normalizeSum.postln,\
+		 \cf6 \\parray\cf2 , \cf4 Array\cf2 .fill(64, 0.0).postln).rebuild;\
+)\
+\cf3 // 
+\f1 \'94\'7b\'89\'b9\'97\'f1\'82\'c6\'89\'ba\'95\'fb\'94\'7b\'89\'b9\'97\'f1\'82\'cc\'91\'67\'82\'dd\'8d\'87\'82\'ed\'82\'b9\cf2 \
+
+\f0 (\
+~out.setn(\cf6 \\base\cf2 , 2100, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+		
+\f0  \cf6 \\farray\cf2 , (\cf4 Array\cf2 .series(8, 1, 1) * .x \cf4 Array\cf2 .series(8, 1, 1).reciprocal).postln,\
+		 \cf6 \\aarray\cf2 , (\cf4 Array\cf2 .fill(8, 1, 1) * .x \cf4 Array\cf2 .fill(8, 1, 1)).normalizeSum.postln,\
+		 \cf6 \\parray\cf2 , \cf4 Array\cf2 .fill(64, 0.0).postln).rebuild; \cf3 // 
+\f1 \'92\'86\'89\'9b\'83\'70\'83\'93\cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\f0 \cf2 )\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf3 // 
+\f1 \'89\'ba\'95\'fb\'94\'7b\'89\'b9\'97\'f1\'82\'c6\'89\'ba\'8d\'73\'89\'b9\'92\'f6\'97\'f1
+\f0 (
+\f1 \'92\'5a
+\f0 3
+\f1 \'93\'78
+\f0 /
+\f1 \'92\'b7
+\f0 3
+\f1 \'93\'78
+\f0 /5
+\f1 \'93\'78
+\f0 )
+\f1 \'82\'cc\'91\'67\'82\'dd\'8d\'87\'82\'ed\'82\'b9\cf2 \
+
+\f0 (\
+\cf4 var\cf2  note = [1, 1, 1, 1, 1, 1, 1, 1];\
+note.put(0, 1);\
+7.do(\{\cf4 |i|\cf2  note.put(i+1, note.at(i) * [5/6, 4/5, 2/3].choose)\});\
+note.postln;\
+~out.setn(\cf6 \\base\cf2 , 44100, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+		
+\f0  \cf6 \\farray\cf2 , (\cf4 Array\cf2 .series(8, 1, 1).reciprocal * .x note).postln,\
+		 \cf6 \\aarray\cf2 , (\cf4 Array\cf2 .series(8, 1, 1).reciprocal * .x \cf4 Array\cf2 .fill(8, 1)).normalizeSum.postln,\
+		 \cf6 \\parray\cf2 , \cf4 Array\cf2 .fill(64, 0.0).postln).rebuild; \cf3 // 
+\f1 \'92\'86\'89\'9b\'83\'70\'83\'93\cf2 \
+
+\f0 )\
+\cf3 // 64
+\f1 \'8c\'c2\'82\'cc\'92\'5a
+\f0 2
+\f1 \'93\'78\'89\'b9\'92\'f6\'97\'f1\'82\'cc\'91\'67\'82\'dd\'8d\'87\'82\'ed\'82\'b9\cf2 \
+
+\f0 (\
+~out.setn(\cf6 \\base\cf2 , 21, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+		
+\f0  \cf6 \\farray\cf2 , \cf4 Array\cf2 .geom(64, 1, 16/15).postln,\
+		 \cf6 \\aarray\cf2 , \cf4 Array\cf2 .rand(64, 0.0, 1.0).normalizeSum.postln, \cf3 // 
+\f1 \'83\'89\'83\'93\'83\'5f\'83\'80\'90\'55\'95\'9d\cf2 \
+		
+\f0  \cf6 \\parray\cf2 , \cf4 Array\cf2 .rand2(64, 1.0).postln).rebuild; \cf3 // 
+\f1 \'83\'89\'83\'93\'83\'5f\'83\'80\'83\'70\'83\'93\cf2 \
+
+\f0 )\
+\cf3 // 
+\f1 \'83\'89\'83\'93\'83\'5f\'83\'80\'82\'c8\'92\'b7\'92\'5a
+\f0 2
+\f1 \'93\'78\'82\'a0\'82\'e9\'82\'a2\'82\'cd\'92\'b7\'92\'5a
+\f0 7
+\f1 \'93\'78\'82\'cc\'91\'67\'82\'dd\'8d\'87\'82\'b9\'82\'c9\'82\'e6\'82\'e9\'83\'4e\'83\'89\'83\'58\'83\'5e\'81\'5b\cf2 \
+
+\f0 (\
+\cf4 var\cf2  intervals1 = [1, 1, 1, 1, 1, 1, 1, 1], intervals2 = [1, 1, 1, 1, 1, 1, 1, 1];\
+intervals1.put(0, 1);\
+intervals2.put(0, 1);\
+7.do(\{\cf4 |i|\cf2  intervals1.put(i+1, intervals1.at(i) * [16/15, 9/8, 16/9, 15/8].choose)\});\
+7.do(\{\cf4 |i|\cf2  intervals2.put(i+1, intervals2.at(i) * [16/15, 9/8, 16/9, 15/8].choose)\});\
+intervals1.postln;\
+intervals2.postln;\
+~out.setn(\cf6 \\base\cf2 , 21, \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+		
+\f0  \cf6 \\farray\cf2 , (intervals1 * .x intervals2).postln,\
+		 \cf6 \\aarray\cf2 , \cf4 Array\cf2 .rand(64, 0.0, 1.0).normalizeSum.postln, \cf3 // 
+\f1 \'83\'89\'83\'93\'83\'5f\'83\'80\'90\'55\'95\'9d\cf2 \
+		
+\f0  \cf6 \\parray\cf2 , \cf4 Array\cf2 .rand2(64, 1.0).postln).rebuild; \cf3 // 
+\f1 \'83\'89\'83\'93\'83\'5f\'83\'80\'83\'70\'83\'93\cf2 \
+
+\f0 )\
+\
+\
+\
+\
+\
+\cf3 // Pattern
+\f1 \'82\'cc\'8e\'c0\'8d\'73\'82\'c6\'92\'e2\'8e\'7e\cf2 \
+
+\f0 \cf4 Pdef\cf2 (\cf6 \\y\cf2 ).play;\
+\cf4 Pdef\cf2 (\cf6 \\y\cf2 ).stop;\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf3 // 
+\f1 \'94\'7b\'89\'b9\'97\'f1\'82\'c6
+\f0 4
+\f1 \'93\'78\'89\'b9\'92\'f6\'97\'f1\'82\'a9\'82\'e7\'90\'b6\'82\'ea\'82\'e9\'89\'b9\'8a\'4b\cf2 \
+
+\f0 (\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf4 var\cf2  base = 300; \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+
+\f0 \cf4 var\cf2  farray = (\cf4 Array\cf2 .series(8, 1, 1) * .x \cf4 Array\cf2 .geom(8, 1, 4/3)).postln;\
+\cf4 Pdef\cf2 (\cf6 \\y\cf2 ,\
+	\cf4 Pbind\cf2 (\
+		\cf6 \\instrument\cf2 , \cf6 \\line\cf2 ,\
+		\cf6 \\amp\cf2 , 0.1,\
+		\cf6 \\freq\cf2 , \cf4 Pseq\cf2 (farray * base, \cf4 inf\cf2 ),\
+		\cf6 \\sustain\cf2 , 0.001,\
+		\cf6 \\dur\cf2 , 0.001,\
+		\cf6 \\pan\cf2 , 0.0)\
+	)\
+)\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf3 // 
+\f1 \'89\'ba\'95\'fb\'94\'7b\'89\'b9\'97\'f1\'82\'c6\'89\'ba\'8d\'73\'92\'b7
+\f0 3
+\f1 \'93\'78\'89\'b9\'92\'f6\'97\'f1\'82\'a9\'82\'e7\'90\'b6\'82\'ea\'82\'e9\'89\'b9\'8a\'4b\cf2 \
+
+\f0 (\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf4 var\cf2  base = 11025; \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+
+\f0 \cf4 var\cf2  farray = (\cf4 Array\cf2 .series(8, 1, 1).reciprocal * .x \cf4 Array\cf2 .geom(8, 1, 3/4)).postln;\
+\cf4 Pdef\cf2 (\cf6 \\y\cf2 ,\
+	\cf4 Pbind\cf2 (\
+		\cf6 \\instrument\cf2 , \cf6 \\line\cf2 ,\
+		\cf6 \\amp\cf2 , 0.1,\
+		\cf6 \\freq\cf2 , \cf4 Pseq\cf2 (farray * base, \cf4 inf\cf2 ),\
+		\cf6 \\sustain\cf2 , 0.001,\
+		\cf6 \\dur\cf2 , 0.001,\
+		\cf6 \\pan\cf2 , 0.0)\
+	)\
+)\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf3 // 
+\f1 \'94\'7b\'89\'b9\'97\'f1\'82\'c6\'8e\'6c\'95\'aa\'89\'b9\'92\'f6\'97\'f1
+\f0 (24
+\f1 \'89\'b9\'95\'bd\'8b\'cf\'97\'a5\'89\'b9\'8a\'4b
+\f0 )
+\f1 \'82\'a9\'82\'e7\'90\'b6\'82\'ea\'82\'e9\'89\'b9\'8a\'4b\cf2 \
+
+\f0 (\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf4 var\cf2  base = 30; \cf3 // 
+\f1 \'8a\'ee\'96\'7b\'8e\'fc\'94\'67\'90\'94\cf2 \
+
+\f0 \cf4 var\cf2  farray = (\cf4 Array\cf2 .series(8, 1, 1) * .x \cf4 Array\cf2 .geom(24, 1, 2**(1/24)).postln).postln;\
+\cf4 Pdef\cf2 (\cf6 \\y\cf2 ,\
+	\cf4 Pbind\cf2 (\
+		\cf6 \\instrument\cf2 , \cf6 \\line\cf2 ,\
+		\cf6 \\amp\cf2 , 0.1,\
+		\cf6 \\freq\cf2 , \cf4 Pseq\cf2 (farray * base, \cf4 inf\cf2 ),\
+		\cf6 \\sustain\cf2 , 0.001,\
+		\cf6 \\dur\cf2 , 0.001,\
+		\cf6 \\pan\cf2 , 0.0)\
+	)\
+)\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\cf3 // Task
+\f1 \'82\'cc\'92\'e8\'8b\'60\cf2 \
+
+\f0 (\
+\cf4 var\cf2  w;\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf2 w = \cf4 SCWindow\cf2 (\cf5 "RGB"\cf2 , \cf4 Rect\cf2 (100, 100, 300, 300));\
+w.view.background = \cf4 Color\cf2 .white;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 w.onClose = \{ \cf4 Tdef\cf2 (\cf6 \\x\cf2 ).stop; \};\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf2 w.front;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 , \{\
+	\cf4 var\cf2  idata, rdata, gdata, bdata, gamma, freq, in, amp, wl, i, r, g, b, f0, l0;\
+	gamma = 2.2;\
+	idata = [390, 395, 400, 405, 410, 415, 420, 425, 430, 435, 440, 445, 450, 455, 460, 465, 470, 475, 480, 485, 490, 495, 500, 505, 510, 515, 520, 525, 530, 535, 540, 545, 550, 555, 560, 565, 570, 575, 580, 585, 590, 595, 600, 605, 610, 615, 620, 625, 630, 635, 640, 645, 650, 655, 660, 665, 670, 675, 680, 685, 690, 695, 700, 705, 710, 715, 720, 725, 730, 735, 740, 745, 750, 755, 760, 765, 770, 775, 780, 785, 790, 795, 800, 805, 810, 815, 820, 825, 830];\
+	rdata = [1.5000\cf4 E\cf2 -03, 3.8000\cf4 E\cf2 -03, 8.9000\cf4 E\cf2 -03, 1.8800\cf4 E\cf2 -02, 3.5000\cf4 E\cf2 -02, 5.3100\cf4 E\cf2 -02, 7.0200\cf4 E\cf2 -02, 7.6300\cf4 E\cf2 -02, 7.4500\cf4 E\cf2 -02, 5.6100\cf4 E\cf2 -02, 3.2300\cf4 E\cf2 -02, 4.4000\cf4 E\cf2 -03, 4.7800\cf4 E\cf2 -02, 9.7000\cf4 E\cf2 -02, 1.5860\cf4 E\cf2 -01, 2.2350\cf4 E\cf2 -01, 2.8480\cf4 E\cf2 -01, 3.3460\cf4 E\cf2 -01, 3.7760\cf4 E\cf2 -01, 4.1360\cf4 E\cf2 -01, 4.3170\cf4 E\cf2 -01, 4.4520\cf4 E\cf2 -01, 4.3500\cf4 E\cf2 -01, 4.1400\cf4 E\cf2 -01, 3.6730\cf4 E\cf2 -01, 2.8450\cf4 E\cf2 -01, 1.8550\cf4 E\cf2 -01, 4.3500\cf4 E\cf2 -02, 1.2700\cf4 E\cf2 -01, 3.1290\cf4 E\cf2 -01, 5.3620\cf4 E\cf2 -01, 7.7220\cf4 E\cf2 -01, 1.0059\cf4 E\cf2 +00, 1.2710\cf4 E\cf2 +00, 1.5574\cf4 E\cf2 +00, 1.8465\cf4 E\cf2 +00, 2.1511\cf4 E\cf2 +00, 2.4250\cf4 E\cf2 +00, 2.6574\cf4 E\cf2 +00, 2.9151\cf4 E\cf2 +00, 3.0779\cf4 E\cf2 +00, 3.1613\cf4 E\cf2 +00, 3.1673\cf4 E\cf2 +00, 3.1048\cf4 E\cf2 +00, 2.9462\cf4 E\cf2 +00, 2.7194\cf4 E\cf2 +00, 2.4526\cf4 E\cf2 +00, 2.1700\cf4 E\cf2 +00, 1.8358\cf4 E\cf2 +00, 1.5179\cf4 E\cf2 +00, 1.2428\cf4 E\cf2 +00, 1.0070\cf4 E\cf2 +00, 7.8270\cf4 E\cf2 -01, 5.9340\cf4 E\cf2 -01, 4.4420\cf4 E\cf2 -01, 3.2830\cf4 E\cf2 -01, 2.3940\cf4 E\cf2 -01, 1.7220\cf4 E\cf2 -01, 1.2210\cf4 E\cf2 -01, 8.5300\cf4 E\cf2 -02, 5.8600\cf4 E\cf2 -02, 4.0800\cf4 E\cf2 -02, 2.8400\cf4 E\cf2 -02, 1.9700\cf4 E\cf2 -02, 1.3500\cf4 E\cf2 -02, 9.2400\cf4 E\cf2 -03, 6.3800\cf4 E\cf2 -03, 4.4100\cf4 E\cf2 -03, 3.0700\cf4 E\cf2 -03, 2.1400\cf4 E\cf2 -03, 1.4900\cf4 E\cf2 -03, 1.0500\cf4 E\cf2 -03, 7.3900\cf4 E\cf2 -04, 5.2300\cf4 E\cf2 -04, 3.7200\cf4 E\cf2 -04, 2.6500\cf4 E\cf2 -04, 1.9000\cf4 E\cf2 -04, 1.3600\cf4 E\cf2 -04, 9.8400\cf4 E\cf2 -05, 7.1300\cf4 E\cf2 -05, 5.1800\cf4 E\cf2 -05, 3.7700\cf4 E\cf2 -05, 2.7600\cf4 E\cf2 -05, 2.0300\cf4 E\cf2 -05, 1.4900\cf4 E\cf2 -05, 1.1000\cf4 E\cf2 -05, 8.1800\cf4 E\cf2 -06, 6.0900\cf4 E\cf2 -06, 4.5500\cf4 E\cf2 -06];\
+	gdata = [-4.0000\cf4 E\cf2 -04, -1.0000\cf4 E\cf2 -03, -2.5000\cf4 E\cf2 -03, -5.9000\cf4 E\cf2 -03, -1.1900\cf4 E\cf2 -02, -2.0100\cf4 E\cf2 -02, -2.8900\cf4 E\cf2 -02, -3.3800\cf4 E\cf2 -02, -3.4900\cf4 E\cf2 -02, -2.7600\cf4 E\cf2 -02, -1.6900\cf4 E\cf2 -02,  2.4000\cf4 E\cf2 -03,  2.8300\cf4 E\cf2 -02,  6.3600\cf4 E\cf2 -02,  1.0820\cf4 E\cf2 -01,  1.6170\cf4 E\cf2 -01,  2.2010\cf4 E\cf2 -01,  2.7960\cf4 E\cf2 -01,  3.4280\cf4 E\cf2 -01,  4.0860\cf4 E\cf2 -01,  4.7160\cf4 E\cf2 -01,  5.4910\cf4 E\cf2 -01,  6.2600\cf4 E\cf2 -01,  7.0970\cf4 E\cf2 -01,  7.9350\cf4 E\cf2 -01,  8.7150\cf4 E\cf2 -01,  9.4770\cf4 E\cf2 -01,  9.9450\cf4 E\cf2 -01, 1.0203\cf4 E\cf2 +00, 1.0375\cf4 E\cf2 +00, 1.0517\cf4 E\cf2 +00, 1.0390\cf4 E\cf2 +00, 1.0029\cf4 E\cf2 +00, 9.6980\cf4 E\cf2 -01, 9.1620\cf4 E\cf2 -01, 8.5710\cf4 E\cf2 -01, 7.8230\cf4 E\cf2 -01, 6.9530\cf4 E\cf2 -01, 5.9660\cf4 E\cf2 -01, 5.0630\cf4 E\cf2 -01, 4.2030\cf4 E\cf2 -01, 3.3600\cf4 E\cf2 -01, 2.5910\cf4 E\cf2 -01, 1.9170\cf4 E\cf2 -01, 1.3670\cf4 E\cf2 -01, 9.3800\cf4 E\cf2 -02, 6.1100\cf4 E\cf2 -02, 3.7100\cf4 E\cf2 -02, 2.1500\cf4 E\cf2 -02, 1.1200\cf4 E\cf2 -02, 4.4000\cf4 E\cf2 -03, 7.8000\cf4 E\cf2 -05, -1.3680\cf4 E\cf2 -03, -1.9880\cf4 E\cf2 -03, -2.1680\cf4 E\cf2 -03, -2.0060\cf4 E\cf2 -03, -1.6420\cf4 E\cf2 -03, -1.2720\cf4 E\cf2 -03, -9.4700\cf4 E\cf2 -04, -6.8300\cf4 E\cf2 -04, -4.7800\cf4 E\cf2 -04, -3.3700\cf4 E\cf2 -04, -2.3500\cf4 E\cf2 -04, -1.6300\cf4 E\cf2 -04, -1.1100\cf4 E\cf2 -04, -7.4800\cf4 E\cf2 -05, -5.0800\cf4 E\cf2 -05, -3.4400\cf4 E\cf2 -05, -2.3400\cf4 E\cf2 -05, -1.5900\cf4 E\cf2 -05, -1.0700\cf4 E\cf2 -05, -7.2300\cf4 E\cf2 -06, -4.8700\cf4 E\cf2 -06, -3.2900\cf4 E\cf2 -06, -2.2200\cf4 E\cf2 -06, -1.5000\cf4 E\cf2 -06, -1.0200\cf4 E\cf2 -06, -6.8800\cf4 E\cf2 -07, -4.6500\cf4 E\cf2 -07, -3.1200\cf4 E\cf2 -07, -2.0800\cf4 E\cf2 -07, -1.3700\cf4 E\cf2 -07, -8.8000\cf4 E\cf2 -08, -5.5300\cf4 E\cf2 -08, -3.3600\cf4 E\cf2 -08, -1.9600\cf4 E\cf2 -08, -1.0900\cf4 E\cf2 -08, -5.7000\cf4 E\cf2 -09, -2.7700\cf4 E\cf2 -09];\
+	bdata = [6.2000\cf4 E\cf2 -03, 1.6100\cf4 E\cf2 -02, 4.0000\cf4 E\cf2 -02, 9.0600\cf4 E\cf2 -02, 1.8020\cf4 E\cf2 -01, 3.0880\cf4 E\cf2 -01, 4.6700\cf4 E\cf2 -01, 6.1520\cf4 E\cf2 -01, 7.6380\cf4 E\cf2 -01, 8.7780\cf4 E\cf2 -01, 9.7550\cf4 E\cf2 -01, 1.0019\cf4 E\cf2 +00, 9.9960\cf4 E\cf2 -01, 9.1390\cf4 E\cf2 -01, 8.2970\cf4 E\cf2 -01, 7.4170\cf4 E\cf2 -01, 6.1340\cf4 E\cf2 -01, 4.7200\cf4 E\cf2 -01, 3.4950\cf4 E\cf2 -01, 2.5640\cf4 E\cf2 -01, 1.8190\cf4 E\cf2 -01, 1.3070\cf4 E\cf2 -01, 9.1000\cf4 E\cf2 -02, 5.8000\cf4 E\cf2 -02, 3.5700\cf4 E\cf2 -02, 2.0000\cf4 E\cf2 -02, 9.5000\cf4 E\cf2 -03, 7.0000\cf4 E\cf2 -04, 4.3000\cf4 E\cf2 -03, 6.4000\cf4 E\cf2 -03, 8.2000\cf4 E\cf2 -03, 9.4000\cf4 E\cf2 -03, 9.7000\cf4 E\cf2 -03, 9.7000\cf4 E\cf2 -03, 9.3000\cf4 E\cf2 -03, 8.7000\cf4 E\cf2 -03, 8.0000\cf4 E\cf2 -03, 7.3000\cf4 E\cf2 -03, 6.3000\cf4 E\cf2 -03, 5.3700\cf4 E\cf2 -03, 4.4500\cf4 E\cf2 -03, 3.5700\cf4 E\cf2 -03, 2.7700\cf4 E\cf2 -03, 2.0800\cf4 E\cf2 -03, 1.5000\cf4 E\cf2 -03, 1.0300\cf4 E\cf2 -03, 6.8000\cf4 E\cf2 -04, 4.4200\cf4 E\cf2 -04, 2.7200\cf4 E\cf2 -04, 1.4100\cf4 E\cf2 -04, 5.4900\cf4 E\cf2 -05, 2.2000\cf4 E\cf2 -06, 2.3700\cf4 E\cf2 -05, 2.8600\cf4 E\cf2 -05, 2.6100\cf4 E\cf2 -05, 2.2500\cf4 E\cf2 -05, 1.8200\cf4 E\cf2 -05, 1.3900\cf4 E\cf2 -05, 1.0300\cf4 E\cf2 -05, 7.3800\cf4 E\cf2 -06, 5.2200\cf4 E\cf2 -06, 3.6700\cf4 E\cf2 -06, 2.5600\cf4 E\cf2 -06, 1.7600\cf4 E\cf2 -06, 1.2000\cf4 E\cf2 -06, 8.1700\cf4 E\cf2 -07, 5.5500\cf4 E\cf2 -07, 3.7500\cf4 E\cf2 -07, 2.5400\cf4 E\cf2 -07, 1.7100\cf4 E\cf2 -07, 1.1600\cf4 E\cf2 -07, 7.8500\cf4 E\cf2 -08, 5.3100\cf4 E\cf2 -08, 3.6000\cf4 E\cf2 -08, 2.4400\cf4 E\cf2 -08, 1.6500\cf4 E\cf2 -08, 1.1200\cf4 E\cf2 -08, 7.5300\cf4 E\cf2 -09, 5.0700\cf4 E\cf2 -09, 3.4000\cf4 E\cf2 -09, 2.2700\cf4 E\cf2 -09, 1.5000\cf4 E\cf2 -09, 9.8600\cf4 E\cf2 -10, 6.3900\cf4 E\cf2 -10, 4.0700\cf4 E\cf2 -10, 2.5300\cf4 E\cf2 -10, 1.5200\cf4 E\cf2 -10, 8.6400\cf4 E\cf2 -11, 4.4200\cf4 E\cf2 -11];\
+	freq = 20;\
+	w.drawHook = \{\
+\pard\tx565\tx1133\tx1700\tx2266\tx2832\tx3401\tx3967\tx4535\tx5102\tx5669\tx6235\tx6802\ql\qnatural
+\cf2 		\cf4 Pen\cf2 .use \{\
+		\cf4 Color\cf2 .fromArray([r, g, b]).set;\
+		\cf4 Pen\cf2 .fillRect(\cf4 Rect\cf2 (0, 0, 300, 300));\
+		freq.asString.drawAtPoint(10@5, \cf4 Font\cf2 (\cf5 "Monaco"\cf2 , 60), \cf4 Color\cf2 .white);\
+		\};\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf2 	\};\
+	loop(\{\
+		freq = freq + 10;\
+		if( freq > 20000, \{freq = 20\} );\
+		wl = -156.66 * freq.max(0).log10 + 1033.648;\
+		i = idata.indexInBetween(wl);\
+		r = rdata.blendAt(i).max(0)**(1/gamma);\
+		g = gdata.blendAt(i).max(0)**(1/gamma);\
+		b = bdata.blendAt(i).max(0)**(1/gamma);\
+		w.refresh;\
+		0.01.wait;\
+		\});\
+\})\
+)\
+\cf3 // Task
+\f1 \'82\'cc\'8e\'c0\'8d\'73\'82\'c6\'92\'e2\'8e\'7e\cf2 \
+
+\f0 \cf4 Tdef\cf2 (\cf6 \\x\cf2 ).play(\cf4 AppClock\cf2 );\
+\cf4 Tdef\cf2 (\cf6 \\x\cf2 ).stop;\
+\
+\
+\
+\cf3 // 
+\f1 \'83\'7a\'83\'8f\'83\'43\'83\'67\'83\'6d\'83\'43\'83\'59\'82\'f0\'96\'c2\'82\'e7\'82\'b5\'94\'67\'8c\'60\'82\'f0\'83\'76\'83\'8d\'83\'62\'83\'67\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~out = \{ \cf4 WhiteNoise\cf2 .ar(0.5.dup, 0) \}.plot;\
+\
+\cf3 // 
+\f1 \'83\'73\'83\'93\'83\'4e\'83\'6d\'83\'43\'83\'59\'82\'f0\'96\'c2\'82\'e7\'82\'b5\'94\'67\'8c\'60\'82\'f0\'83\'76\'83\'8d\'83\'62\'83\'67\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~out = \{ \cf4 PinkNoise\cf2 .ar(0.5.dup, 0) \}.plot;\
+\
+\
+\cf3 // 
+\f1 \'83\'75\'83\'89\'83\'45\'83\'93\'83\'6d\'83\'43\'83\'59\'82\'f0\'96\'c2\'82\'e7\'82\'b5\'94\'67\'8c\'60\'82\'f0\'83\'76\'83\'8d\'83\'62\'83\'67\'82\'b7\'82\'e9\cf2 \
+
+\f0 ~out = \{ \cf4 BrownNoise\cf2 .ar(0.5.dup, 0) \}.plot;\
+\
+\
+~out = \{ \cf4 HPF\cf2 .ar(\cf4 WhiteNoise\cf2 .ar.dup, 10000, 0.5) \}.plot;\
+\
+\
+44100/21\
+~out.stop;\
+~out.play;\
+~out.clear;\
+\
+s.scope(zoom: 0.2);\
+s.scope(zoom: 1);\
+\
+\cf4 Array\cf2 .series(16, 1, 2.1).postln\
+\
+}
